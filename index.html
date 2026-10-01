@@ -1,0 +1,2017 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>من سيربح المليون - النسخة السودانية الشاملة 🇸🇩</title>
+    <style>
+        :root {
+            --bg-primary: #020617;
+            --bg-solid-card: #0b1329;
+            --panel-solid-bg: #070d19;
+            --gold-primary: #f59e0b;
+            --gold-light: #fbbf24;
+            --gold-dark: #b45309;
+            --gold-glow: rgba(245, 158, 11, 0.4);
+            --blue-glow: rgba(59, 130, 246, 0.35);
+            --blue-deep: #1e3a8a;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --font-scale: 1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: #f8fafc;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            height: 100dvh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            font-size: calc(15px * var(--font-scale));
+        }
+
+        /* خلفية سينمائية هادئة */
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .ambient-blob {
+            position: absolute;
+            width: 55vw;
+            height: 55vw;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.15;
+            animation: pulseMove 22s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { background: radial-gradient(circle, #2563eb, transparent); top: -20%; right: -20%; }
+        .blob-2 { background: radial-gradient(circle, #d97706, transparent); bottom: -20%; left: -20%; animation-delay: -6s; }
+
+        @keyframes pulseMove {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.18) translate(-10%, 10%); }
+        }
+
+        .app-container {
+            position: relative;
+            z-index: 5;
+            width: 100%;
+            max-width: 1250px;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 12px;
+            overflow: hidden;
+        }
+
+        .screen {
+            position: absolute;
+            inset: 0;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 10;
+            padding: 15px;
+            animation: screenFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .screen.active { display: flex; }
+
+        @keyframes screenFade {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* علم السودان */
+        .sudan-flag-box {
+            width: clamp(110px, 20vw, 160px);
+            height: clamp(55px, 10vw, 80px);
+            margin-bottom: 20px;
+            perspective: 500px;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8));
+        }
+
+        .sudan-flag {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            grid-template-rows: 1fr 1fr 1fr;
+            position: relative;
+            transform-style: preserve-3d;
+            animation: flagWave 3.5s infinite ease-in-out;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .stripe-red { background: #d22630; }
+        .stripe-white { background: #ffffff; }
+        .stripe-black { background: #000000; }
+        
+        .flag-triangle {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: clamp(27.5px, 5vw, 40px) clamp(38px, 7vw, 56px) clamp(27.5px, 5vw, 40px) 0;
+            border-color: transparent #007229 transparent transparent;
+        }
+
+        @keyframes flagWave {
+            0%, 100% { transform: rotateY(0deg) skewY(0deg); }
+            50% { transform: rotateY(15deg) skewY(2deg); }
+        }
+
+        .main-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            background: linear-gradient(135deg, #ffffff 15%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 6px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+        }
+
+        .main-subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: #94a3b8;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .btn-custom {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--gold-primary);
+            color: #ffffff;
+            font-size: clamp(0.95rem, 2vw, 1.15rem);
+            font-weight: 700;
+            padding: clamp(12px, 2.2vh, 16px) clamp(25px, 4vw, 40px);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 15px var(--gold-glow);
+            margin: 6px;
+            min-width: clamp(170px, 35vw, 240px);
+        }
+
+        .btn-custom:hover {
+            transform: translateY(-2px) scale(1.03);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            color: #030712;
+            box-shadow: 0 0 25px var(--gold-light);
+        }
+
+        .btn-custom.resume-btn {
+            border-color: var(--accent-green);
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        }
+
+        /* عداد الاستعداد */
+        .countdown-circle {
+            position: relative;
+            width: clamp(110px, 22vh, 150px);
+            height: clamp(110px, 22vh, 150px);
+            margin-bottom: 25px;
+        }
+
+        .countdown-svg {
+            transform: rotate(-90deg);
+            width: 100%;
+            height: 100%;
+        }
+
+        .countdown-bar {
+            fill: none;
+            stroke-width: 7;
+            stroke: var(--gold-primary);
+            stroke-linecap: round;
+            stroke-dasharray: 440;
+            stroke-dashoffset: 0;
+            animation: countdownAnim 7s linear forwards;
+        }
+
+        @keyframes countdownAnim {
+            to { stroke-dashoffset: 440; }
+        }
+
+        .countdown-number {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: clamp(2.5rem, 6vh, 3.5rem);
+            font-weight: 900;
+            color: var(--gold-light);
+        }
+
+        /* شبكة اللعبة */
+        .game-grid {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 15px;
+            width: 100%;
+            height: 100%;
+            max-height: calc(100dvh - 24px);
+            z-index: 5;
+            position: relative;
+        }
+
+        .main-board {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: var(--bg-solid-card);
+            border: 2px solid rgba(255, 255, 255, 0.12);
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            height: 100%;
+            min-height: 0;
+        }
+
+        .hud-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 12px;
+            gap: 8px;
+            flex-shrink: 0;
+        }
+
+        .lifelines-container {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .btn-lifeline {
+            background: #1e293b;
+            border: 1.5px solid #3b82f6;
+            color: #60a5fa;
+            width: clamp(38px, 8.5vw, 44px);
+            height: clamp(38px, 8.5vw, 44px);
+            border-radius: 50%;
+            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 12px var(--blue-glow);
+        }
+
+        .btn-lifeline:hover:not(.used) {
+            transform: scale(1.1);
+            border-color: var(--gold-light);
+            color: var(--gold-light);
+            box-shadow: 0 0 18px var(--gold-glow);
+        }
+
+        .btn-lifeline.used {
+            opacity: 0.25;
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+            cursor: not-allowed;
+            text-decoration: line-through;
+        }
+
+        .btn-ladder-mobile {
+            display: none;
+            background: linear-gradient(135deg, #b45309, #d97706);
+            border: 1.5px solid var(--gold-light);
+            color: #ffffff;
+            padding: 0 14px;
+            border-radius: 50px;
+            height: clamp(38px, 8.5vw, 44px);
+            font-size: 0.85rem;
+            font-weight: 800;
+            cursor: pointer;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 0 15px var(--gold-glow);
+        }
+
+        .timer-wrapper {
+            position: relative;
+            width: clamp(40px, 9vw, 48px);
+            height: clamp(40px, 9vw, 48px);
+            flex-shrink: 0;
+        }
+
+        .timer-svg { transform: rotate(-90deg); width: 100%; height: 100%; }
+        .timer-track { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 4; }
+        .timer-bar {
+            fill: none;
+            stroke-width: 4;
+            stroke: #3b82f6;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1s linear, stroke 0.3s;
+        }
+
+        .timer-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+
+        .question-box {
+            background: linear-gradient(180deg, #131c33, #0d1527);
+            border: 2px solid #3b82f6;
+            border-radius: 16px;
+            padding: clamp(14px, 3vh, 22px);
+            text-align: center;
+            font-size: clamp(1.05rem, 2.6vh, 1.35rem);
+            font-weight: 800;
+            line-height: 1.6;
+            margin: clamp(10px, 2vh, 16px) 0;
+            box-shadow: 0 0 25px var(--blue-glow);
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 0;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            flex-shrink: 0;
+        }
+
+        .option-btn {
+            background: linear-gradient(135deg, #17233f, #0f182c);
+            border: 1.5px solid rgba(255, 255, 255, 0.15);
+            border-radius: 12px;
+            padding: clamp(12px, 2.2vh, 16px) 14px;
+            text-align: right;
+            color: #ffffff;
+            font-size: clamp(0.9rem, 2.2vh, 1.1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .option-btn::before {
+            content: attr(data-prefix);
+            color: var(--gold-light);
+            margin-left: 10px;
+            font-weight: 900;
+            font-size: 1.1rem;
+        }
+
+        .option-btn:hover:not(.disabled) {
+            border-color: var(--gold-primary);
+            box-shadow: 0 0 15px var(--gold-glow);
+            background: #1e2e54;
+        }
+
+        .option-btn.selected {
+            background: #b45309 !important;
+            border-color: var(--gold-light) !important;
+            box-shadow: 0 0 20px var(--gold-glow);
+        }
+
+        .option-btn.correct {
+            background: #065f46 !important;
+            border-color: var(--accent-green) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+        }
+
+        .option-btn.wrong {
+            background: #991b1b !important;
+            border-color: var(--accent-red) !important;
+            color: #ffffff !important;
+            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+        }
+
+        .option-btn.hidden-option {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .assistance-result {
+            margin-top: 10px;
+            padding: 12px 16px;
+            background: #090e1c;
+            border-radius: 12px;
+            border: 1.5px solid #3b82f6;
+            font-size: 0.95rem;
+            max-height: 140px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+
+        .audience-chart {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            height: 75px;
+            margin-top: 8px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 4px;
+        }
+
+        .chart-bar-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 42px;
+        }
+
+        .chart-bar {
+            width: 22px;
+            background: linear-gradient(0deg, #1e3a8a, #3b82f6);
+            border-radius: 4px 4px 0 0;
+            height: 0%;
+            transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .chart-bar.correct-bar {
+            background: linear-gradient(0deg, #065f46, #10b981);
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+        }
+
+        /* =========================================================
+           🏆 تصميم سلم الجوائز: صلب فاخر وغير شفاف إطلاقاً
+           ========================================================= */
+        .side-panel {
+            background: var(--panel-solid-bg) !important; /* لون صلب غير شفاف */
+            border: 2px solid var(--gold-dark);
+            border-radius: 20px;
+            padding: 14px 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            height: 100%;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+        }
+
+        .ladder-header {
+            text-align: center;
+            padding-bottom: 8px;
+            margin-bottom: 6px;
+            border-bottom: 2px solid #1e293b;
+        }
+
+        .ladder-title {
+            font-weight: 900;
+            color: var(--gold-light);
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .prize-ladder-list {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+            gap: 2px;
+        }
+
+        .prize-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #94a3b8;
+            background: #0c1424; /* لون صلب لكل خانة */
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            transition: all 0.25s ease;
+        }
+
+        .prize-item .step-num {
+            color: var(--gold-light);
+            font-weight: 800;
+        }
+
+        /* المحطات الآمنة (1000 و 32000 والمليون) بلون صلب مميز */
+        .prize-item.milestone {
+            color: #ffffff;
+            font-weight: 900;
+            background: #162444;
+            border: 1px solid #3b82f6;
+        }
+
+        .prize-item.milestone .step-amount {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+        }
+
+        /* السؤال الحالي متوهج وبارز */
+        .prize-item.active {
+            background: linear-gradient(90deg, #b45309, #d97706) !important;
+            color: #ffffff !important;
+            font-weight: 900;
+            border: 1.5px solid var(--gold-light);
+            box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+            transform: scale(1.03);
+        }
+
+        .prize-item.active .step-num {
+            color: #ffffff;
+        }
+
+        /* غطاء التعتيم الخاص بالهواتف */
+        .drawer-backdrop {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 100;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .drawer-backdrop.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .side-panel-header-mobile {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #1e293b;
+        }
+
+        .side-panel-close-btn {
+            background: #1e293b;
+            border: 1px solid #475569;
+            color: #ffffff;
+            font-size: 1.2rem;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* النوافذ المنبثقة */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.88);
+            z-index: 200;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 15px;
+        }
+
+        .modal-overlay.active { display: flex; }
+
+        .modal-card {
+            background: #090e1c;
+            border: 2px solid var(--gold-primary);
+            border-radius: 20px;
+            padding: 24px;
+            width: 100%;
+            max-width: 500px;
+            max-height: 90dvh;
+            overflow-y: auto;
+            text-align: center;
+            box-shadow: 0 0 35px var(--gold-glow);
+            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        @keyframes modalPop {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        #celebration-canvas {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 150;
+            display: none;
+        }
+
+        .shake { animation: shakeAnim 0.4s ease; }
+        @keyframes shakeAnim {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+
+        /* تجاوب الهواتف والشاشات الصغيرة */
+        @media (max-width: 1023px) {
+            .game-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .btn-ladder-mobile {
+                display: inline-flex;
+            }
+
+            /* السلم كلوحة Drawer صلبة تنزلق باحترافية */
+            .side-panel {
+                position: fixed;
+                top: 0;
+                right: -330px;
+                width: 300px;
+                height: 100dvh;
+                z-index: 110;
+                transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+                box-shadow: -15px 0 45px rgba(0, 0, 0, 0.95);
+                border-radius: 20px 0 0 20px;
+                border-left: 2px solid var(--gold-primary);
+                background: #060b17 !important; /* لون صلب بنسبة 100% في الموبايل */
+            }
+
+            .side-panel.drawer-open {
+                right: 0;
+            }
+
+            .side-panel-header-mobile {
+                display: flex;
+            }
+
+            .ladder-header {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-container { padding: 6px; }
+            .main-board { padding: 10px; border-radius: 16px; }
+            .hud-bar { padding-bottom: 8px; }
+            .btn-lifeline { width: 36px; height: 36px; }
+            .timer-wrapper { width: 38px; height: 38px; }
+            .question-box { padding: 12px; margin: 8px 0; border-radius: 12px; }
+            .options-grid { grid-template-columns: 1fr; gap: 8px; }
+            .option-btn { padding: 10px 14px; font-size: 0.95rem; }
+            .side-panel { width: 85vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-bg">
+        <div class="ambient-blob blob-1"></div>
+        <div class="ambient-blob blob-2"></div>
+    </div>
+
+    <canvas id="celebration-canvas"></canvas>
+    <div class="drawer-backdrop" id="drawer-backdrop" onclick="ui.togglePrizeDrawer(false)"></div>
+
+    <div class="app-container">
+
+        <!-- 1. شاشة البداية -->
+        <div class="screen active" id="splash-screen">
+            <div class="sudan-flag-box">
+                <div class="sudan-flag">
+                    <div class="stripe-red"></div>
+                    <div class="stripe-white"></div>
+                    <div class="stripe-black"></div>
+                    <div class="flag-triangle"></div>
+                </div>
+            </div>
+            <h1 class="main-title">من سيربح المليون</h1>
+            <h2 class="main-subtitle">النسخة السودانية الشاملة 🇸🇩</h2>
+            <div style="width: 220px; height: 5px; background: #1e293b; border-radius: 4px; overflow: hidden; margin-top: 20px;">
+                <div style="height: 100%; width: 100%; background: linear-gradient(90deg, #d97706, #fbbf24); animation: splashBar 3.5s linear forwards;"></div>
+            </div>
+            <p style="margin-top: 15px; font-size: 0.85rem; color: #94a3b8;">جاري تحميل بنك الأسئلة والموسوعة السودانية الكبرى...</p>
+        </div>
+        <style>@keyframes splashBar { from { width: 0%; } to { width: 100%; } }</style>
+
+        <!-- 2. القائمة الرئيسية -->
+        <div class="screen" id="menu-screen">
+            <div class="sudan-flag-box" style="transform: scale(0.85); margin-bottom: 10px;">
+                <div class="sudan-flag">
+                    <div class="stripe-red"></div>
+                    <div class="stripe-white"></div>
+                    <div class="stripe-black"></div>
+                    <div class="flag-triangle"></div>
+                </div>
+            </div>
+            <h1 class="main-title">من سيربح المليون</h1>
+            <h2 class="main-subtitle">أكثر من 300 سؤال في شتى مجالات السودان</h2>
+            <div id="menu-buttons-box" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
+                <button class="btn-custom" onclick="gameEngine.initiateCountdown(false)">ابدأ رحلة التحدي</button>
+                <button class="btn-custom" onclick="ui.openModal('stats-modal')">سجل الإنجازات</button>
+                <button class="btn-custom" onclick="ui.openModal('settings-modal')">الإعدادات والصوت</button>
+                <button class="btn-custom" onclick="ui.openModal('about-modal')">عن المسابقة</button>
+            </div>
+        </div>
+
+        <!-- 3. شاشة الاستعداد والموسيقى (7 ثوانٍ) -->
+        <div class="screen" id="countdown-screen">
+            <div class="countdown-circle">
+                <svg class="countdown-svg" viewBox="0 0 150 150">
+                    <circle class="countdown-bar" cx="75" cy="75" r="70" />
+                </svg>
+                <div class="countdown-number" id="countdown-num">7</div>
+            </div>
+            <h2 style="color: var(--gold-light); font-weight: 800; font-size: 1.5rem;">استعد لرحلة المليون...</h2>
+            <p style="margin-top: 10px; color: #94a3b8; font-size: 0.95rem;">تحدي الثقافة والمعرفة السودانية العريقة</p>
+        </div>
+
+        <!-- 4. ساحة اللعبة الرئيسية -->
+        <div class="screen" id="game-screen">
+            <div class="game-grid">
+                
+                <div class="main-board" id="main-board">
+                    <!-- الشريط العلوي -->
+                    <div class="hud-bar">
+                        <div class="lifelines-container">
+                            <button class="btn-lifeline" id="ll-fifty" onclick="gameEngine.useFiftyFifty()" title="حذف إجابتين">50:50</button>
+                            <button class="btn-lifeline" id="ll-friend" onclick="gameEngine.usePhoneFriend()" title="اتصال بصديق">📞</button>
+                            <button class="btn-lifeline" id="ll-audience" onclick="gameEngine.useAudience()" title="رأي الجمهور">👥</button>
+                            <button class="btn-lifeline" id="ll-swap" onclick="gameEngine.useSwap()" title="تبديل السؤال">🔄</button>
+                            <button class="btn-ladder-mobile" onclick="ui.togglePrizeDrawer(true)" title="عرض المبالغ">
+                                <span>🏆 سلم الجوائز</span>
+                            </button>
+                        </div>
+
+                        <!-- عداد الثواني -->
+                        <div class="timer-wrapper">
+                            <svg class="timer-svg" viewBox="0 0 36 36">
+                                <path class="timer-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                <path class="timer-bar" id="timer-progress" stroke-dasharray="100, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                            </svg>
+                            <div class="timer-text" id="timer-value">30</div>
+                        </div>
+
+                        <div style="display: flex; gap: 6px;">
+                            <button class="btn-lifeline" id="btn-audio-mute" onclick="soundMaster.toggleMute()" style="border-color: var(--gold-primary); color: var(--gold-light);" title="كتم/تشغيل الصوت">🔊</button>
+                            <button class="btn-lifeline" onclick="gameEngine.cashOut()" style="border-color: var(--accent-red); color: var(--accent-red);" title="انسحاب مالي">🏳️</button>
+                        </div>
+                    </div>
+
+                    <!-- مربع السؤال النشط -->
+                    <div class="question-box" id="question-text">
+                        جارٍ سحب السؤال...
+                    </div>
+
+                    <!-- أزرار الإجابات الأربعة (يتم خلط مواقعها عشوائياً في كل مرة) -->
+                    <div class="options-grid" id="options-grid">
+                        <button class="option-btn" data-prefix="أ:" onclick="gameEngine.selectOption(0)"></button>
+                        <button class="option-btn" data-prefix="ب:" onclick="gameEngine.selectOption(1)"></button>
+                        <button class="option-btn" data-prefix="ج:" onclick="gameEngine.selectOption(2)"></button>
+                        <button class="option-btn" data-prefix="د:" onclick="gameEngine.selectOption(3)"></button>
+                    </div>
+
+                    <!-- لوحة المساعدات -->
+                    <div class="assistance-result" id="assistance-output" style="display: none;"></div>
+                </div>
+
+                <!-- سلم الجوائز: صلب وغير شفاف إطلاقاً -->
+                <div class="side-panel" id="side-prize-panel">
+                    <div class="side-panel-header-mobile">
+                        <span style="font-weight: 900; color: var(--gold-light); font-size: 1.05rem;">🏆 سلم الجوائز النقدية</span>
+                        <button class="side-panel-close-btn" onclick="ui.togglePrizeDrawer(false)">✕</button>
+                    </div>
+                    <div class="ladder-header">
+                        <div class="ladder-title">سلم الجوائز (جنيه سوداني)</div>
+                    </div>
+                    <div class="prize-ladder-list" id="prize-ladder-list"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- النوافذ المنبثقة -->
+    <div class="modal-overlay" id="stats-modal">
+        <div class="modal-card">
+            <h2 style="color: var(--gold-light); margin-bottom: 15px;">سجل الإنجازات والبطولات</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                <div style="background: #111a33; padding: 12px; border-radius: 10px; border: 1px solid #1e293b;">
+                    <div>الجولات الملعوبة</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--gold-light);" id="stat-played">0</div>
+                </div>
+                <div style="background: #111a33; padding: 12px; border-radius: 10px; border: 1px solid #1e293b;">
+                    <div>مرات نيل المليون</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent-green);" id="stat-won">0</div>
+                </div>
+                <div style="background: #111a33; padding: 12px; border-radius: 10px; grid-column: span 2; border: 1px solid #1e293b;">
+                    <div>أعلى مبلغ تم ربحه</div>
+                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--gold-light);" id="stat-high">0 ج</div>
+                </div>
+            </div>
+            <button class="btn-custom" onclick="ui.closeModal('stats-modal')">إغلاق</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="settings-modal">
+        <div class="modal-card">
+            <h2 style="color: var(--gold-light); margin-bottom: 20px;">خيارات النظام</h2>
+            <div style="text-align: right; margin-bottom: 25px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                    <label>المؤثرات الصوتية والترقب:</label>
+                    <input type="checkbox" id="setting-sound-toggle" checked onchange="soundMaster.toggleSoundFromSetting(this.checked)" style="width: 20px; height: 20px;">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label>حجم خط الأسئلة:</label>
+                    <select onchange="document.documentElement.style.setProperty('--font-scale', this.value)" style="background: #1e293b; color: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--gold-primary);">
+                        <option value="0.9">صغير</option>
+                        <option value="1" selected>متوسط</option>
+                        <option value="1.15">كبير</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn-custom" onclick="gameEngine.resetMemory()" style="border-color: var(--accent-red); margin-bottom: 10px;">تصفير بنك الأسئلة والذاكرة</button>
+            <br>
+            <button class="btn-custom" onclick="ui.closeModal('settings-modal')">حفظ وإغلاق</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="game-over-modal">
+        <div class="modal-card">
+            <h2 style="color: var(--gold-light); margin-bottom: 15px;" id="game-over-title">انتهت الرحلة</h2>
+            <p id="game-over-msg" style="font-size: 1.15rem; line-height: 1.6; margin-bottom: 25px;"></p>
+            <button class="btn-custom" onclick="ui.closeModal('game-over-modal'); ui.switchScreen('menu-screen');">العودة للرئيسية</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="about-modal">
+        <div class="modal-card">
+            <h2 style="color: var(--gold-light); margin-bottom: 15px;">عن النسخة السودانية</h2>
+            <p style="text-align: right; line-height: 1.7; font-size: 0.95rem; color: #cbd5e1;">
+                مسابقة ثقافية وتاريخية شاملة تضم أكثر من 300 سؤال مبرمجة بتدرج واقعي للمستويات من السهل إلى الخبير، وتخلد تراث كوش ومروي وسنار والمهدية والأدب والفن السوداني.
+            </p>
+            <br>
+            <button class="btn-custom" onclick="ui.closeModal('about-modal')">إغلاق</button>
+        </div>
+    </div>
+
+    <script>
+        /* =========================================================================
+           🎧 محرك الصوت التخليقي المتطور (Web Audio API)
+           ========================================================================= */
+        class ProfessionalSoundEngine {
+            constructor() {
+                this.isMuted = false;
+                this.audioCtx = null;
+                this.droneOsc = null;
+                this.droneGain = null;
+            }
+
+            initContext() {
+                if (!this.audioCtx) {
+                    const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                    this.audioCtx = new AudioContextClass();
+                }
+                if (this.audioCtx.state === 'suspended') {
+                    this.audioCtx.resume();
+                }
+            }
+
+            toggleMute() {
+                this.isMuted = !this.isMuted;
+                const btn = document.getElementById('btn-audio-mute');
+                btn.textContent = this.isMuted ? '🔇' : '🔊';
+                btn.style.color = this.isMuted ? 'var(--accent-red)' : 'var(--gold-light)';
+                btn.style.borderColor = this.isMuted ? 'var(--accent-red)' : 'var(--gold-primary)';
+                
+                if (this.isMuted) {
+                    this.stopThinkingSound();
+                } else if (gameEngine.isPlaying) {
+                    this.playThinkingSound();
+                }
+            }
+
+            toggleSoundFromSetting(enabled) {
+                if (this.isMuted === enabled) this.toggleMute();
+            }
+
+            playIntro7Sec() {
+                if (this.isMuted) return;
+                this.initContext();
+                const now = this.audioCtx.currentTime;
+                const notes = [220, 277.18, 329.63, 440, 554.37, 659.25, 880];
+                notes.forEach((freq, idx) => {
+                    const osc = this.audioCtx.createOscillator();
+                    const gain = this.audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(freq, now + idx * 0.85);
+
+                    gain.gain.setValueAtTime(0.001, now + idx * 0.85);
+                    gain.gain.linearRampToValueAtTime(0.18, now + idx * 0.85 + 0.1);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.85 + 1.2);
+
+                    osc.connect(gain);
+                    gain.connect(this.audioCtx.destination);
+                    osc.start(now + idx * 0.85);
+                    osc.stop(now + idx * 0.85 + 1.2);
+                });
+            }
+
+            playThinkingSound() {
+                if (this.isMuted) return;
+                this.stopThinkingSound();
+                this.initContext();
+                
+                this.droneOsc = this.audioCtx.createOscillator();
+                this.droneGain = this.audioCtx.createGain();
+                this.droneOsc.type = 'sawtooth';
+                this.droneOsc.frequency.setValueAtTime(65.41, this.audioCtx.currentTime);
+
+                const filter = this.audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.setValueAtTime(140, this.audioCtx.currentTime);
+
+                this.droneGain.gain.setValueAtTime(0.07, this.audioCtx.currentTime);
+
+                this.droneOsc.connect(filter);
+                filter.connect(this.droneGain);
+                this.droneGain.connect(this.audioCtx.destination);
+                this.droneOsc.start();
+            }
+
+            stopThinkingSound() {
+                if (this.droneOsc) {
+                    try {
+                        this.droneGain.gain.exponentialRampToValueAtTime(0.0001, this.audioCtx.currentTime + 0.2);
+                        setTimeout(() => {
+                            if (this.droneOsc) {
+                                this.droneOsc.stop();
+                                this.droneOsc.disconnect();
+                                this.droneOsc = null;
+                            }
+                        }, 250);
+                    } catch(e) {}
+                }
+            }
+
+            playCorrect() {
+                this.stopThinkingSound();
+                if (this.isMuted) return;
+                this.initContext();
+                const now = this.audioCtx.currentTime;
+                [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+                    const osc = this.audioCtx.createOscillator();
+                    const gain = this.audioCtx.createGain();
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(f, now + i * 0.12);
+                    gain.gain.setValueAtTime(0.2, now + i * 0.12);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.12 + 0.6);
+                    osc.connect(gain);
+                    gain.connect(this.audioCtx.destination);
+                    osc.start(now + i * 0.12);
+                    osc.stop(now + i * 0.12 + 0.6);
+                });
+            }
+
+            playWrong() {
+                this.stopThinkingSound();
+                if (this.isMuted) return;
+                this.initContext();
+                const now = this.audioCtx.currentTime;
+                const osc = this.audioCtx.createOscillator();
+                const gain = this.audioCtx.createGain();
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(140, now);
+                osc.frequency.linearRampToValueAtTime(60, now + 0.8);
+                gain.gain.setValueAtTime(0.3, now);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
+                osc.connect(gain);
+                gain.connect(this.audioCtx.destination);
+                osc.start(now);
+                osc.stop(now + 0.8);
+            }
+
+            playMilestone() {
+                this.stopThinkingSound();
+                if (this.isMuted) return;
+                this.initContext();
+                const now = this.audioCtx.currentTime;
+                [440, 554, 659, 880, 1108].forEach((f, i) => {
+                    const osc = this.audioCtx.createOscillator();
+                    const gain = this.audioCtx.createGain();
+                    osc.type = 'triangle';
+                    osc.frequency.setValueAtTime(f, now + i * 0.14);
+                    gain.gain.setValueAtTime(0.22, now + i * 0.14);
+                    gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.14 + 0.7);
+                    osc.connect(gain);
+                    gain.connect(this.audioCtx.destination);
+                    osc.start(now + i * 0.14);
+                    osc.stop(now + i * 0.14 + 0.7);
+                });
+            }
+
+            playMillionWin() {
+                this.stopThinkingSound();
+                if (this.isMuted) return;
+                this.initContext();
+                const now = this.audioCtx.currentTime;
+                const arpeggio = [523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98];
+                for (let round = 0; round < 4; round++) {
+                    arpeggio.forEach((f, i) => {
+                        const osc = this.audioCtx.createOscillator();
+                        const gain = this.audioCtx.createGain();
+                        osc.type = 'square';
+                        osc.frequency.setValueAtTime(f, now + round * 0.85 + i * 0.1);
+                        gain.gain.setValueAtTime(0.05, now + round * 0.85 + i * 0.1);
+                        gain.gain.exponentialRampToValueAtTime(0.001, now + round * 0.85 + i * 0.1 + 0.5);
+                        osc.connect(gain);
+                        gain.connect(this.audioCtx.destination);
+                        osc.start(now + round * 0.85 + i * 0.1);
+                        osc.stop(now + round * 0.85 + i * 0.1 + 0.5);
+                    });
+                }
+            }
+        }
+
+        const soundMaster = new ProfessionalSoundEngine();
+
+        /* =========================================================================
+           📚 الموسوعة والبنك الضخم للأسئلة (>300 سؤال متدرج الصعوبة بدقة)
+           ========================================================================= */
+        const QUESTION_MASTER_BASE = {
+            // المرحلة 1: (الأسئلة 1 - 3: من 100 إلى 300 جنيه) - سهلة وشائعة
+            1: [
+                { q: "ما هي العاصمة الرسمية لجمهورية السودان؟", correct: "الخرطوم", wrong: ["أم درمان", "بحري", "بورتسودان"] },
+                { q: "ما هما النهران اللذان يلتقيان عند مقرن الخرطوم؟", correct: "النيل الأبيض والأزرق", wrong: ["عطبرة والدندر", "السوباط والنيل الأزرق", "الرهد والنيل الأبيض"] },
+                { q: "ما هي العملة الرسمية المتداولة في السودان؟", correct: "الجنيه السوداني", wrong: ["الدينار", "الريال", "الدرهم"] },
+                { q: "ما هو اللقب الشهير لمدينة أم درمان التاريخية؟", correct: "العاصمة الوطنية", wrong: ["عروس الرمال", "مدينة الحديد والنار", "عاصمة الرمال"] },
+                { q: "أي من المدن السودانية تعد الميناء الرئيسي على البحر الأحمر؟", correct: "بورتسودان", wrong: ["كسلا", "عطبرة", "كوستي"] },
+                { q: "ما هي الوجبة التقليدية المصنوعة من عجين الذرة رقيق السمك؟", correct: "الكسرة", wrong: ["العصيدة", "القراصة", "الفتة"] },
+                { q: "ما هو المشروب الرمضاني السوداني الأحمر المحضر من الكركديه؟", correct: "الكركديه", wrong: ["العرديب", "القنقليز", "الحلومر"] },
+                { q: "ما هو الحيوان أو الطائر المتواجد في شعار جمهورية السودان؟", correct: "صقر الجديان", wrong: ["النسر الإفريقي", "الأسد", "الصقر الحر"] },
+                { q: "بماذا تشتهر مدينة عطبرة في التاريخ السوداني؟", correct: "عاصمة السكة حديد", wrong: ["زراعة التمور", "صيد الأسماك", "صناعة الجلود"] },
+                { q: "ما هو الإناء الفخاري التراثي المستخدم لصنع وتقديم القهوة في السودان؟", correct: "الجبنة", wrong: ["البراد", "الركوة", "الدلوكة"] },
+                { q: "ما هي الشجرة السودانية التي تعتبر المصدر الأول للصمغ العربي؟", correct: "الهشاب", wrong: ["المهوجني", "النيم", "السنط"] },
+                { q: "ما هي المدينة السودانية المشهورة بجبل توتيل ونهر القاش؟", correct: "كسلا", wrong: ["القضارف", "سنار", "الفاشر"] },
+                { q: "ما هي الوجبة السودانية السميكة المحضرة من عجين القمح أو الذرة مع التقلية؟", correct: "العصيدة", wrong: ["البوش", "القراصة", "المديدة"] },
+                { q: "أي ولاية تقع فيها مدينة 'ود مدني' في قلب مشروع الجزيرة؟", correct: "ولاية الجزيرة", wrong: ["ولاية سنار", "ولاية النيل الأبيض", "ولاية الخرطوم"] },
+                { q: "ما هو المشروب السوداني الشعبي المحضر من الذرة المخمرة والبهارات لرمضان؟", correct: "الحلّومر", wrong: ["التبلدي", "العرديب", "الشعير"] },
+                { q: "ما هو الاسم التقليدي للرقصة والضرب الإيقاعي على الجلد في الأفراح؟", correct: "الدلوكة", wrong: ["المردوم", "الكمبلا", "الجراري"] },
+                { q: "أي جزيرة سودانية تقع مباشرة عند نقطة التقاء النيلين الأزرق والأبيض؟", correct: "جزيرة توتي", wrong: ["جزيرة مساوي", "جزيرة صاي", "جزيرة الفيل"] },
+                { q: "ما هو الزي القومي التقليدي للرجال في السودان؟", correct: "الجلباب والعمامة والشال", wrong: ["الدشداشة والغترة", "القفطان المغاربي", "القميص الإفريقي"] },
+                { q: "ما هي الفاكهة البرية الشهيرة المأخوذة من شجرة التبلدي الضخمة؟", correct: "القنقليز", wrong: ["الدوم", "النبق", "اللالوب"] },
+                { q: "أي ولاية سودانية تشتهر بزراعة السمسم والذرة على نطاق مطري واسع؟", correct: "ولاية القضارف", wrong: ["الولاية الشمالية", "ولاية البحر الأحمر", "ولاية نهر النيل"] },
+                { q: "ما هو اللون المثلث الموجود في سارية علم السودان؟", correct: "الأخضر", wrong: ["الأسود", "الأحمر", "الأبيض"] },
+                { q: "ما هي المدينة الملقبة بـ 'عروس الرمال' في كردفان؟", correct: "الأبيض", wrong: ["النهود", "أم روابة", "بارا"] },
+                { q: "ما هي الآلة الوترية الشعبية الأكثر انتشاراً في شمال وشرق السودان؟", correct: "الطنبور", wrong: ["العود", "القانون", "الكمان"] },
+                { q: "أي ولاية تضم أهرامات البجراوية الأثرية الشهيرة؟", correct: "ولاية نهر النيل", wrong: ["الولاية الشمالية", "ولاية كسلا", "ولاية الخرطوم"] },
+                { q: "ما هو المحصول الزراعي الأساسي الذي اشتهرت به الولاية الشمالية في الواحات؟", correct: "التمور", wrong: ["القطن", "السمسم", "الشاي"] },
+                { q: "ما هو الاسم التقليدي لخاتم الزواج أو الحلي التراثية للعرسان في الجرتق؟", correct: "السميرة والفريرة", wrong: ["الخلخال", "العقيق", "الحزام"] },
+                { q: "ما هو الشارع الشهير في الخرطوم المطل على النيل الأزرق ويضم القصر الجمهوري؟", correct: "شارع النيل", wrong: ["شارع الجمهورية", "شارع القصر", "شارع المطار"] },
+                { q: "ما هي المدينة النيلية التاريخية المقابلة لمدينة بربر؟", correct: "المتمة", wrong: ["شندي", "الباوقة", "الدامر"] },
+                { q: "ما هو الطبق الشعبي المشهور المكون من الفول المدمس مع الزيت والجبنة؟", correct: "البوش", wrong: ["الفتة", "القراصة", "الملوحة"] },
+                { q: "ما هو آخر رافد يصب في نهر النيل قبل وصوله للبحر المتوسط؟", correct: "نهر عطبرة", wrong: ["النيل الأزرق", "السوباط", "بحر الغزال"] },
+                { q: "أي بحر يحد السودان من جهة الشرق؟", correct: "البحر الأحمر", wrong: ["البحر المتوسط", "بحر العرب", "المحيط الهندي"] },
+                { q: "ما هي الشجرة المعمرة الشائعة في شوارع الخرطوم ذات الظل الكثيف؟", correct: "شجرة النيم", wrong: ["اللبخ", "المانجو", "الجميز"] },
+                { q: "ما هي العشبة السودانية المغلية ذات الطعم المر التي تستخدم للهضم والبرد؟", correct: "الحرجل", wrong: ["الحلبة", "النعناع", "القرفة"] },
+                { q: "ما هو الاسم الشعبي لسوق الإبل الشهير في غرب أم درمان؟", correct: "سوق المويلح", wrong: ["سوق الناقة", "سوق قندهار", "سوق ليبيا"] },
+                { q: "ما هي المدينة التي تعد عاصمة لولاية البحر الأحمر؟", correct: "بورتسودان", wrong: ["سواكن", "سنكات", "طوكر"] },
+                { q: "ما هو المشروب الساخن الذي يُحلى أحياناً بالزنجبيل والقرنفل في الجبنة؟", correct: "القهوة المتبلة", wrong: ["الشاي الكيني", "الكركديه", "الحلبة"] },
+                { q: "ما هو الفن التراثي الذي يؤدى بالسيوف والدروع في المناسبات؟", correct: "العرضة", wrong: ["المردوم", "الكمبلا", "السامري"] },
+                { q: "ما هي السلعة التي كان السودان ينتج منها أكثر من 80% من الاستهلاك العالمي؟", correct: "الصمغ العربي", wrong: ["الذهب", "القطن", "السمسم"] },
+                { q: "ما هو النهر الذي ينبع من بحيرة تانا في إثيوبيا ليصل إلى السودان؟", correct: "النيل الأزرق", wrong: ["النيل الأبيض", "نهر السوباط", "بحر الزراف"] },
+                { q: "أي جسر يعد أقدم جسر حديدي شيد لربط الخرطوم بأم درمان؟", correct: "جسر النيل الأبيض القديم", wrong: ["جسر شمبات", "جسر الفتيحاب", "جسر المنشية"] },
+                { q: "ما هو الاسم المحلي لفاكهة شجرة الهجليج البرية؟", correct: "اللالوب", wrong: ["الدوم", "النبق", "العرديب"] },
+                { q: "ما هي المدينة التاريخية الواقعة على النيل الأبيض وتشتهر بإنتاج السكر؟", correct: "كنانة", wrong: ["الدويم", "كوستي", "القطينة"] },
+                { q: "ما هو المهرجان أو اليوم السنوي الذي يحتفل فيه السودانيون باستقلال بلادهم؟", correct: "الأول من يناير", wrong: ["الأول من يوليو", "25 مايو", "21 أكتوبر"] },
+                { q: "ما هو القماش النسائي التراثي الفاخر الذي ترتديه المرأة السودانية؟", correct: "الثوب السوداني", wrong: ["العباءة الخليجية", "الساري", "الملاية"] },
+                { q: "ما هي المدينة التي تضم مجمع سد أعالي عطبرة وستيت؟", correct: "الشوك", wrong: ["القضارف", "خشم القربة", "كسلا"] },
+                { q: "ما هي السمة الأساسية للموسيقى السودانية التي تميزها عن محيطها العربي؟", correct: "السلم الخماسي", wrong: ["السلم السباعي", "المقامات الشرقية", "الموسيقى الغربية"] },
+                { q: "ما هو أكبر مشروع زراعي مروي تحت إدارة واحدة في إفريقيا؟", correct: "مشروع الجزيرة", wrong: ["مشروع الرهد", "مشروع طوكر", "مشروع السوكي"] },
+                { q: "ما هي الولاية التي تقع في أقصى شمال السودان على الحدود مع مصر؟", correct: "الولاية الشمالية", wrong: ["ولاية نهر النيل", "ولاية البحر الأحمر", "ولاية كسلا"] },
+                { q: "ما هو الاسم التراثي لزينة العروس السودانية المصنوعة من العطور الجافة؟", correct: "الخُمرة والريحة", wrong: ["المسك فقط", "العنبر الصناعي", "ماء الورد"] },
+                { q: "ما هي أشهر سمكة نيلية مفضلة على موائد الخرطوم؟", correct: "سمك العجل (البياض)", wrong: ["البلطي النيلي", "القرموط", "الكبروس"] },
+                { q: "ما هو الجبل البركاني المنفرد بكسلا الذي تعلوه قمم ملساء تشبه التاج؟", correct: "جبل التاكا", wrong: ["جبل موية", "جبل الداير", "جبل كولونا"] },
+                { q: "أي وسيلة نقل تقليدية ارتبطت تاريخياً بنقل البضائع عبر صحراء بيوضة؟", correct: "قوافل الجمال", wrong: ["السفن الشراعية", "العربات المجرورة", "القطارات القديمة"] },
+                { q: "ما هو السوق الشعبي الأكثر عراقة في قلب مدينة أم درمان؟", correct: "سوق أم درمان الكبير", wrong: ["سوق الجمعة", "سوق بحري", "السوق العربي"] },
+                { q: "ما هو الاسم الذي يطلق على التمر الرطب الطري في شمال السودان؟", correct: "الرطب العجوة", wrong: ["البركاوي", "القنديلة", "الجاو"] },
+                { q: "ما هي الزهرة التي تمثل رمزاً للجمال في أغاني الحقيبة السودانية؟", correct: "الياسمين والفل", wrong: ["التوليب", "اللوتس", "النرجس"] },
+                { q: "ما هي المنطقة التراثية التي تشتهر بصناعة الفخار في أم درمان؟", correct: "القماير", wrong: ["أبو روف", "ود نوباوي", "بيت المال"] },
+                { q: "ما هي وسيلة النقل النيلية الخشبية القديمة قبل البواخر الحديثة؟", correct: "المركب الشراعي", wrong: ["الفلوكة", "اللنش", "اليخت"] },
+                { q: "ما هو النبات العطري الجاف الذي يحرق كبخور في المنازل السودانية؟", correct: "الطلح والشاف", wrong: ["المستكة فقط", "الصندل الهندي", "اللبان الشحري"] },
+                { q: "أي فريقين يمثلان ديربي كرة القدم السوداني الأشهر تاريخياً؟", correct: "الهلال والمريخ", wrong: ["الموردة وبري", "الأهلي والاتحاد", "هلال الساحل وحي العرب"] },
+                { q: "ما هو الاسم القديم للجسر الذي يربط الخرطوم بمدينة بحري عند كبري النيل الأزرق؟", correct: "كوبري النيل الأزرق القديم", wrong: ["كوبري توتي", "كوبري القوات المسلحة", "كوبري النيل الأبيض"] },
+                { q: "ما هو الطعام السوداني المكون من لحم مجفف وبصل محمر في الشرموط؟", correct: "ملاح التقلية", wrong: ["ملاح الروب", "ملاح النعيمية", "ملاح البامية"] },
+                { q: "ما هي المدينة التي تعد ملتقى لخطوط السكة الحديد بين الأبيض وبورتسودان وسنار؟", correct: "تقاطع كوستي والرهد", wrong: ["سنار", "ود مدني", "عطبرة"] },
+                { q: "ما هي البحيرة البركانية الشهيرة الموجودة في قمة جبل مرة؟", correct: "بحيرة دريبا", wrong: ["بحيرة سد مروي", "بحيرة النوبة", "بحيرة كنانة"] },
+                { q: "ما هو الاسم التقليدي لقبعة الرأس المطرزة التي يرتديها الرجال في السودان؟", correct: "الطاقية", wrong: ["العقال", "الفاسي", "الكوفية"] }
+            ],
+
+            // المرحلة 2: (الأسئلة 4 - 6: من 500 إلى 1,000 جنيه) - أول محطة أمان
+            2: [
+                { q: "من هو قائد الثورة المهدية الذي دخل الخرطوم عام 1885م؟", correct: "محمد أحمد المهدي", wrong: ["عثمان دقنة", "علي دينار", "إسماعيل الأزهري"] },
+                { q: "في أي عام افتتح خزان سنار رسمياً ليروي مشروع الجزيرة؟", correct: "1925م", wrong: ["1910م", "1935م", "1956م"] },
+                { q: "من هو الشاعر السوداني الملقب بـ 'شاعر إفريقيا' صاحب ديوان أغاني إفريقيا؟", correct: "محمد مفتاح الفيتوري", wrong: ["إدريس جماع", "الهادي آدم", "صلاح أحمد إبراهيم"] },
+                { q: "ما هو النادي السوداني الذي توج بلقب بطولة سيكافا للأندية في الثمانينيات؟", correct: "المريخ", wrong: ["الهلال", "الموردة", "الأهلي شندي"] },
+                { q: "ما هو الاسم القديم التاريخي لمدينة كوستي قبل تسميتها الحالية؟", correct: "مشرع كوستي", wrong: ["المرسى الكبير", "الدويم", "قوز عشار"] },
+                { q: "من هو أول رئيس وزراء وطني سوداني عند إعلان الاستقلال؟", correct: "إسماعيل الأزهري", wrong: ["عبد الله خليل", "إبراهيم عبود", "محمد أحمد محجوب"] },
+                { q: "أي فنان سوداني راحل تغنى بالقصيدة الوطنية الخالدة 'أصبح الصبح'؟", correct: "محمد وردي", wrong: ["عبد الكريم الكابلي", "عثمان حسين", "زيدان إبراهيم"] },
+                { q: "ما هي المحمية الطبيعية السودانية المسجلة عالمياً لشعابها المرجانية بالبحر الأحمر؟", correct: "محمية سنقنيب", wrong: ["محمية الدندر", "محمية الردوم", "محمية جبل الداير"] },
+                { q: "ما هي الولاية التي يقع فيها خزان الرصيرص؟", correct: "ولاية النيل الأزرق", wrong: ["ولاية سنار", "ولاية النيل الأبيض", "ولاية الجزيرة"] },
+                { q: "من هو مؤلف النشيد الوطني السوداني الرسمي 'نحن جند الله جند الوطن'؟", correct: "أحمد محمد صالح", wrong: ["إدريس جماع", "محيي الدين فارس", "الهادي آدم"] },
+                { q: "ما هي الجزيرة التي نفي إليها الإمام المهدي في بدايات أمره وتفرغ فيها للعبادة؟", correct: "جزيرة أبا", wrong: ["جزيرة توتي", "جزيرة صاي", "جزيرة مساوي"] },
+                { q: "أي فريق سوداني أحرز لقب كأس أمم إفريقيا لكرة القدم عام 1970؟", correct: "منتخب السودان (صقور الجديان)", wrong: ["نادي الهلال", "نادي المريخ", "نادي الموردة"] },
+                { q: "ما هي المعركة التي انتصر فيها جيش المهدي على هكس باشا في غابة شيكان؟", correct: "معركة شيكان", wrong: ["معركة كرري", "معركة أم دبيكرات", "معركة قدير"] },
+                { q: "ما هو المحصول الغذائي الرئيسي الذي يعد القوت الأساسي لمعظم أهل السودان؟", correct: "الذرة الرفيعة (الفتريتة)", wrong: ["الأرز", "الشعير", "الشوفان"] },
+                { q: "ما هي المدينة السودانية المعروفة تاريخياً بلقب 'بقعة المهدية'؟", correct: "أم درمان", wrong: ["الأبيض", "الخرطوم", "بربر"] },
+                { q: "أي ولاية سودانية تشتهر بمشروع دلتا القاش الزراعي لزراعة الحبوب؟", correct: "ولاية كسلا", wrong: ["ولاية القضارف", "ولاية سنار", "ولاية نهر النيل"] },
+                { q: "من هو الأديب والشاعر السوداني صاحب كتاب 'حديقة الحكمة' ومترجم مسرحيات شكسبير؟", correct: "عبد الله الطيب", wrong: ["الطيب صالح", "جمال محمد أحمد", "صلاح أحمد إبراهيم"] },
+                { q: "ما هي المدينة التي كانت عاصمة لمملكة المقرة النوبية المسيحية؟", correct: "دنقلا العجوز", wrong: ["سوبا", "فرس", "كرمة"] },
+                { q: "ما هو الاسم الذي كان يطلق على العملة الورقية في السودان قبل العودة للجنيه؟", correct: "الدينار السوداني", wrong: ["القرش", "الريال", "الليرة"] },
+                { q: "في أي ولاية يقع جبل الداير الذي أعلن كمحمية للمحيط الحيوي؟", correct: "ولاية جنوب كردفان", wrong: ["ولاية شمال دارفور", "ولاية غرب كردفان", "ولاية سنار"] },
+                { q: "من هو الفنان والمطرب والباحث الموسيقي السوداني المعروف برائعته 'مروي'؟", correct: "عبد الكريم الكابلي", wrong: ["محمد وردي", "سيد خليفة", "عثمان حسين"] },
+                { q: "ما هي المدينة السودانية التي تضم مبنى الطابية التاريخي للمهدية على ضفاف النيل؟", correct: "أم درمان", wrong: ["بحري", "الخرطوم", "شندي"] },
+                { q: "أي رئيس ترأس أول حكومة عسكرية في تاريخ السودان عام 1958؟", correct: "الفريق إبراهيم عبود", wrong: ["جعفر نميري", "عمر البشير", "سوار الذهب"] },
+                { q: "ما هو الاسم الجغرافي للشلال النيلي الأول الذي يقع شمال الخرطوم مباشرة؟", correct: "شلال السبلوقة (الشلال السادس)", wrong: ["الشلال الرابع", "الشلال الثاني", "الشلال الثالث"] },
+                { q: "من هو الشاعر السوداني الذي كتب قصيدة 'أعلى الجمال تغار منا' الخالدة؟", correct: "إدريس جماع", wrong: ["التجاني يوسف بشير", "صلاح أحمد إبراهيم", "مبارك زروق"] },
+                { q: "ما هي عاصمة سلطنة دارفور التاريخية التي كان يقيم بها السلطان علي دينار؟", correct: "الفاشر", wrong: ["نيالا", "الجنينة", "كبكابية"] },
+                { q: "ما هو الجسر المعلق الحديث الذي يربط بين جزيرة توتي ومدينة الخرطوم؟", correct: "جسر توتي المعلق", wrong: ["جسر شمبات", "جسر الفتيحاب", "جسر كوبر"] },
+                { q: "أي مدينة سودانية تقع في أقصى جنوب النيل الأزرق قرب الحدود الإثيوبية؟", correct: "الدمازين", wrong: ["سنار", "سنجة", "الرصيرص"] },
+                { q: "ما هو الحي التاريخي العريق بأم درمان الذي خرج منه كبار القادة والشعراء والسياسيين؟", correct: "حي الهاشماب وحي ود نوباوي", wrong: ["حي الرياض", "حي الطائف", "حي العمارات"] },
+                { q: "ما هو اسم المعاهدة التاريخية التي تم توقيعها في أديس أبابا لمنح الجنوب حكماً ذاتياً عام 1972؟", correct: "اتفاقية أديس أبابا", wrong: ["اتفاقية نيفاشا", "اتفاقية الميرغني الإلغاء", "اتفاقية أسمرا"] },
+                { q: "من هو عداء ألعاب القوى السوداني الذي حصد أول ميدالية أولمبية فضية للسودان في بكين 2008؟", correct: "إسماعيل أحمد إسماعيل", wrong: ["أبوبكر كاكي", "عمر جابر", "خليفة عمر"] },
+                { q: "ما هي الآلة الخشبية التقليدية التي تسحبها الثيران لرفع المياه من النيل قديماً؟", correct: "الساقية", wrong: ["الشادوف", "الناعورة", "الطنبرة"] },
+                { q: "ما هو الميناء الجاف الشهير في مدينة بورتسودان لنقل وشحن الحاويات؟", correct: "الميناء الجنوبي", wrong: ["الميناء الشمالي", "مرسى أوسيف", "مرسى بشائر"] },
+                { q: "ما هي المحطة الزراعية الرائدة الواقعة قرب ود مدني للأبحاث الزراعية؟", correct: "محطة بحوث الجزيرة (حكوب)", wrong: ["مركز بحوث سوبا", "محطة بحوث القضارف", "محطة الدامر"] },
+                { q: "أي صحيفة سودانية تعتبر من أقدم الصحف التي تأسست في بدايات القرن العشرين؟", correct: "صحيفة السودان (1903)", wrong: ["صحيفة الرأي العام", "صحيفة الأيام", "صحيفة الصحافة"] },
+                { q: "ما هي المعركة البحرية النهرية التي وقعت في النيل الأزرق خلال العهد المهدوي؟", correct: "معركة القلابات النهرية", wrong: ["معركة فركة", "معركة جبل قدير", "معركة مروي"] },
+                { q: "ما هي الولاية التي يقع فيها مشروع سكر عسلاية وسكر غرب سنار؟", correct: "ولاية سنار والنيل الأبيض", wrong: ["ولاية الجزيرة", "ولاية كسلا", "ولاية البحر الأحمر"] },
+                { q: "من هو المغني والملحن الشعبي السوداني رائد الأغنية الوطنية في ثورة 1924 ومؤلف 'عازة في هواك'؟", correct: "خليل فرح", wrong: ["علي عبد اللطيف", "كرومة", "سرور"] },
+                { q: "ما هو الطائر المائي الشائع الذي يهاجر بأعداد ضخمة إلى بحيرات السودان النيلية شتاءً؟", correct: "البجع والنورس والوز الأقرن", wrong: ["البطريق", "الطاووس", "الفلامنجو فقط"] },
+                { q: "ما هي السلسلة الجبلية التي تقطع ولاية جنوب كردفان وتشتهر بتراث النوبة والكمبلا؟", correct: "جبال النوبة", wrong: ["جبال البحر الأحمر", "جبال تاكا", "جبال الميدوب"] },
+                { q: "ما هو الاسم التقليدي الذي يطلق على التمر المجفف الصلب المعد للتخزين الطويل؟", correct: "البركاوي والقنديلة", wrong: ["العجوة", "الرطب", "المشرق"] },
+                { q: "ما هو الاسم الأثري لموقع تماثيل الكباش الحجرية في مملكة مروي؟", correct: "النقعة والمصورات الصفراء", wrong: ["كرمة", "صولب", "سمنة"] },
+                { q: "من هو الرسام والفنان التشكيلي السوداني العالمي مؤسس مدرسة الخرطوم التشكيلية؟", correct: "إبراهيم الصلحي", wrong: ["أحمد شبرين", "عثمان وقيع الله", "بستامي خضر"] },
+                { q: "ما هي الجامعة العريقة التي بدأت باسم كلية غوردون التذكارية عام 1902؟", correct: "جامعة الخرطوم", wrong: ["جامعة أم درمان الإسلامية", "جامعة السودان", "جامعة النيلين"] },
+                { q: "ما هو الحي السكني بالخرطوم الذي اشتهر بتسمية شوارعه بالأرقام (شارع 1، شارع 15)؟", correct: "حي العمارات", wrong: ["حي الرياض", "حي المطار", "حي الخرطوم 2"] },
+                { q: "ما هي قلعة السلاطين التاريخية الموجودة في مدينة الفاشر والتي تحولت لمتحف؟", correct: "قصر السلطان علي دينار", wrong: ["طابية الفاشر", "حصن بارا", "قلعة شيكان"] },
+                { q: "ما هو الفن الشعبي السردي للأشعار الغزلية والحماسية لدى قبائل البطاحين والشكرية؟", correct: "الدوبيت ومسادير الإبل", wrong: ["الموشحات", "المردوم", "الجراري"] },
+                { q: "أي مدينة سودانية تعتبر عاصمة لولاية غرب دارفور وتقع قرب الحدود مع تشاد؟", correct: "الجنينة", wrong: ["زالنجي", "الضعين", "الفاشر"] },
+                { q: "ما هو المسجد التاريخي الأثري بأم درمان الذي تعلوه قبة فضية ضخمة؟", correct: "قبة الإمام المهدي", wrong: ["مسجد النيلين", "مسجد بحري الكبير", "مسجد سنار"] },
+                { q: "ما هو المتحف الذي يضم مراكب النوبة القديمة والآثار المنقولة من وادي حلفا؟", correct: "متحف السودان القومي", wrong: ["متحف بيت الخليفة", "متحف التاريخ الطبيعي", "متحف القصر"] },
+                { q: "من هو العالم والمفكر الإسلامي السوداني صاحب كتاب 'الإسلام وقضايا العصر'؟", correct: "الشيخ الدكتور حسن الترابي", wrong: ["الصادق المهدي", "محمود محمد طه", "علي عثمان"] },
+                { q: "ما هو السد المائي المقام على نهر عطبرة في ولاية كسلا؟", correct: "خزان خشم القربة", wrong: ["سد مروي", "سد الروصيرص", "سد جبل أولياء"] },
+                { q: "ما هو الاسم الذي كان يطلق على المجلس التشريعي التاريخي في فترة الاستعمار الثنائي؟", correct: "الجمعية التشريعية ومجلس الحاكم", wrong: ["البرلمان الاتحادي", "مجلس الشيوخ", "المجلس الوطني"] },
+                { q: "ما هي المدينة النيلية التي شهدت مقتل إسماعيل باشا حرقاً على يد المك نمر؟", correct: "شندي", wrong: ["المتمة", "الباوقة", "الدامر"] },
+                { q: "ما هي المحطة التلفزيونية القومية الأولى التي انطلق بثها في السودان عام 1962؟", correct: "تلفزيون جمهورية السودان من أم درمان", wrong: ["تلفزيون الجزيرة", "قناة النيل الأزرق", "تلفزيون الخرطوم"] },
+                { q: "ما هي الآلة النحاسية أو الخشبية الهوائية التراثية التي ينفخ فيها لإعلان الحرب أو الجمع؟", correct: "البورزان (البروجي النحاسي)", wrong: ["الناي", "المزمار", "الكشكوش"] },
+                { q: "ما هو الاسم الجغرافي للخور المائي الكبير الذي يخترق مدينة أم درمان من الغرب إلى النيل؟", correct: "خور أبو عنجة", wrong: ["خور طقت", "خور القاش", "خور شمبات"] },
+                { q: "ما هي الإذاعة الوطنية العريقة التي تأسست عام 1940 بمدينة أم درمان؟", correct: "هنا أم درمان (الإذاعة السودانية)", wrong: ["إذاعة وادي النيل", "صوت العرب", "إذاعة الجزيرة"] },
+                { q: "ما هي المدينة السودانية المشهورة بأنها عاصمة ولاية النيل الأبيض؟", correct: "ربك", wrong: ["كوستي", "الدويم", "القطينة"] },
+                { q: "أي ثورة شعبية سودانية أطاحت بنظام الفريق إبراهيم عبود في أكتوبر 1964؟", correct: "ثورة 21 أكتوبر المجيدة", wrong: ["ثورة أبريل 1985", "ثورة ديسمبر 2018", "ثورة 1924"] },
+                { q: "ما هي المعشوقة الرمزية للوطن التي تغنى بها خليل فرح في قصيدته الشهيرة؟", correct: "عازة (عازة في هواك)", wrong: ["مهيرة", "تاجوج", "فاطمة"] },
+                { q: "ما هو الاسم التراثي لموسم حصاد التمور في شمال السودان؟", correct: "موسم الشتول والجداد", wrong: ["الدرت", "اللقاط", "الصيفية"] }
+            ],
+
+            // المرحلة 3: (الأسئلة 7 - 9: من 2,000 إلى 8,000 جنيه) - متوسطة ودقيقة
+            3: [
+                { q: "ما هي عاصمة مملكة كوش الأولى التي اشتهرت بصناعة الفخار الأسود المصقول؟", correct: "كرمة", wrong: ["نبتة", "مروي", "سوبا"] },
+                { q: "من هو القائد السوداني الشجاع الذي قاد فرسان الشرق في معارك التيب وتاماي ضد الإنجليز؟", correct: "الأمير عثمان دقنة", wrong: ["حمدان أبو عنجة", "عبد الله التعايشي", "الزاكي طمل"] },
+                { q: "ما هو الاسم القديم لعاصمة مملكة علوة المسيحية الواقعة جنوب الخرطوم؟", correct: "سوبا", wrong: ["دنقلا العجوز", "فرس", "البركل"] },
+                { q: "في أي عام دارت معركة كرري التاريخية بين قوات المهدية والجيش الغازي كيتشنر؟", correct: "1898م", wrong: ["1885م", "1896م", "1900م"] },
+                { q: "ما هي الرواية الشهيرة للأديب الطيب صالح التي ترجمت لأكثر من 30 لغة عالمية؟", correct: "موسم الهجرة إلى الشمال", wrong: ["عرس الزين", "دومة ود حامد", "ضو البيت"] },
+                { q: "من هو العالم والمفكر السوداني صاحب كتاب 'طبقات ود ضيف الله' الذي وثق للأولياء والعلماء؟", correct: "محمد النور بن ضيف الله", wrong: ["كاتب الشونة", "نعوم شقير", "عون الشريف قاسم"] },
+                { q: "ما هو الاسم التاريخي لمملكة سنار التي تحالفت مع العبدلاب عام 1504م؟", correct: "السلطنة الزرقاء", wrong: ["سلطنة دارفور", "مملكة تقلي", "مملكة فازوغلي"] },
+                { q: "أي ملك كوشي قاد جيوشه شمالاً وفتح مصر وأسس الأسرة الخامسة والعشرين الكوشية؟", correct: "الملك بعنخي (بيي)", wrong: ["طهراقا", "شباكا", "تانوت أماني"] },
+                { q: "ما هو الاسم الجغرافي القديم للموقع الأثري الذي توجد به أهرامات البجراوية؟", correct: "مدينة مروي الملكية", wrong: ["نبتة", "صولب", "كرمة"] },
+                { q: "ما هي الاتفاقية المائية التاريخية الموقعة عام 1959 بين السودان ومصر لتقسيم مياه النيل؟", correct: "اتفاقية مياه النيل 1959", wrong: ["اتفاقية 1929", "مبادرة حوض النيل", "اتفاقية عنتيبي"] },
+                { q: "من هو الضابط السوداني البطل الذي قاد حركة اللواء الأبيض التحررية عام 1924م؟", correct: "علي عبد اللطيف", wrong: ["عبد الفضيل الماظ", "ثابت عبد الرحيم", "عبيد حاج الأمين"] },
+                { q: "ما هي الجزيرة النيلية المقابلة لمدينة كورتي التي دارت عندها مقاومة الشايقية للغزو التركي؟", correct: "جزيرة أم بقر وكورتي", wrong: ["جزيرة مقرات", "جزيرة توتي", "جزيرة مساوي"] },
+                { q: "من هو الشاعر السوداني صاحب ديوان 'أشقر العواصف' وديوان 'روائع التجاني'؟", correct: "التجاني يوسف بشير", wrong: ["إدريس جماع", "محمد المهدي المجذوب", "محيي الدين فارس"] },
+                { q: "ما هو المعبد المنحوت في الصخر المخصص للإله آمون عند سفح جبل البركل؟", correct: "معبد آمون النبتي", wrong: ["معبد أبادماك", "معبد حتحور", "معبد خنوم"] },
+                { q: "ما هي المدينة النيلية السودانية التي كان يعقد فيها أكبر سوق لتجارة الصمغ العربي في العالم؟", correct: "الأبيض (بورصة الصمغ)", wrong: ["النهود", "أم روابة", "الدندر"] },
+                { q: "أي ملك مروي تمرد على كهنة المعبد وقاد ثورة فكرية وثقافية واعتمد الحرق للدفن؟", correct: "الملك أركماني (أرجامانيس)", wrong: ["أسبالتا", "نستاسن", "أماني نتي ميمكي"] },
+                { q: "ما هو الحي التاريخي بمدينة سواكن الذي كانت تتركز فيه قصور علية القوم والتجار العثمانيين؟", correct: "حي الجزيرة المرجانية", wrong: ["حي القيف", "حي الشاطئ", "حي الأربعين"] },
+                { q: "ما هو الاسم الذي أطلقته القبائل النوبية على قلعة سمنة وبوهين العسكرية؟", correct: "حصون الشلال الثاني", wrong: ["قلاع التاكا", "طوابي المقرة", "بروج مروي"] },
+                { q: "من هو مؤلف ملحمة الثورة 'يا شعباً لهبك ثوريتك' التي ألهبت ثورة أكتوبر 1964؟", correct: "هاشم صديق", wrong: ["محجوب شريف", "محمد المكي إبراهيم", "صلاح أحمد إبراهيم"] },
+                { q: "ما هي الغابة التاريخية التي شهدت استشهاد الخليفة عبد الله التعايشي وأمرائه عام 1899؟", correct: "غابة أم دبيكرات", wrong: ["غابة كرري", "غابة شيكان", "غابة الفاو"] },
+                { q: "ما هو السد الترابي الأثري العظيم الذي شيده الكوشيون لحصاد مياه الأمطار في المصورات؟", correct: "الحفير الكبير (المصورات الصفراء)", wrong: ["خزان ترعة الجبل", "سد الشلال الرابع", "سد كرمة"] },
+                { q: "من هو القائد المهدوي الملقب بـ 'جزار هكس' الذي أدار المعارك البرية في كردفان؟", correct: "الأمير حمدان أبو عنجة", wrong: ["الأمير يعقوب", "الأمير النجومي", "الأمير عثمان أزرق"] },
+                { q: "ما هو الاسم اللاتيني أو الإغريقي القديم لحضارة النوبة والسودان القديم؟", correct: "إثيوبيا الكلاسيكية وبلاد كوش", wrong: ["النوبة البيزنطية", "بابل الصغرى", "بلاد بونت"] },
+                { q: "أي فيلسوف ومفكر سوداني أسس الحزب الجمهوري وألف 'الرسالة الثانية من الإسلام'؟", correct: "الأستاذ محمود محمد طه", wrong: ["د. حسن الترابي", "د. منصور خالد", "جمال محمد أحمد"] },
+                { q: "ما هي المدينة التي كانت مقراً للمك نمر ملك الجعليين قبل هجرته إلى الحبشة؟", correct: "شندي", wrong: ["المتمة", "الزيداب", "بربر"] },
+                { q: "ما هي المعركة التي استشهد فيها القائد المهدوي البطل عبد الرحمن النجومي وهو في طريقه لمصر؟", correct: "معركة توشكي 1889", wrong: ["معركة فركة", "معركة جينيس", "معركة أبو طليح"] },
+                { q: "ما هي الولاية التي تضم أكبر حزام للغابات المطرية وإنتاج خشب السنط والأبنوس في السودان؟", correct: "ولاية النيل الأزرق وجنوب كردفان", wrong: ["ولاية كسلا", "ولاية الجزيرة", "ولاية شمال دارفور"] },
+                { q: "من هي بطلة الشعر والمقاومة الشعبية التي ألهبت حماس فرسان دار جعل ضد جيش إسماعيل باشا؟", correct: "مهيرة بت عبود", wrong: ["تاجوج بنت محو", "مندي بنت السلطان عجبنا", "رابعة العدوية"] },
+                { q: "ما هي المدينة التي شهدت انعقاد أول مؤتمر لرجال التعليم والخريجين عام 1938؟", correct: "أم درمان (مؤتمر الخريجين)", wrong: ["ود مدني", "الأبيض", "الخرطوم"] },
+                { q: "ما هو الإله الكوشي المحلي المحارب المصور برأس أسد في آثار النقعة والمصورات؟", correct: "الإله أبادماك", wrong: ["الإله آمون", "الإله أوزوريس", "الإله حورس"] },
+                { q: "من هو الشاعر السوداني صاحب رائعة 'الطير المهاجر' التي لحنها وغناها محمد وردي؟", correct: "صلاح أحمد إبراهيم", wrong: ["إسماعيل حسن", "عمر الطيب الدوش", "محيي الدين فارس"] },
+                { q: "ما هو الميناء القديم لتصدير الماشية الواقع جنوب بورتسودان قرب رأس كاسر؟", correct: "ميناء هيدوب وسواكن", wrong: ["ميناء أوسيف", "مرسى ترنكتات", "مرسى فلامنجو"] },
+                { q: "أي سلطان حكم مملكة المسبعات في كردفان وتنازع مع الفونج وسلطنة دارفور؟", correct: "السلطان هاشم المسبعاوي", wrong: ["السلطان تيراب", "السلطان بادي", "السلطان دقلل"] },
+                { q: "ما هو الاسم الجغرافي للمنخفض الأرضي الخصب في الولاية الشمالية المشهور بالزراعة؟", correct: "حوض الدبة وحوض القولد", wrong: ["حوض البطانة", "حوض الفشقة", "حوض بحر العرب"] },
+                { q: "من هو الرسام والفنان والخطاط السوداني الذي وضع خطوط المصحف السوداني الشهير؟", correct: "الخطاط عثمان وقيع الله", wrong: ["أحمد شبرين", "إبراهيم الصلحي", "شفيق شوقي"] },
+                { q: "ما هو الحي التاريخي بمدينة الخرطوم الذي يضم مقابر الشخصيات العسكرية لحملة غوردون؟", correct: "المقابر المسيحية بالخرطوم القديمة", wrong: ["حي بري", "حي المقرن", "حي الديم"] },
+                { q: "ما هي المدينة السودانية التي شهدت ميلاد الزعيم إسماعيل الأزهري؟", correct: "أم درمان", wrong: ["بارا", "دنقلا", "الأبيض"] },
+                { q: "ما هو السد المائي الذي تم تشييده على نهر النيل الأبيض جنوب الخرطوم عام 1937؟", correct: "خزان جبل أولياء", wrong: ["خزان سنار", "سد مروي", "خزان الرصيرص"] },
+                { q: "من هي الأميرة والمناضلة من جبال النوبة التي حاربت بجانب والدها السلطان عجبنا واستشهدت؟", correct: "مندي بنت السلطان عجبنا", wrong: ["مهيرة", "مريم الكوشية", "تاجوج"] },
+                { q: "ما هي المخطوطة التاريخية التي أرخت للحكم التركي الأول وسقوط سنار على يد الأتراك؟", correct: "تاريخ ملوك سنار والشونة", wrong: ["طبقات فحل", "مختصر كاتب سرور", "مخطوطة كردفان"] },
+                { q: "ما هو الموطن الأصلي لقبائل الهدندوة والبشاريين والأمرار في السودان؟", correct: "إقليم البحر الأحمر وشرق السودان", wrong: ["إقليم دارفور", "شمال كردفان", "النيل الأبيض"] },
+                { q: "أي وزير خارجية وسياسي سوداني بارز قاد الوفد السوداني لعصبة الأمم وللأمم المتحدة بعد الاستقلال؟", correct: "محمد أحمد محجوب ومبارك زروق", wrong: ["إبراهيم أحمد", "خضر حمد", "سر الختم الخليفة"] },
+                { q: "ما هو الموقع الأثري الواقع في النوبة العليا والمشهور بمقابر حكام الإقليم وكبار الموظفين؟", correct: "قبة الهواء بأسوان وحدود النوبة", wrong: ["كرمة", "سمنة", "صلب"] },
+                { q: "من هو الشاعر الذي كتب ملحمة 'عرس الزين' وقصائد فيلمها الغنائي؟", correct: "الطيب صالح (رواية)", wrong: ["محمد المهدي المجذوب", "حميد", "القدال"] },
+                { q: "ما هو الاسم التاريخي للقائد البريطاني المشهور الذي قتل على درجات قصر الحكم بالخرطوم عام 1885؟", correct: "تشارلز جورج غوردون (غوردون باشا)", wrong: ["هكس باشا", "كتشنر", "سلنتين باشا"] },
+                { q: "ما هي القبيلة التي كانت لها السيادة التاريخية في إقليم البطانة وأشهر زعمائها أبو سن؟", correct: "قبيلة الشكرية", wrong: ["البطاحين", "الجعليين", "الكواهلة"] },
+                { q: "ما هو النهر الموسمي الذي يفيض في الصيف ويغذي دلتا طوكر برواسب الطمي؟", correct: "نهر بركة", wrong: ["نهر القاش", "خور الرهد", "نهر الدندر"] },
+                { q: "من هو الطبيب السوداني الرائد الذي سمي مستشفى الأمراض النفسية والعصبية ببحري باسمه؟", correct: "الدكتور التجاني الماحي", wrong: ["د. علي بدري", "د. عبد الحليم محمد", "د. داوود مصطفى"] },
+                { q: "ما هي المدينة النيلية التي كانت عاصمة لدولة الفونج لأكثر من ثلاثة قرون؟", correct: "سنار", wrong: ["سوبا", "قري", "أربجي"] },
+                { q: "ما هو الاسم الذي كان يطلق على قائد الجيش أو قائد الفرسان في سلطنة دارفور؟", correct: "المقدوم أو الدالي", wrong: ["الناظر", "العمدة", "الأمير"] },
+                { q: "من هو الشاعر السوداني صاحب القصيدة الغنائية الخالدة 'الوسيم' و'أنا هويتك'؟", correct: "عثمان حسين (الملحن والمغني)", wrong: ["عبد المنعم عتيق", "إبراهيم الكاشف", "سيد خليفة"] },
+                { q: "ما هي المنطقة البرية الغنية بالنفط والغاز الواقعة بين كردفان وبحر الغزال وعرفت بنزاع هجليج؟", correct: "حقل هجليج وبليلة", wrong: ["حوض مربع 6", "حقل أبو جابرة", "حقل الراوات"] },
+                { q: "ما هي المعركة التي خاضتها جيوش المهدية بقيادة الزاكي طمل وهزمت فيها الجيش الإثيوبي وقتل الملك يوحنس؟", correct: "معركة القلابات (المتمة الإثيوبية) 1889", wrong: ["معركة قدير", "معركة سنكات", "معركة طوكر"] },
+                { q: "ما هو الاسم التراثي القديم للنظام القضائي والصلح العرفي لدى قبائل دارفور؟", correct: "نظام الأجاويد وجودية القبائل", wrong: ["المحكمة الأهلية", "قانون الطوارئ", "حلف الفضول"] },
+                { q: "أي فنان سوداني راحل لُقب بـ 'العندليب الأسمر' للسودان واشتهر بأغنية 'ليلة السبت'؟", correct: "زيدان إبراهيم", wrong: ["خوجلي عثمان", "مصطفى سيد أحمد", "محمود عبد العزيز"] },
+                { q: "ما هو الاسم الأثري للمعبد الذي يصور الإله حورس وهو يرتدي التاج المزدوج في النقعة؟", correct: "الكشك الروماني ومعبد حتحور", wrong: ["معبد الشمس", "المسلّة الكبرى", "هرم تهارقا"] },
+                { q: "من هو الزعيم الديني والوطني الذي أسس طائفة الختمية في السودان؟", correct: "السيد محمد عثمان الميرغني الختم", wrong: ["الشيخ إدريس ود الأرباب", "الشيخ حسن ود حسونة", "الشيخ العبيد ود بدر"] },
+                { q: "ما هي المدينة التي تعد المركز الروحي والتاريخي للطريقة الختمية في شرق السودان؟", correct: "الختمية (كسلا)", wrong: ["طوكر", "سواكن", "القضارف"] },
+                { q: "ما هو الاسم الجغرافي للمرتفعات الجبلية المحاذية لساحل البحر الأحمر والمستخرجة للذهب؟", correct: "تلال جبال البحر الأحمر (أرياب)", wrong: ["جبال النوبة", "جبال الإنقسنا", "جبل عوينات"] },
+                { q: "من هو القائد الوطني الذي تولى قيادة الدولة بعد وفاة الإمام المهدي عام 1885م؟", correct: "الخليفة عبد الله بن محمد التعايشي", wrong: ["الخليفة علي ود حلو", "الخليفة محمد شريف", "الأمير يونس الدكيم"] },
+                { q: "ما هي المدينة التي أنشئت فيها محطة توليد الكهرباء الحرارية الكبرى المعروفة بمحطة قري؟", correct: "شمال بحري (قري)", wrong: ["شندي", "الجيلي", "سوبا"] },
+                { q: "ما هي الجزيرة الواقعة شمال دنقلا وتضم آثاراً ومعابد من العصر الكوشي والفرعوني والمسيحي؟", correct: "جزيرة صاي", wrong: ["جزيرة مساوي", "جزيرة بدين", "جزيرة توتي"] }
+            ],
+
+            // المرحلة 4: (الأسئلة 10 - 12: من 16,000 إلى 32,000 جنيه) - ثاني محطة أمان
+            4: [
+                { q: "ما هي الاتفاقية التاريخية التي وقعت في عام 652م بين والي مصر عبد الله بن أبي السرح وملك النوبة قليدورث؟", correct: "اتفاقية البَقْط", wrong: ["معاهدة المقرة", "اتفاقية دنقلا الأولى", "صلح سوبا"] },
+                { q: "من هو السلطان العظيم الذي قاد مقاومة سلطنة دارفور ضد الاستعمار البريطاني حتى استشهاده في معركة برنجية عام 1916؟", correct: "السلطان علي دينار", wrong: ["السلطان تيراب", "السلطان إبراهيم قرض", "السلطان عبد الرحمن الرشيد"] },
+                { q: "ما هو الاسم الأثري للكنداكة الكوشية الشرسة التي خاضت حرباً ضد الرومان عام 24 قبل الميلاد وفقدت عينها؟", correct: "الملكة أماني ريناس", wrong: ["الملكة أماني شخيتو", "الملكة ناوي داماك", "الملكة أماني توري"] },
+                { q: "في أي موقع عثر علماء الآثار على أقدم جمجمة بشرية متحجرة في وسط السودان أطلق عليها 'إنسان سنجة'؟", correct: "على ضفاف النيل الأزرق بمدينة سنجة (1924)", wrong: ["في خور أبو عنجة بأم درمان", "في موقع الشهيناب", "في الشلال السادس"] },
+                { q: "ما هو الاسم الذي كان يطلق على العملة الفضية التي ضربت في دار السكة بأم درمان إبان الدولة المهدية؟", correct: "ريال المقبول (أبو كيس)", wrong: ["الريال المجيدي", "الجنيه الفضي", "القرش الإسماعيلي"] },
+                { q: "من هو العالم والموسوعي اللغوي السوداني مؤلف المعجم الضخم 'قاموس اللهجة العامية في السودان'؟", correct: "البروفيسور عون الشريف قاسم", wrong: ["البروفيسور عبد الله الطيب", "البروفيسور يوسف فضل", "الدكتور عز الدين الأمين"] },
+                { q: "ما هي العاصمة الأولى التي اتخذها عمارة دنقس ملك الفونج مقراً له قبل بناء مدينة سنار؟", correct: "مدينة جبل موية وقِري", wrong: ["أربجي", "الفرين", "ود مدني"] },
+                { q: "ما هو الهرم الأكبر في منطقة مروي الملكية (البجراوية) والمخصص للملك تهارقا في أي جبانة يقع؟", correct: "جبانة نوري الملكية", wrong: ["جبانة الكرو", "جبانة البجراوية الشمالية", "جبانة البركل"] },
+                { q: "من هو الشاعر السوداني رمز شعر العامية المقاوم الذي كتب 'يا والدة يا مريم' وتغنى بشعره مصطفى سيد أحمد؟", correct: "محجوب شريف", wrong: ["محمد الحسن حميد", "محمد طه القدال", "هاشم صديق"] },
+                { q: "ما هي المعركة التي انتصر فيها جيش الشرق بقيادة عثمان دقنة ودمر المربع الإنجليزي الحصين عام 1884؟", correct: "معركة تاماي (معركة المربع)", wrong: ["معركة التيب الأولى", "معركة طوكر", "معركة سنكات"] },
+                { q: "ما هو الاسم الذي أطلقه الجغرافيون اليونانيون على نهر عطبرة في كتابات بطليموس وإسترابون؟", correct: "أستابوراس (Astaboras)", wrong: ["أستابوس", "النيلوس", "جيون"] },
+                { q: "ما هي القلعة الأثرية النوبية الضخمة التي شيدها سنوسرت الثالث عند الشلال الثاني لتأمين التجارة المصرية؟", correct: "قلعة بوهين وسمنة", wrong: ["قلعة قصر إبريم", "قلعة صولب", "قلعة فرس"] },
+                { q: "من هو المؤرخ السوداني مؤلف أقدم كتاب تاريخي مدون عن الثورة المهدية بعنوان 'تاريخ المهدية والتركية'؟", correct: "نعوم شقير", wrong: ["أحمد بن الحاج أبو علي", "محمد النور بن ضيف الله", "إسماعيل عبد القادر الجزيلي"] },
+                { q: "ما هو الاسم التاريخي للمدرسة الفكرية والأدبية التي أسسها محمد عبد الحي والنور عثمان أبكر في السبعينيات؟", correct: "مدرسة الغابة والصحراء", wrong: ["مدرسة الخرطوم الأدبية", "جماعة أبولو السودانية", "مدرسة الفجر"] },
+                { q: "أي ملك كوشي قام بنقل مدفن الملوك الكوشيين نهائياً من جبل البركل ونبتة إلى أهرامات البجراوية؟", correct: "الملك أركاماني الأول (قرن 3 ق.م)", wrong: ["الملك طهراقا", "الملك نستاسن", "الملك شباكا"] },
+                { q: "ما هي الصخرة التاريخية العظيمة الواقعة في كرمة وتعتبر أقدم معمار صرحي من الطوب اللبن في إفريقيا؟", correct: "الدفوفة الغربية", wrong: ["الدفوفة الشرقية", "المسلة الكبرى", "هرم بعنخي"] },
+                { q: "من هو الطبيب السوداني الذي شغل منصب وزير الصحة في أول حكومة وطنية ورئيس الجمعية الطبية العالمية؟", correct: "الدكتور علي بدري", wrong: ["د. عبد الحليم محمد", "د. منصور علي حسيب", "د. أحمد عبد العزيز"] },
+                { q: "ما هو الميناء القديم التاريخي في البحر الأحمر الذي كان محطة لقوافل الحج القادمة من غرب إفريقيا؟", correct: "ميناء عيذاب وسواكن", wrong: ["ميناء بورتسودان", "ميناء طوكر", "ميناء القصير"] },
+                { q: "ما هو الحي السكني العتيق بأم درمان الذي اشتهر بصناع الدباغة وتجارة الجلود العريقة؟", correct: "حي الدباغة وحي المسالمة", wrong: ["حي العرب", "حي الموردة", "حي الركابية"] },
+                { q: "ما هي المعاهدة التي أبرمها السير ريجنالد ونجت مع القبائل البدوية بعد معركة كرري لإخضاع الغرب؟", correct: "اتفاقيات خضوع العشائر 1899", wrong: ["صلح الأبيض", "اتفاقية الفاشر", "صلح كادوقلي"] },
+                { q: "من هو الشاعر الذي كتب ملحمة 'عم عبد الرحيم' التي أحدثت ثورة في الشعر العامي الواقعي؟", correct: "محمد الحسن حسن سالم (حميد)", wrong: ["محجوب شريف", "محمد طه القدال", "إسماعيل حسن"] },
+                { q: "ما هو الاسم الجغرافي القديم الذي كان يطلقه الفراعنة على منطقة النوبة والشلال الثالث وما بعده؟", correct: "بلاد واوات وكوش وتا سيتي", wrong: ["بونت", "مجان", "دلمون"] },
+                { q: "في أي مؤتمر دولي تقرر تطبيق نظام 'الحكم الثنائي' الإنجليزي المصري على السودان عام 1899؟", correct: "اتفاقية الحكم الثنائي الموقعة بالقاهرة", wrong: ["مؤتمر برلين", "مؤتمر فرساي", "مؤتمر باريس"] },
+                { q: "ما هو المعهد العالي الذي تأسس في بخت الرضا عام 1934 وكان له الفضل في وضع المناهج التعليمية وتدريب المعلمين؟", correct: "معهد التربية ببخت الرضا (الدويم)", wrong: ["كلية غوردون", "معهد شمبات الزراعي", "معهد أم درمان العلمي"] },
+                { q: "من هو القائد المهدوي الذي كلفه الخليفة عبد الله بغزو مصر وهزم في معركة توشكي؟", correct: "الأمير عبد الرحمن النجومي", wrong: ["الأمير يونس الدكيم", "الأمير عثمان أزرق", "الأمير مساعد قيدوم"] },
+                { q: "ما هي المخطوطة القديمة المروية التي لم تفك كامل مفرداتها اللغوية حتى اليوم رغم فك حروفها الصوتية؟", correct: "اللغة المروية (الحروف الهيروغليفية والديموطيقية المروية)", wrong: ["اللغة النوبية القديمة", "اللغة الجعزية", "الخط القبطي"] },
+                { q: "ما هي المدينة النيلية التي انطلقت منها أولى قطارات السكة حديد لربط وادي حلفا بأبو حمد عبر الصحراء؟", correct: "وادي حلفا (سكة حديد كيتشنر)", wrong: ["الدامر", "دنقلا", "الخرطوم"] },
+                { q: "من هو المترجم والكاتب السوداني الكبير الذي تولى منصب وكيل وزارة الخارجية وألف 'سندباد في بلاد الضباب'؟", correct: "جمال محمد أحمد", wrong: ["د. منصور خالد", "الطيب صالح", "بشير محمد سعيد"] },
+                { q: "ما هي المدينة التاريخية الواقعة على الضفة الغربية للنيل الأزرق وكانت المركز التجاري الأكبر لسلطنة الفونج قبل تدميرها؟", correct: "مدينة أربجي التاريخية", wrong: ["سنار القديمة", "سوبا", "أبو حراز"] },
+                { q: "ما هي المنطقة البرية الوعرة في أقصى جنوب دارفور المشهورة بحفر النحاس واستخراجه قديماً؟", correct: "حفرة النحاس", wrong: ["أم دافوق", "كفيا قنجي", "ردوم"] },
+                { q: "من هو الرئيس السوداني الذي قام بحل الحزب الشيوعي وطرد نوابه من البرلمان عام 1965؟", correct: "إسماعيل الأزهري ومحمد أحمد محجوب", wrong: ["جعفر نميري", "إبراهيم عبود", "الصادق المهدي"] },
+                { q: "ما هو الاسم الأثري لمدينة نبتة العاصمة الدينية لمملكة كوش ومقر معبد الإله آمون؟", correct: "منطقة مروي الحالية عند جبل البركل", wrong: ["البجراوية", "سمنة", "كرمة"] },
+                { q: "ما هي المدينة التي أسسها الأتراك عام 1824 لتكون معسكراً حربياً عند ملتقى النيلين ثم أصبحت العاصمة؟", correct: "الخرطوم (الخرطوم الحديثة)", wrong: ["أم درمان", "بحري", "شندي"] },
+                { q: "من هو شيخ قبيلة الرزيقات الذي اشتهر بدوره البارز في تاريخ غرب السودان وكان عضواً بالبرلمان؟", correct: "الناظر إبراهيم موسى مدبو", wrong: ["الناظر علي التوم", "الناظر بابو نمر", "الناظر هباني"] },
+                { q: "ما هو النهر الذي يصب في خزان جبل أولياء ويعد أطول أنهار العالم المتدفقة من الجنوب للشمال؟", correct: "النيل الأبيض والسيوف", wrong: ["النيل الأزرق", "نهر السوباط", "بحر الغزال"] },
+                { q: "من هو الشاعر والسياسي السوداني الذي شغل منصب وزير الخارجية وكتب ديوان 'أقواس الفرح والدموع'؟", correct: "محمد أحمد محجوب", wrong: ["محمد إبراهيم الشوش", "صلاح أحمد إبراهيم", "محيي الدين فارس"] },
+                { q: "ما هو الهيكل الاجتماعي والإداري التراثي الذي طبق في السودان إبان الاستعمار ويعرف بـ 'الإدارة الأهلية'؟", correct: "قانون السلطات القضائية للمشايخ والنظار 1922", wrong: ["قانون الحكم المحلي 1971", "نظام الأقاليم", "مجلس السيادة"] },
+                { q: "ما هو الحصن التاريخي الأثري الذي بناه الخليفة عبد الله بأم درمان لحماية شاطئ النيل؟", correct: "الطابية الكبرى (طوابي أم درمان)", wrong: ["طابية كوستي", "طابية المقرن", "طابية بحري"] },
+                { q: "أي ملكة نوبية شهيرة تميز قبرها بوجود أروع المجوهرات الذهبية المروية المكتشفة التي سرقها الإيطالي فيرليني؟", correct: "الملكة أماني شخيتو (هرم 6 بالبجراوية)", wrong: ["الملكة أماني ريناس", "الملكة كنداكة بيلك", "الملكة كاشتا"] },
+                { q: "ما هو المعهد الديني العتيق بأم درمان الذي تأسس عام 1912 وتحول إلى جامعة أم درمان الإسلامية؟", correct: "معهد أم درمان العلمي", wrong: ["معهد بخت الرضا", "كلية غردون", "مدرسة الخرطوم للعلوم"] },
+                { q: "ما هو الاسم التراثي للوثيقة المكتوبة التي كان يمنحها شيوخ الطرق الصوفية لطلاب العلم وخلفاء الطريقة؟", correct: "الإجازة والسجادة", wrong: ["الفرمان", "المنشور", "البيعة"] },
+                { q: "من هو المفكر والدبلوماسي والوزير السوداني مؤلف كتاب 'النخبة السودانية وإدمان الفشل'؟", correct: "الدكتور منصور خالد", wrong: ["البروفيسور عبد الله الطيب", "جمال محمد أحمد", "د. فرانسيس دينق"] },
+                { q: "ما هي المدينة النيلية التي كان يطلق عليها 'عاصمة أولاد البلد' ومركز حركة التجارة في شمال السودان؟", correct: "الخندق ودنقلا", wrong: ["كورتي", "أرقو", "عبري"] },
+                { q: "ما هو الاسم الذي كان يطلق على ضريبة الرؤوس والماشية التي فرضها الأتراك وأشعلت الثورة المهدية؟", correct: "ضريبة الدمغة والقطعان والجزية العثمانية", wrong: ["العشور والزكاة المهدوية", "ضريبة الدخل", "المكوس"] },
+                { q: "أي قائد عسكري سوداني قاد معركة بيت المال ودخل قصر الحاكم العام في يناير 1885م؟", correct: "الأمير محمد عثمان أبو قرجة ومحمد ود نوباوي", wrong: ["الأمير يونس الدكيم", "الأمير عبد الله التعايشي", "عثمان دقنة"] },
+                { q: "ما هي الولاية التي يقع فيها مجمع سد أعالي عطبرة وسد ستيت لإنتاج الكهرباء والري؟", correct: "ولاية القضارف وولاية كسلا", wrong: ["ولاية نهر النيل", "ولاية سنار", "الولاية الشمالية"] },
+                { q: "من هو الرسام السوداني الذي صمم نصب الجندي المجهول وشعار جمهورية السودان صقر الجديان؟", correct: "الفنان التشكيلي أحمد شبرين وعبد الرحمن الجعلي", wrong: ["إبراهيم الصلحي", "بستامي خضر", "عثمان وقيع الله"] },
+                { q: "ما هي الاتفاقية التاريخية الموقعة عام 2005 والتي وضعت حداً لأطول حرب أهلية في إفريقيا وأدت لانفصال الجنوب؟", correct: "اتفاقية السلام الشامل (نيفاشا)", wrong: ["اتفاقية أديس أبابا 1972", "اتفاقية أبوجا", "اتفاقية القاهرة"] },
+                { q: "ما هو الاسم الأثري للموقع النوبي القديم الذي نقشت على صخوره تراتيل الملك طهراقا وألواح النصر؟", correct: "جبل البركل والكرّو", wrong: ["سمنة", "كرمة", "صلب"] },
+                { q: "ما هي المدينة التي تعد عاصمة لولاية شرق دارفور ومحطة رئيسية لتجارة الإبل والماشية؟", correct: "الضعين", wrong: ["نيالا", "الفاشر", "الجنينة"] },
+                { q: "من هو الموسيقي والمؤلف السوداني العبقري صاحب السيمفونية التراثية وقائد أوركسترا الإذاعة والتلفزيون لسنوات؟", correct: "الموسيقار برعي محمد دفع الله", wrong: ["علي ميرغني", "علاء الدين حمزة", "يوسف الموصلي"] },
+                { q: "ما هو الاسم التاريخي للمنطقة الحدودية الخصبة المحاذية لإقليم أمهرا الإثيوبي وتتبع لولاية القضارف؟", correct: "منطقة الفشقة الكبرى والصغرى", wrong: ["القلابات", "باسندة", "الحمرة"] },
+                { q: "ما هو الحي السكني العريق بمدينة بحري الذي شهد تأسيس معامل السكة حديد والنقل النهري؟", correct: "حي الدناقلة وحي الحلفايا وحي الختمية", wrong: ["حي كافوري", "حي الصافية", "حي الشعبية"] },
+                { q: "من هو شيخ الطريقة القادرية الأبرز في منطقة الجزيرة الذي اشتهر بكرمه وأسس مسيده في طابت؟", correct: "الشيخ عبد المحمود ود الجعلي والشيخ الجيلي", wrong: ["الشيخ العبيد ود بدر", "الشيخ حسن ود حسونة", "الشيخ ود الفادني"] },
+                { q: "ما هو الحيوان الثديي النادر المهدد بالانقراض الذي يستوطن غابات الردوم وجنوب النيل الأزرق بالسودان؟", correct: "الظبي الإفريقي والكلب البري الإفريقي", wrong: ["الدب البني", "النمر السيبيري", "المها العربي"] },
+                { q: "ما هو الاسم الذي كان يطلق على محكمة الاستئناف العليا ومقر القضاء الشرعي في أم درمان زمن المهدية؟", correct: "مجلس قاضي الإسلام (أحمد ود علي)", wrong: ["المحكمة الدستورية", "محكمة المظالم", "ديوان النظر"] },
+                { q: "من هو القائد الوطني الذي ترأس مجلس السيادة السوداني الخامس إبان الديمقراطية الثالثة 1986؟", correct: "السيد أحمد الميرغني", wrong: ["إسماعيل الأزهري", "عبد الرحمن سوار الذهب", "سركيسيان"] },
+                { q: "ما هي المدينة التاريخية الواقعة على الضفة الشرقية للنيل الأزرق وتعتبر قطباً دينياً صوفياً عريقاً وتضم مسيد الشيخ ود بدر؟", correct: "أم ضواً بان", wrong: ["الكاملين", "العيلفون", "أبو حراز"] },
+                { q: "ما هي المدينة النوبية العريقة التي غمرتها مياه بحيرة السد العالي عام 1964 وهُجر أهلها إلى حلفا الجديدة؟", correct: "وادي حلفا القديمة", wrong: ["دنقلا", "كرمة", "عبري"] },
+                { q: "ما هو الاسم الأثري للمعبد المروي الواقع في النقعة المكرس للإلهة المصرية إيزيس وحتحور؟", correct: "معبد آمون ومعبد أبادماك والكشك", wrong: ["معبد الكباش", "هرم تهارقا", "مقابر الكرو"] }
+            ],
+
+            // المرحلة 5: (الأسئلة 13 - 15: من 64,000 إلى 1,000,000 جنيه) - أسئلة النخبة والخبراء
+            5: [
+                { q: "ما هو الاسم الحقيقي لـ 'كاتب الشونة' صاحب المخطوطة التاريخية الأشهر في توثيق أواخر سلطنة الفونج؟", correct: "أحمد بن الحاج أبو علي (أحمد الكاتب)", wrong: ["محمد ود ضيف الله", "إبراهيم بن عبد القادر", "عثمان بن عبد الله الجعلي"] },
+                { q: "ما هو الارتفاع الهندسي التقديري الدقيق لأعلى هرم كوشي باقٍ حتى الآن في أهرامات البجراوية الملكية؟", correct: "حوالي 30 متراً (هرم الملك تهارقا بنوري 50 متراً)", wrong: ["15 متراً", "70 متراً", "95 متراً"] },
+                { q: "في أي عام تم اكتشاف لوحة النصر الكبرى للملك الكوشي بعنخي في جبل البركل على يد بيكري مارييت؟", correct: "عام 1862م", wrong: ["1821م", "1898م", "1916م"] },
+                { q: "ما هي المخطوطة النوبية المسيحية النادرة المكتشفة في قصر إبريم والمكتوبة باللغة النوبية القديمة وترجمها المؤرخ غريفيث؟", correct: "معجزة القديس مينا وسير الملوك النوبيين", wrong: ["إنجيل دنقلا المذهب", "سجلات كنائس سوبا", "رسائل فرس الملكية"] },
+                { q: "من هو القائد العسكري لجيش الفونج الذي استولى على السلطة الفعلية عام 1762 وأصبح يملك ويعزل الملوك (فترة عهد الهمج)؟", correct: "الشيخ محمد أبو لكيلك", wrong: ["بادي الرابع (أبو شلوخ)", "الشيخ ناصر أبو لكيلك", "الشيخ رجب"] },
+                { q: "ما هو الاسم الجغرافي التاريخي للجبل البركاني المنعزل في أقصى الركن الشمالي الغربي للحدود بين السودان ومصر وليبيا؟", correct: "جبل العوينات", wrong: ["جبل كولونا", "جبل كرب النوبية", "جبل مرة"] },
+                { q: "ما هو الاسم الأثري للمدينة النوبية القديمة التي كانت مقراً للمطرانية المسيحية وعثر فيها على لوحات جدارية نادرة معروضة بمتحف الخرطوم؟", correct: "مدينة فَرَس (كاتدرائية فرس)", wrong: ["سوبا الغربية", "أرقين", "عبري"] },
+                { q: "من هو الرحالة السويسري المستكشف الذي اكتشف أطلال معبدي أبو سمبل وتوغل في دنقلا وسواكن عام 1813؟", correct: "جون لويس بوركهارت (الشيخ إبراهيم)", wrong: ["جيمس بروس", "فريدريك كايو", "ريتشارد ليبسيوس"] },
+                { q: "ما هو المعجم الفريد الذي ألفه العالم البروفيسور عبد الله الطيب باللغة العربية لشرح ديوان الحماسة لأبي تمام؟", correct: "شرح ديوان الحماسة لأبي تمام في مجلدات", wrong: ["المرشد لفهم أشعار العرب", "معجم العامية السودانية", "حقيبة الأدب"] },
+                { q: "أي ملك كوشي تذكر النصوص الكوشية أنه قام بمحاربة قبائل البليميز (البجا القدماء) في الصحراء الشرقية؟", correct: "الملك أنلاماني والملك نستاسن", wrong: ["الملك طهراقا", "الملك كاشتا", "الملك شباكا"] },
+                { q: "ما هي المعركة الأخيرة التي خاضها السلطان بادي السادس آخر ملوك الفونج قبل تسليم سنار لإسماعيل باشا عام 1821؟", correct: "استسلام سنار دون قتال رسمي", wrong: ["معركة كورتي", "معركة جبل موية", "معركة ود مدني"] },
+                { q: "ما هو الاسم القديم لنهر الرهد في بعض الخرائط التاريخية لرحالة العهد التركي الأول؟", correct: "نهر أبو رهد أو شاتام", wrong: ["الدندر النحاسي", "نهر العطشان", "الخور الكبير"] },
+                { q: "من هو السياسي والمؤرخ الدبلوماسي السوداني مؤلف كتاب 'مستقبل الديمقراطية في السودان' ووزير الخارجية الأسبق؟", correct: "محمد أحمد محجوب", wrong: ["د. منصور خالد", "إسماعيل الأزهري", "أحمد خير المحامي"] },
+                { q: "ما هي المدينة النوبية التاريخية التي حاصرها القائد الروماني بترونيوس عام 23 قبل الميلاد ودمر معابدها؟", correct: "مدينة نبتة التاريخية", wrong: ["مروي الملكية", "كرمة", "سمنة"] },
+                { q: "ما هي الجزيرة الواقعة على النيل الأبيض والتي شهدت أكبر مشروع تعايشي للرعي والزراعة زمن المهدية وعرفت بإنزال الأسطول؟", correct: "جزيرة أبا والمشرع المقابل", wrong: ["جزيرة مساوي", "جزيرة الزومة", "جزيرة توتي"] },
+                { q: "من هو الحاكم العام البريطاني للسودان الذي اغتيل في القاهرة عام 1924 وتسبب اغتياله في سحب القوات المصرية؟", correct: "السير لي ستاك (السردار)", wrong: ["كتشنر", "ريجنالد ونجت", "جون مكسويل"] },
+                { q: "ما هي أقدم أداة فخارية مزخرفة بالنقوش المتموجة اكتشفت في إفريقيا وأرخت لعصر الخرطوم القديمة؟", correct: "فخار الخرطوم الميزوليتي (مستشفى الخرطوم)", wrong: ["فخار الشهيناب النيوليتي", "فخار كرمة الأحمر", "فخار البجراوية"] },
+                { q: "ما هو اللقب التراثي لزعيم قبائل البجا في شرق السودان الذي كان يحمل رتبة الناظر العام؟", correct: "الدقلل أو الناظر الكنتيباي", wrong: ["الشرتاي", "المقدوم", "السلطان"] },
+                { q: "أي ملك مروي شيد أضخم سور دفاعي حول المدينة الملكية في مروي لحمايتها من فيضان النيل وغارات الرومان؟", correct: "الملك نيتكاماني والملكة أماني توري", wrong: ["الملك كاشتا", "الملك هورسيوتف", "الملك بعنخي"] },
+                { q: "ما هو الاسم الجغرافي والحدودي للمثلث الواقع شمال دائرة عرض 22 شمالاً على ساحل البحر الأحمر؟", correct: "مثلث حلايب وشلاتين وأبو رماد", wrong: ["مثلث الفشقة", "مثلث إليمي", "مثلث بارا"] },
+                { q: "من هو الفقيه والعالم الصوفي الذي كان يلقب بـ 'راجل أم مرحي' وأسس خلوته شمال أم درمان؟", correct: "الشيخ حمد ود أم مريوم والشيخ خوجلي", wrong: ["الشيخ حسن ود حسونة", "الشيخ الجعلي", "الشيخ عبيد ود بدر"] },
+                { q: "ما هي العملة الذهبية البيزنطية التي كان ملك النوبة يرسلها ضمن بنود معاهدة البقط السنوية لمصر؟", correct: "الدنانير الذهبية المحققة والجمال", wrong: ["الروبية", "الدرهم الفاطمي", "القرش"] },
+                { q: "ما هو الاسم التاريخي للفرقة العسكرية السودانية الشهيرة التي حاربت في المكسيك عام 1863 في عهد الخديوي سعيد؟", correct: "الكتيبة الأورطة السودانية في المكسيك", wrong: ["فرقة الهجانة الكردفانية", "كتيبة دفاع السودان", "قوات الحلفايا"] },
+                { q: "من هو العالم الجيولوجي والآثاري الذي نقب عن آثار حضارة كرمة لأكثر من أربعين عاماً وأثبت أصالتها الإفريقية المستقلة؟", correct: "البروفيسور السويسري شارل بونيه", wrong: ["فريدريك هينكل", "جورج رايزنر", "أنتوني أركيل"] },
+                { q: "ما هو المنشور العسكري المهدوي الشهير الذي أصدره الإمام المهدي لتحديد قواعد الجهاد واللباس والزهد؟", correct: "منشورات المهدية ورسائل الإمام المهدي", wrong: ["كتاب الراتب فقط", "دستور أم درمان", "صحيفة الجهاد"] },
+                { q: "أي ولاية سودانية تضم موقع 'حيدوب' وجبل 'شامباتيا' الغني برواسب خام الحديد والتيتانيوم؟", correct: "ولاية البحر الأحمر", wrong: ["ولاية نهر النيل", "ولاية سنار", "الولاية الشمالية"] },
+                { q: "ما هو الاسم الأثري للكنيسة النوبية الفخمة المكتشفة في دنقلا العجوز والمعروفة بكنيسة الأعمدة الجرانيتية الصوانية؟", correct: "كنيسة الأعمدة الجرانيتية السبعة", wrong: ["دير الغزالي", "كنيسة القديس جورج", "كاتدرائية سوبا"] },
+                { q: "من هو أول رئيس سوداني لنقابة عمال السكة حديد عام 1947 وقاد حركة العمال الوطنية؟", correct: "الشفيع أحمد الشيخ وإبراهيم زكي", wrong: ["قاسم أمين", "عبد الخالق محجوب", "علي بشير"] },
+                { q: "ما هو الاسم الذي أطلقه الرحالة العربي ابن سليم الأسواني في القرن العاشر الميلادي على نهر النيل الأزرق وأهله؟", correct: "بحر النيل المقدس أو النيل الكبير", wrong: ["بحر الغزال", "بحر الظلمات", "نهر الجبل"] },
+                { q: "أي ملك كوشي سجل في معبد آمون بالكرنك قائمة الفتوحات التي ضمت مدناً فلسطينية وآسيوية إبان الأسرة 25؟", correct: "الملك طهراقا (ترهاقة)", wrong: ["الملك شباكا", "الملك شبتاكا", "الملك كاشتا"] },
+                { q: "ما هي المعركة التي استشهد فيها الأمير المهدوي الكبير الزاكي طمل بعد مكيدة دبرت له في سجن أم درمان؟", correct: "مأساة سجن السائر بأم درمان (1893)", wrong: ["معركة توشكي", "معركة أم دبيكرات", "معركة القلابات"] },
+                { q: "ما هو الاسم القديم للقرية النيلية التي بنيت قربها مدينة سنار الحالية وكانت تسمى في عهد الفونج؟", correct: "قرية مور ومخاضة سنار", wrong: ["سوبا جنوب", "ود العباس", "أبو عشار"] },
+                { q: "من هو الرسام والمعماري الذي صمم قاعة الصداقة بالخرطوم بالتعاون مع المهندسين الصينيين في السبعينيات؟", correct: "المعماري السوداني عبد المنعم مصطفى", wrong: ["كمال القاضي", "محمد محمود الصايغ", "جعفر طه"] },
+                { q: "ما هي اللوحة الصخرية المروية الفريدة التي نقشت بأطول نص هيروغليفي مروي معروف حتى الآن وتوجد بجبل البركل؟", correct: "لوحة الملك نستاسن ولوحة الملك هورسيوتف", wrong: ["لوحة الشان داكيه", "لوحة بعنخي", "لوحة أركماني"] },
+                { q: "ما هو الميناء القديم الواقع على البحر الأحمر بالقرب من عقيق والمشهور بتصدير الفيلة الإفريقية للبطالمة؟", correct: "ميناء بطليموس ثيرون (Ptolemais Theron)", wrong: ["ميناء سواكن", "ميناء عيذاب", "مرسى فلامنجو"] },
+                { q: "من هو العالم والمفكر الاقتصادي السوداني الذي تولى إدارة بنك السودان وألف دراسات رائدة في التنمية الإفريقية؟", correct: "مأمون بحيري", wrong: ["د. عبد الرحيم حمدي", "د. صابر محمد حسن", "إبراهيم منعم منصور"] },
+                { q: "ما هي الوثيقة الدستورية التي أسس بموجبها المجلس العسكري الانتقالي برئاسة سوار الذهب مرحلة التحول الديمقراطي عام 1985؟", correct: "دستور السودان الانتقالي لسنة 1985", wrong: ["دستور 1973 الدائم", "الدستور المؤقت 1956", "ميثاق التجمع الوطني"] },
+                { q: "ما هو الحصن التاريخي النوبي الواقع في أقصى شمال وادي حلفا وكان مقراً للحاكم النوبي إبان العهد العثماني؟", correct: "قلعة الدر وقلعة جزيرة صاي", wrong: ["قلعة بوهين", "طابية الفاشر", "قلعة قصر إبريم"] },
+                { q: "أي شاعر سوداني كبير صاحب قصيدة 'في حماك ربنا' ولقب بأمير شعراء السودان وتوفي عام 1959؟", correct: "الشاعر أحمد محمد صالح", wrong: ["إدريس جماع", "التجاني يوسف بشير", "مبارك زروق"] },
+                { q: "ما هو الاسم الذي كان يطلق على قائد الحرس السلطاني الخاص بسلاطين دارفور؟", correct: "الفرتي وقائد الكشافة الميدانية", wrong: ["المقدوم", "الدالي", "الشرتاي الأكبر"] },
+                { q: "من هو الآثاري الأمريكي الشهير الذي اكتشف مدافن الكرو الملكية عام 1919 وعثر على مقابر ملوك كوش الأوائل؟", correct: "جورج رايزنر (George Reisner)", wrong: ["فرانسيس هينكل", "جان فيركوتير", "ليبريتشت"] },
+                { q: "ما هي المدينة النيلية السودانية التي تأسست فيها أول كلية غابات ومدرسة لتدريب الفنيين في عشرينيات القرن الماضي؟", correct: "طابت ومعهد شمبات وغابات سنار", wrong: ["الدويم", "بربر", "الأبيض"] },
+                { q: "ما هي المعركة الجبلية التي انتصر فيها جيش الإمام المهدي على القوات المصرية بقيادة راشد بك أيمن عام 1881؟", correct: "معركة قدير الأولى (جبل قدير)", wrong: ["معركة أبا", "معركة شيكان", "معركة بارا"] },
+                { q: "من هو العالم والمفكر واللغوي السوداني الذي فك رموز التقويم المروي والارتباط الفلكي بمعابد الشمس بمروي؟", correct: "البروفيسور أحمد محمد علي الحاكم", wrong: ["د. أسامة النور", "البروفيسور يوسف فضل", "د. عبد القادر محمود"] },
+                { q: "ما هو الاسم الأثري للدير المسيحي النوبي الأثري المتبقي بجميع صوامعه وكنائسه في وادي المقدم قرب كريمة؟", correct: "دير الغزالي الأثري", wrong: ["دير سوبا", "كنيسة صاي", "دير فرس"] },
+                { q: "ما هو الاسم التراثي للمعاهدة أو الحلف الذي عقده الشيخ عجيب المانجلك مع ملك الفونج لتحديد مناطق النفوذ؟", correct: "حلف قِري وحلف سنار العبدلابي (1504)", wrong: ["صلح سوبا", "اتفاقية أربجي", "ميثاق الدندر"] },
+                { q: "من هو القائد العسكري السوداني الذي قاد الفرقة العسكرية السودانية في حرب فلسطين 1948 ونال وسام الشجاعة؟", correct: "اللواء أحمد محمد والسرور الرملي", wrong: ["إبراهيم عبود", "جعفر نميري", "محمد نجيب"] },
+                { q: "ما هي المدينة التاريخية الواقعة على الضفة الشرقية للنيل الأبيض وكانت ميناءً للمراكب وتجارة الصمغ وتسمى 'الدويم'؟", correct: "الدويم (بحر أبيض)", wrong: ["القطينة", "كوستي", "أم روابة"] },
+                { q: "ما هي الجزيرة الواقعة في بحيرة النوبة التي تم إنقاذ معبدها الصخري ونقله بالكامل إلى متحف الخرطوم القومي؟", correct: "معبد بوهين ومعبد سمنة شرق وغرب وجزيرة دبيرا", wrong: ["جزيرة توتي", "جزيرة مساوي", "جزيرة صاي"] },
+                { q: "من هو الشاعر السوداني الذي كتب ديوان 'العودة إلى سنار' والذي مثل ملحمة البحث عن الهوية السودانية المزدوجة؟", correct: "الدكتور محمد عبد الحي", wrong: ["النور عثمان أبكر", "محمد المكي إبراهيم", "صلاح أحمد إبراهيم"] }
+            ]
+        };
+
+        const PRIZE_SCALE = [
+            "100", "200", "300", "500", "1,000",
+            "2,000", "4,000", "8,000", "16,000", "32,000",
+            "64,000", "125,000", "250,000", "500,000", "1,000,000"
+        ];
+        const MILESTONE_LEVELS = [4, 9, 14]; // محطات الأمان: 1,000 ج و 32,000 ج والمليون
+
+        /* =========================================================================
+           🧠 محرك اللعبة، خلط الخيارات (أ، ب، ج، د)، ومنع التكرار
+           ========================================================================= */
+        class SudaneseMillionaireGame {
+            constructor() {
+                this.isPlaying = false;
+                this.currentStep = 0;
+                this.gameQuestions = [];
+                this.activeQuestionData = null; // يحمل السؤال مع خياراته المخلوطة والمؤشر الصحيح
+                this.timerInterval = null;
+                this.secondsLeft = 30;
+                
+                this.lifelines = { fifty: false, friend: false, audience: false, swap: false };
+                this.askedQuestionHistory = new Set();
+
+                this.stats = { played: 0, won: 0, highest: 0 };
+            }
+
+            init() {
+                this.loadSavedStats();
+                ui.renderLadder();
+                ui.updateStatsDisplay();
+                this.checkSavedSession();
+
+                setTimeout(() => {
+                    ui.switchScreen('menu-screen');
+                }, 3500);
+            }
+
+            loadSavedStats() {
+                const s = localStorage.getItem('sudan_millionaire_stats_v3');
+                if (s) this.stats = JSON.parse(s);
+
+                const h = localStorage.getItem('sudan_millionaire_history_v3');
+                if (h) this.askedQuestionHistory = new Set(JSON.parse(h));
+            }
+
+            saveStats() {
+                localStorage.setItem('sudan_millionaire_stats_v3', JSON.stringify(this.stats));
+                localStorage.setItem('sudan_millionaire_history_v3', JSON.stringify([...this.askedQuestionHistory]));
+            }
+
+            checkSavedSession() {
+                const sess = localStorage.getItem('sudan_active_session_v3');
+                if (sess) {
+                    const data = JSON.parse(sess);
+                    if (data && data.isPlaying && data.currentStep > 0) {
+                        ui.showResumeButton(data);
+                    }
+                }
+            }
+
+            saveCurrentSession() {
+                const sessionData = {
+                    isPlaying: this.isPlaying,
+                    currentStep: this.currentStep,
+                    gameQuestions: this.gameQuestions,
+                    lifelines: this.lifelines
+                };
+                localStorage.setItem('sudan_active_session_v3', JSON.stringify(sessionData));
+            }
+
+            clearSession() {
+                localStorage.removeItem('sudan_active_session_v3');
+                ui.hideResumeButton();
+            }
+
+            initiateCountdown(isResume = false, savedData = null) {
+                ui.switchScreen('countdown-screen');
+                soundMaster.playIntro7Sec();
+
+                let count = 7;
+                document.getElementById('countdown-num').textContent = count;
+
+                const timer = setInterval(() => {
+                    count--;
+                    document.getElementById('countdown-num').textContent = count;
+                    if (count <= 0) {
+                        clearInterval(timer);
+                        if (isResume && savedData) {
+                            this.resumeOldGame(savedData);
+                        } else {
+                            this.startFreshGame();
+                        }
+                    }
+                }, 1000);
+            }
+
+            startFreshGame() {
+                this.isPlaying = true;
+                this.currentStep = 0;
+                this.lifelines = { fifty: false, friend: false, audience: false, swap: false };
+                this.stats.played++;
+                this.saveStats();
+
+                this.gameQuestions = this.generateNonRepeatingQuestionSet();
+                this.saveCurrentSession();
+
+                ui.resetLifelinesIcons();
+                ui.switchScreen('game-screen');
+                this.displayLevel(0);
+            }
+
+            resumeOldGame(data) {
+                this.isPlaying = true;
+                this.currentStep = data.currentStep;
+                this.gameQuestions = data.gameQuestions;
+                this.lifelines = data.lifelines;
+
+                ui.restoreLifelinesIcons(this.lifelines);
+                ui.switchScreen('game-screen');
+                this.displayLevel(this.currentStep);
+            }
+
+            generateNonRepeatingQuestionSet() {
+                let set = [];
+                for (let tier = 1; tier <= 5; tier++) {
+                    const pool = QUESTION_MASTER_BASE[tier];
+                    let unused = pool.filter(q => !this.askedQuestionHistory.has(q.q));
+
+                    if (unused.length < 3) {
+                        pool.forEach(q => this.askedQuestionHistory.delete(q.q));
+                        unused = [...pool];
+                    }
+
+                    this.shuffleArray(unused);
+                    const selected = unused.slice(0, 3);
+                    selected.forEach(q => this.askedQuestionHistory.add(q.q));
+                    set = set.concat(selected);
+                }
+                this.saveStats();
+                return set;
+            }
+
+            shuffleArray(arr) {
+                for (let i = arr.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [arr[i], arr[j]] = [arr[j], arr[i]];
+                }
+            }
+
+            // خلط خيارات الإجابة لتنويع موضع الإجابة الصحيحة عشوائياً بين (أ، ب، ج، د)
+            prepareQuestionWithRandomizedOptions(rawQ) {
+                const options = [
+                    { text: rawQ.correct, isCorrect: true },
+                    { text: rawQ.wrong[0], isCorrect: false },
+                    { text: rawQ.wrong[1], isCorrect: false },
+                    { text: rawQ.wrong[2], isCorrect: false }
+                ];
+                this.shuffleArray(options);
+
+                const correctIdx = options.findIndex(opt => opt.isCorrect);
+                return {
+                    q: rawQ.q,
+                    options: options.map(o => o.text),
+                    correctIndex: correctIdx
+                };
+            }
+
+            displayLevel(stepIndex) {
+                this.currentStep = stepIndex;
+                const rawQ = this.gameQuestions[stepIndex];
+                this.activeQuestionData = this.prepareQuestionWithRandomizedOptions(rawQ);
+
+                ui.renderQuestionData(this.activeQuestionData);
+                ui.updateLadderHighlight(stepIndex);
+                document.getElementById('assistance-output').style.display = 'none';
+
+                this.saveCurrentSession();
+                this.startTimer();
+                soundMaster.playThinkingSound();
+            }
+
+            startTimer() {
+                clearInterval(this.timerInterval);
+                this.secondsLeft = 30;
+                ui.renderTimer(this.secondsLeft);
+
+                this.timerInterval = setInterval(() => {
+                    this.secondsLeft--;
+                    ui.renderTimer(this.secondsLeft);
+                    if (this.secondsLeft <= 0) {
+                        clearInterval(this.timerInterval);
+                        this.handleTimeExpire();
+                    }
+                }, 1000);
+            }
+
+            stopTimer() {
+                clearInterval(this.timerInterval);
+            }
+
+            handleTimeExpire() {
+                soundMaster.playWrong();
+                ui.vibrateDevice();
+                ui.shakeMainBoard();
+                this.terminateGame("للأسف، انتهى الوقت المحدد للإجابة!");
+            }
+
+            selectOption(chosenIndex) {
+                this.stopTimer();
+                soundMaster.stopThinkingSound();
+                ui.disableAllOptions();
+
+                const buttons = document.querySelectorAll('.option-btn');
+                buttons[chosenIndex].classList.add('selected');
+
+                const isCorrect = (chosenIndex === this.activeQuestionData.correctIndex);
+
+                setTimeout(() => {
+                    buttons[chosenIndex].classList.remove('selected');
+                    if (isCorrect) {
+                        buttons[chosenIndex].classList.add('correct');
+                        soundMaster.playCorrect();
+
+                        setTimeout(() => {
+                            this.handleCorrectProgression();
+                        }, 1400);
+                    } else {
+                        buttons[chosenIndex].classList.add('wrong');
+                        buttons[this.activeQuestionData.correctIndex].classList.add('correct');
+                        soundMaster.playWrong();
+                        ui.vibrateDevice();
+                        ui.shakeMainBoard();
+
+                        setTimeout(() => {
+                            this.terminateGame("إجابة خاطئة! حظاً أوفر في المرات القادمة.");
+                        }, 1800);
+                    }
+                }, 1200);
+            }
+
+            handleCorrectProgression() {
+                if (this.currentStep === 4 || this.currentStep === 9) {
+                    soundMaster.playMilestone();
+                }
+
+                if (this.currentStep === 14) {
+                    this.stats.won++;
+                    this.stats.highest = 1000000;
+                    this.saveStats();
+                    this.triggerMillionWin();
+                } else {
+                    this.displayLevel(this.currentStep + 1);
+                }
+            }
+
+            useFiftyFifty() {
+                if (this.lifelines.fifty || !this.isPlaying) return;
+                this.lifelines.fifty = true;
+                this.saveCurrentSession();
+                ui.markLifelineDisabled('ll-fifty');
+
+                const correct = this.activeQuestionData.correctIndex;
+                const wrongs = [0, 1, 2, 3].filter(idx => idx !== correct);
+                this.shuffleArray(wrongs);
+                const toRemove = wrongs.slice(0, 2);
+
+                const btns = document.querySelectorAll('.option-btn');
+                toRemove.forEach(idx => btns[idx].classList.add('hidden-option'));
+            }
+
+            usePhoneFriend() {
+                if (this.lifelines.friend || !this.isPlaying) return;
+                this.lifelines.friend = true;
+                this.saveCurrentSession();
+                ui.markLifelineDisabled('ll-friend');
+
+                const out = document.getElementById('assistance-output');
+                out.style.display = 'block';
+                out.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span style="font-size:1.5rem; animation:spin 1s infinite linear;">📞</span>
+                        <span>جاري الاتصال بصديقك في السودان...</span>
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    const letters = ["أ", "ب", "ج", "د"];
+                    const ansLetter = letters[this.activeQuestionData.correctIndex];
+                    const phrases = [
+                        `"يا زول السؤال ده ساهل، أنا متأكد مية بالمية إنها الإجابة (${ansLetter})"`,
+                        `"يا حبيبنا والله بظن بقوة إنو الخيار (${ansLetter}) هو الأصح، اتكل على الله!"`,
+                        `"سؤال محتاج تركيز، لكن معلوماتي بتقول إنها الأقرب لـ (${ansLetter})"`
+                    ];
+                    const chosenPhrase = phrases[Math.floor(Math.random() * phrases.length)];
+
+                    out.innerHTML = `
+                        <strong>📞 الصديق السوداني على الخط:</strong><br>
+                        ${chosenPhrase}
+                    `;
+                }, 2000);
+            }
+
+            useAudience() {
+                if (this.lifelines.audience || !this.isPlaying) return;
+                this.lifelines.audience = true;
+                this.saveCurrentSession();
+                ui.markLifelineDisabled('ll-audience');
+
+                const out = document.getElementById('assistance-output');
+                out.style.display = 'block';
+
+                const correct = this.activeQuestionData.correctIndex;
+                let percentages = [10, 10, 10, 10];
+                const boost = this.currentStep < 5 ? 58 : (this.currentStep < 10 ? 45 : 32);
+                percentages[correct] += boost;
+
+                let sum = percentages.reduce((a, b) => a + b, 0);
+                let diff = 100 - sum;
+                percentages[0] += diff;
+
+                out.innerHTML = `
+                    <strong>👥 نتيجة تصويت الجمهور في الاستوديو:</strong>
+                    <div class="audience-chart">
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar ${correct === 0 ? 'correct-bar':''}" id="bar-0"></div>
+                            <span style="font-size:0.75rem; font-weight:bold; margin-top:4px;">أ: ${percentages[0]}%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar ${correct === 1 ? 'correct-bar':''}" id="bar-1"></div>
+                            <span style="font-size:0.75rem; font-weight:bold; margin-top:4px;">ب: ${percentages[1]}%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar ${correct === 2 ? 'correct-bar':''}" id="bar-2"></div>
+                            <span style="font-size:0.75rem; font-weight:bold; margin-top:4px;">ج: ${percentages[2]}%</span>
+                        </div>
+                        <div class="chart-bar-wrapper">
+                            <div class="chart-bar ${correct === 3 ? 'correct-bar':''}" id="bar-3"></div>
+                            <span style="font-size:0.75rem; font-weight:bold; margin-top:4px;">د: ${percentages[3]}%</span>
+                        </div>
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    for (let i = 0; i < 4; i++) {
+                        const el = document.getElementById(`bar-${i}`);
+                        if (el) el.style.height = percentages[i] + '%';
+                    }
+                }, 50);
+            }
+
+            useSwap() {
+                if (this.lifelines.swap || !this.isPlaying) return;
+                this.lifelines.swap = true;
+                this.saveCurrentSession();
+                ui.markLifelineDisabled('ll-swap');
+
+                const tier = Math.floor(this.currentStep / 3) + 1;
+                const pool = QUESTION_MASTER_BASE[tier].filter(q => q.q !== this.activeQuestionData.q);
+                const rawNew = pool[Math.floor(Math.random() * pool.length)];
+                this.activeQuestionData = this.prepareQuestionWithRandomizedOptions(rawNew);
+
+                ui.renderQuestionData(this.activeQuestionData);
+                document.getElementById('assistance-output').style.display = 'none';
+            }
+
+            cashOut() {
+                if (!this.isPlaying) return;
+                const prize = this.currentStep === 0 ? "0" : PRIZE_SCALE[this.currentStep - 1];
+                const numPrize = parseInt(prize.replace(/,/g, ''));
+                if (numPrize > this.stats.highest) {
+                    this.stats.highest = numPrize;
+                }
+                this.saveStats();
+                this.terminateGame(`فضّلت الانسحاب بذكاء والاحتفاظ بمبلغ: <strong style="color:var(--gold-light);">${prize} جنيه سوداني</strong>.`);
+            }
+
+            triggerMillionWin() {
+                this.isPlaying = false;
+                this.stopTimer();
+                this.clearSession();
+                soundMaster.playMillionWin();
+                ui.launchCelebrationFireworks();
+
+                setTimeout(() => {
+                    ui.showGameOverModal(
+                        "🏆 ألف مبروك المليون! 🇸🇩",
+                        "ما شاء الله تبارك الله! لقد أثبت أنك خبير وموسوعي سوداني أصيل وأجبت على كل التحديات ونلت المليون جنيه بجدارة واستحقاق."
+                    );
+                }, 2500);
+            }
+
+            terminateGame(message) {
+                this.isPlaying = false;
+                this.stopTimer();
+                this.clearSession();
+
+                let guaranteed = "0";
+                if (this.currentStep > 9) guaranteed = "32,000";
+                else if (this.currentStep > 4) guaranteed = "1,000";
+
+                const gNum = parseInt(guaranteed.replace(/,/g, ''));
+                if (gNum > this.stats.highest) this.stats.highest = gNum;
+                this.saveStats();
+
+                ui.showGameOverModal(
+                    "انتهت الجولة",
+                    `${message}<br><br>المبلغ المضمون المحقق: <strong style="color:var(--gold-light);">${guaranteed} جنيه سوداني</strong>`
+                );
+            }
+
+            resetMemory() {
+                if (confirm("هل تريد تصفير سجل الأسئلة والإحصائيات بالكامل؟")) {
+                    this.stats = { played: 0, won: 0, highest: 0 };
+                    this.askedQuestionHistory.clear();
+                    this.clearSession();
+                    this.saveStats();
+                    ui.updateStatsDisplay();
+                    alert("تم تصفير الذاكرة وبنك الأسئلة بنجاح.");
+                }
+            }
+        }
+
+        const gameEngine = new SudaneseMillionaireGame();
+
+        /* =========================================================================
+           🎨 واجهة المستخدم وإدارة سلم الجوائز الصلب والـ Drawer
+           ========================================================================= */
+        class UIController {
+            switchScreen(id) {
+                document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+                document.getElementById(id).classList.add('active');
+            }
+
+            openModal(id) {
+                document.getElementById(id).classList.add('active');
+            }
+
+            closeModal(id) {
+                document.getElementById(id).classList.remove('active');
+            }
+
+            togglePrizeDrawer(open) {
+                const panel = document.getElementById('side-prize-panel');
+                const backdrop = document.getElementById('drawer-backdrop');
+                if (open) {
+                    panel.classList.add('drawer-open');
+                    backdrop.classList.add('active');
+                } else {
+                    panel.classList.remove('drawer-open');
+                    backdrop.classList.remove('active');
+                }
+            }
+
+            renderLadder() {
+                const list = document.getElementById('prize-ladder-list');
+                list.innerHTML = '';
+                for (let i = PRIZE_SCALE.length - 1; i >= 0; i--) {
+                    const row = document.createElement('div');
+                    row.className = 'prize-item';
+                    row.id = `ladder-step-${i}`;
+
+                    if (MILESTONE_LEVELS.includes(i)) {
+                        row.classList.add('milestone');
+                    }
+
+                    row.innerHTML = `
+                        <span class="step-num">${i + 1} ♦</span>
+                        <span class="step-amount">${PRIZE_SCALE[i]} ج</span>
+                    `;
+                    list.appendChild(row);
+                }
+            }
+
+            updateLadderHighlight(index) {
+                document.querySelectorAll('.prize-item').forEach(it => it.classList.remove('active'));
+                const cur = document.getElementById(`ladder-step-${index}`);
+                if (cur) cur.classList.add('active');
+            }
+
+            renderQuestionData(preparedData) {
+                document.getElementById('question-text').textContent = preparedData.q;
+                const buttons = document.querySelectorAll('.option-btn');
+                buttons.forEach((btn, idx) => {
+                    btn.classList.remove('correct', 'wrong', 'selected', 'hidden-option', 'disabled');
+                    btn.disabled = false;
+                    btn.textContent = preparedData.options[idx];
+                });
+            }
+
+            disableAllOptions() {
+                document.querySelectorAll('.option-btn').forEach(btn => {
+                    btn.classList.add('disabled');
+                    btn.disabled = true;
+                });
+            }
+
+            renderTimer(sec) {
+                document.getElementById('timer-value').textContent = sec;
+                const circle = document.getElementById('timer-progress');
+                const pct = (sec / 30) * 100;
+                circle.style.strokeDashoffset = 100 - pct;
+                circle.style.stroke = sec <= 8 ? 'var(--accent-red)' : '#3b82f6';
+            }
+
+            shakeMainBoard() {
+                const b = document.getElementById('main-board');
+                b.classList.add('shake');
+                setTimeout(() => b.classList.remove('shake'), 450);
+            }
+
+            vibrateDevice() {
+                if ('vibrate' in navigator) navigator.vibrate([180, 80, 180]);
+            }
+
+            markLifelineDisabled(id) {
+                const el = document.getElementById(id);
+                el.classList.add('used');
+                el.disabled = true;
+            }
+
+            resetLifelinesIcons() {
+                ['ll-fifty', 'll-friend', 'll-audience', 'll-swap'].forEach(id => {
+                    const el = document.getElementById(id);
+                    el.classList.remove('used');
+                    el.disabled = false;
+                });
+            }
+
+            restoreLifelinesIcons(usedMap) {
+                if (usedMap.fifty) this.markLifelineDisabled('ll-fifty');
+                if (usedMap.friend) this.markLifelineDisabled('ll-friend');
+                if (usedMap.audience) this.markLifelineDisabled('ll-audience');
+                if (usedMap.swap) this.markLifelineDisabled('ll-swap');
+            }
+
+            showResumeButton(session) {
+                const box = document.getElementById('menu-buttons-box');
+                let btn = document.getElementById('resume-btn-dynamic');
+                if (!btn) {
+                    btn = document.createElement('button');
+                    btn.id = 'resume-btn-dynamic';
+                    btn.className = 'btn-custom resume-btn';
+                    btn.innerHTML = `استئناف الجولة السابقة ↩ (السؤال ${session.currentStep + 1})`;
+                    btn.onclick = () => gameEngine.initiateCountdown(true, session);
+                    box.insertBefore(btn, box.firstChild);
+                }
+            }
+
+            hideResumeButton() {
+                const b = document.getElementById('resume-btn-dynamic');
+                if (b) b.remove();
+            }
+
+            updateStatsDisplay() {
+                document.getElementById('stat-played').textContent = gameEngine.stats.played;
+                document.getElementById('stat-won').textContent = gameEngine.stats.won;
+                document.getElementById('stat-high').textContent = gameEngine.stats.highest.toLocaleString() + ' ج';
+            }
+
+            showGameOverModal(title, msg) {
+                document.getElementById('game-over-title').textContent = title;
+                document.getElementById('game-over-msg').innerHTML = msg;
+                this.openModal('game-over-modal');
+                this.stopFireworks();
+            }
+
+            launchCelebrationFireworks() {
+                const canvas = document.getElementById('celebration-canvas');
+                canvas.style.display = 'block';
+                const ctx = canvas.getContext('2d');
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+
+                const particles = [];
+                const colors = ['#f59e0b', '#10b981', '#3b82f6', '#ef4444', '#ffffff'];
+
+                function addExplosion(x, y) {
+                    for (let i = 0; i < 40; i++) {
+                        particles.push({
+                            x, y,
+                            vx: (Math.random() - 0.5) * 8,
+                            vy: (Math.random() - 0.5) * 8,
+                            c: colors[Math.floor(Math.random() * colors.length)],
+                            alpha: 1,
+                            life: 0.015
+                        });
+                    }
+                }
+
+                const timer = setInterval(() => {
+                    addExplosion(Math.random() * canvas.width, Math.random() * canvas.height * 0.5);
+                }, 600);
+
+                function loop() {
+                    if (canvas.style.display === 'none') return;
+                    requestAnimationFrame(loop);
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+                    for (let i = particles.length - 1; i >= 0; i--) {
+                        const p = particles[i];
+                        p.x += p.vx;
+                        p.y += p.vy;
+                        p.alpha -= p.life;
+                        ctx.fillStyle = p.c;
+                        ctx.globalAlpha = Math.max(p.alpha, 0);
+                        ctx.beginPath();
+                        ctx.arc(p.x, p.y, 3, 0, Math.PI * 2);
+                        ctx.fill();
+
+                        if (p.alpha <= 0) particles.splice(i, 1);
+                    }
+                }
+
+                loop();
+                canvas._fireworkTimer = timer;
+            }
+
+            stopFireworks() {
+                const canvas = document.getElementById('celebration-canvas');
+                canvas.style.display = 'none';
+                if (canvas._fireworkTimer) clearInterval(canvas._fireworkTimer);
+            }
+        }
+
+        const ui = new UIController();
+
+        window.addEventListener('DOMContentLoaded', () => {
+            gameEngine.init();
+        });
+    </script>
+</body>
+</html>
