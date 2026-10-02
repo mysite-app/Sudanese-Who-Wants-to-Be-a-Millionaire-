@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -11,17 +12,21 @@
     
     <style>
         :root {
-            --bg-base: #030712;
-            --bg-card: rgba(15, 23, 42, 0.75);
-            --bg-card-solid: #0b1329;
-            --panel-solid-bg: #070d1a;
+            --bg-base: #020611;
+            --bg-card: #091124;
+            --bg-card-solid: #091226;
+            
+            /* ألوان مصمتة 100% بدون أي شفافية بتاتاً */
+            --drawer-solid-bg: #070d1e;
+            --drawer-item-bg: #0e172e;
+            --drawer-milestone-bg: #162447;
             
             --gold-primary: #f59e0b;
             --gold-light: #fcd34d;
             --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
-            --gold-glow: rgba(245, 158, 11, 0.35);
+            --gold-glow: rgba(245, 158, 11, 0.4);
             
-            --blue-glow: rgba(59, 130, 246, 0.3);
+            --blue-glow: rgba(59, 130, 246, 0.35);
             --blue-accent: #3b82f6;
             
             --accent-green: #10b981;
@@ -29,7 +34,7 @@
             --accent-red: #ef4444;
             --accent-red-glow: rgba(239, 68, 68, 0.4);
             
-            --border-glass: rgba(255, 255, 255, 0.1);
+            --border-glass: rgba(255, 255, 255, 0.12);
             --font-scale: 1;
         }
 
@@ -43,15 +48,15 @@
             font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
         }
 
-        body {
+        html, body {
             background-color: var(--bg-base);
             color: #f8fafc;
             height: 100dvh;
             width: 100vw;
+            overflow: hidden;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
             font-size: calc(15px * var(--font-scale));
         }
 
@@ -69,30 +74,30 @@
             width: 60vw;
             height: 60vw;
             border-radius: 50%;
-            filter: blur(130px);
-            opacity: 0.18;
+            filter: blur(140px);
+            opacity: 0.16;
             animation: pulseMove 20s infinite alternate ease-in-out;
         }
 
-        .blob-1 { background: radial-gradient(circle, #3b82f6, transparent); top: -25%; right: -20%; }
-        .blob-2 { background: radial-gradient(circle, #d97706, transparent); bottom: -25%; left: -20%; animation-delay: -7s; }
+        .blob-1 { background: radial-gradient(circle, #3b82f6, transparent); top: -20%; right: -15%; }
+        .blob-2 { background: radial-gradient(circle, #d97706, transparent); bottom: -20%; left: -15%; animation-delay: -7s; }
 
         @keyframes pulseMove {
             0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.15) translate(-8%, 8%); }
+            100% { transform: scale(1.15) translate(-6%, 6%); }
         }
 
         .app-container {
             position: relative;
             z-index: 5;
             width: 100%;
-            max-width: 1250px;
+            max-width: 1300px;
             height: 100dvh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 12px;
+            padding: env(safe-area-inset-top, 10px) env(safe-area-inset-right, 10px) env(safe-area-inset-bottom, 10px) env(safe-area-inset-left, 10px);
             overflow: hidden;
         }
 
@@ -105,24 +110,25 @@
             align-items: center;
             text-align: center;
             z-index: 10;
-            padding: 18px;
-            animation: screenFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: clamp(12px, 3vh, 24px);
+            animation: screenFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow-y: auto;
         }
 
         .screen.active { display: flex; }
 
         @keyframes screenFade {
-            from { opacity: 0; transform: scale(0.97); }
+            from { opacity: 0; transform: scale(0.98); }
             to { opacity: 1; transform: scale(1); }
         }
 
         /* علم السودان */
         .sudan-flag-box {
-            width: clamp(100px, 18vw, 150px);
-            height: clamp(50px, 9vw, 75px);
-            margin-bottom: 18px;
+            width: clamp(90px, 16vw, 130px);
+            height: clamp(45px, 8vw, 65px);
+            margin-bottom: 12px;
             perspective: 500px;
-            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.7));
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.8));
         }
 
         .sudan-flag {
@@ -135,7 +141,7 @@
             animation: flagWave 3.5s infinite ease-in-out;
             border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.1);
+            box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.15);
         }
 
         .stripe-red { background: #d22630; }
@@ -149,17 +155,17 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: clamp(25px, 4.5vw, 37.5px) clamp(35px, 6.3vw, 52px) clamp(25px, 4.5vw, 37.5px) 0;
+            border-width: clamp(22.5px, 4vw, 32.5px) clamp(30px, 5.5vw, 45px) clamp(22.5px, 4vw, 32.5px) 0;
             border-color: transparent #007229 transparent transparent;
         }
 
         @keyframes flagWave {
             0%, 100% { transform: rotateY(0deg) skewY(0deg); }
-            50% { transform: rotateY(14deg) skewY(2deg); }
+            50% { transform: rotateY(12deg) skewY(2deg); }
         }
 
         .main-title {
-            font-size: clamp(2.1rem, 5.5vw, 3.4rem);
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
             font-weight: 900;
             background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 90%);
             -webkit-background-clip: text;
@@ -170,9 +176,9 @@
         }
 
         .main-subtitle {
-            font-size: clamp(0.95rem, 2.2vw, 1.25rem);
+            font-size: clamp(0.9rem, 2.2vw, 1.2rem);
             color: #94a3b8;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
             font-weight: 600;
         }
 
@@ -182,22 +188,20 @@
             align-items: center;
             gap: 10px;
             width: 100%;
-            max-width: 380px;
+            max-width: 360px;
         }
 
         .btn-custom {
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1.5px solid rgba(245, 158, 11, 0.45);
+            background: #0f1a30;
+            border: 1.5px solid rgba(245, 158, 11, 0.4);
             color: #ffffff;
-            font-size: clamp(0.95rem, 2vw, 1.12rem);
+            font-size: clamp(0.95rem, 2vw, 1.1rem);
             font-weight: 800;
-            padding: clamp(12px, 2vh, 15px) 24px;
+            padding: clamp(11px, 2vh, 14px) 20px;
             border-radius: 14px;
             cursor: pointer;
             transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.5);
             width: 100%;
             display: flex;
             justify-content: center;
@@ -205,33 +209,33 @@
             gap: 8px;
         }
 
-        .btn-custom:hover {
+        .btn-custom:hover, .btn-custom:active {
             transform: translateY(-2px) scale(1.01);
             background: var(--gold-gradient);
             border-color: var(--gold-light);
             color: #030712;
-            box-shadow: 0 10px 25px var(--gold-glow);
+            box-shadow: 0 8px 22px var(--gold-glow);
         }
 
         .btn-custom.btn-play {
             background: var(--gold-gradient);
             color: #030712;
             border-color: var(--gold-light);
-            box-shadow: 0 8px 25px var(--gold-glow);
-            font-size: 1.2rem;
+            box-shadow: 0 6px 20px var(--gold-glow);
+            font-size: 1.15rem;
             margin-bottom: 4px;
         }
 
         .btn-custom.btn-play:hover {
-            filter: brightness(1.1);
+            filter: brightness(1.08);
             transform: translateY(-2px) scale(1.02);
         }
 
         .btn-custom.resume-btn {
             border-color: var(--accent-green);
-            background: rgba(16, 185, 129, 0.15);
+            background: rgba(16, 185, 129, 0.18);
             color: #6ee7b7;
-            box-shadow: 0 0 20px var(--accent-green-glow);
+            box-shadow: 0 0 18px var(--accent-green-glow);
         }
 
         .btn-custom.resume-btn:hover {
@@ -240,29 +244,24 @@
         }
 
         .copyright-tag {
-            margin-top: 25px;
-            font-size: 0.82rem;
+            margin-top: 20px;
+            font-size: 0.8rem;
             color: #64748b;
-            font-weight: 500;
+            font-weight: 600;
             display: flex;
             align-items: center;
             gap: 6px;
         }
 
-        /* شاشة الاستعداد للبدء */
+        /* شاشة الاستعداد */
         .countdown-circle {
             position: relative;
-            width: clamp(110px, 22vh, 150px);
-            height: clamp(110px, 22vh, 150px);
-            margin-bottom: 25px;
+            width: clamp(100px, 20vh, 140px);
+            height: clamp(100px, 20vh, 140px);
+            margin-bottom: 20px;
         }
 
-        .countdown-svg {
-            transform: rotate(-90deg);
-            width: 100%;
-            height: 100%;
-        }
-
+        .countdown-svg { transform: rotate(-90deg); width: 100%; height: 100%; }
         .countdown-bar {
             fill: none;
             stroke-width: 6;
@@ -273,9 +272,7 @@
             animation: countdownAnim 7s linear forwards;
         }
 
-        @keyframes countdownAnim {
-            to { stroke-dashoffset: 440; }
-        }
+        @keyframes countdownAnim { to { stroke-dashoffset: 440; } }
 
         .countdown-number {
             position: absolute;
@@ -283,19 +280,19 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: clamp(2.5rem, 6vh, 3.5rem);
+            font-size: clamp(2.3rem, 5.5vh, 3.2rem);
             font-weight: 900;
             color: var(--gold-light);
         }
 
-        /* شبكة اللعبة */
+        /* شبكة اللعبة المتقنة */
         .game-grid {
             display: grid;
             grid-template-columns: 1fr 310px;
-            gap: 16px;
+            gap: 14px;
             width: 100%;
             height: 100%;
-            max-height: calc(100dvh - 24px);
+            max-height: calc(100dvh - 20px);
             z-index: 5;
             position: relative;
         }
@@ -306,55 +303,56 @@
             justify-content: space-between;
             background: var(--bg-card-solid);
             border: 1.5px solid var(--border-glass);
-            border-radius: 22px;
-            padding: 16px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+            border-radius: 20px;
+            padding: clamp(10px, 2vh, 16px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
             height: 100%;
             min-height: 0;
+            overflow: hidden;
         }
 
         .hud-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-            padding-bottom: 12px;
-            gap: 8px;
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: clamp(6px, 1.5vh, 10px);
+            gap: 6px;
             flex-shrink: 0;
         }
 
         .lifelines-container {
             display: flex;
-            gap: 8px;
+            gap: clamp(4px, 1vw, 8px);
             align-items: center;
         }
 
         .btn-lifeline {
-            background: rgba(30, 41, 59, 0.8);
+            background: #111e38;
             border: 1.5px solid rgba(59, 130, 246, 0.5);
             color: #93c5fd;
-            width: clamp(38px, 8.5vw, 44px);
-            height: clamp(38px, 8.5vw, 44px);
-            border-radius: 12px;
-            font-size: clamp(0.75rem, 2vw, 0.85rem);
+            width: clamp(34px, 4.2vh, 42px);
+            height: clamp(34px, 4.2vh, 42px);
+            border-radius: 11px;
+            font-size: clamp(0.72rem, 1.8vw, 0.85rem);
             font-weight: 800;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.35);
         }
 
-        .btn-lifeline:hover:not(.used) {
-            transform: translateY(-2px) scale(1.06);
+        .btn-lifeline:hover:not(.used), .btn-lifeline:active:not(.used) {
+            transform: translateY(-2px) scale(1.05);
             border-color: var(--gold-light);
             color: var(--gold-light);
-            box-shadow: 0 0 16px var(--gold-glow);
+            box-shadow: 0 0 14px var(--gold-glow);
         }
 
         .btn-lifeline.used {
-            opacity: 0.25;
+            opacity: 0.22;
             border-color: var(--accent-red);
             color: var(--accent-red);
             cursor: not-allowed;
@@ -366,21 +364,21 @@
             background: var(--gold-gradient);
             border: 1px solid var(--gold-light);
             color: #030712;
-            padding: 0 14px;
-            border-radius: 12px;
-            height: clamp(38px, 8.5vw, 44px);
-            font-size: 0.85rem;
+            padding: 0 clamp(8px, 2vw, 12px);
+            border-radius: 11px;
+            height: clamp(34px, 4.2vh, 42px);
+            font-size: clamp(0.75rem, 2vw, 0.84rem);
             font-weight: 800;
             cursor: pointer;
             align-items: center;
-            gap: 6px;
-            box-shadow: 0 0 15px var(--gold-glow);
+            gap: 5px;
+            box-shadow: 0 0 14px var(--gold-glow);
         }
 
         .timer-wrapper {
             position: relative;
-            width: clamp(40px, 9vw, 48px);
-            height: clamp(40px, 9vw, 48px);
+            width: clamp(36px, 4.5vh, 44px);
+            height: clamp(36px, 4.5vh, 44px);
             flex-shrink: 0;
         }
 
@@ -400,100 +398,103 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.05rem;
-            font-weight: 800;
+            font-size: clamp(0.9rem, 2vh, 1.05rem);
+            font-weight: 900;
         }
 
         .question-box {
-            background: linear-gradient(180deg, #111a30, #0a1020);
-            border: 1.5px solid rgba(59, 130, 246, 0.4);
-            border-radius: 18px;
-            padding: clamp(14px, 3vh, 22px);
+            background: linear-gradient(180deg, #101c36, #0a1122);
+            border: 1.5px solid rgba(59, 130, 246, 0.45);
+            border-radius: 16px;
+            padding: clamp(12px, 2.5vh, 20px);
             text-align: center;
-            font-size: clamp(1.05rem, 2.6vh, 1.35rem);
+            font-size: clamp(1rem, 2.3vh, 1.3rem);
             font-weight: 800;
-            line-height: 1.6;
-            margin: clamp(10px, 2vh, 16px) 0;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
+            line-height: 1.5;
+            margin: clamp(8px, 1.8vh, 14px) 0;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
             flex-grow: 1;
             display: flex;
             align-items: center;
             justify-content: center;
-            min-height: 0;
+            min-height: 80px;
+            overflow-y: auto;
         }
 
         .options-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 10px;
+            gap: clamp(8px, 1.5vh, 12px);
             flex-shrink: 0;
         }
 
         .option-btn {
-            background: linear-gradient(135deg, #15223e, #0e172a);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 14px;
-            padding: clamp(12px, 2.2vh, 16px) 16px;
+            background: linear-gradient(135deg, #13203c, #0d1628);
+            border: 1.5px solid rgba(255, 255, 255, 0.14);
+            border-radius: 13px;
+            padding: clamp(10px, 1.8vh, 14px) 14px;
             text-align: right;
             color: #ffffff;
-            font-size: clamp(0.92rem, 2.2vh, 1.1rem);
+            font-size: clamp(0.88rem, 1.9vh, 1.05rem);
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             display: flex;
             align-items: center;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            min-height: clamp(44px, 5.5vh, 56px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .option-btn::before {
             content: attr(data-prefix);
             color: var(--gold-light);
-            margin-left: 10px;
+            margin-left: 8px;
             font-weight: 900;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
+            flex-shrink: 0;
         }
 
-        .option-btn:hover:not(.disabled) {
+        .option-btn:hover:not(.disabled), .option-btn:active:not(.disabled) {
             border-color: var(--gold-primary);
-            box-shadow: 0 0 18px var(--gold-glow);
-            background: #1c2c50;
+            box-shadow: 0 0 16px var(--gold-glow);
+            background: #1a2a4c;
             transform: translateY(-2px);
         }
 
         .option-btn.selected {
             background: #b45309 !important;
             border-color: var(--gold-light) !important;
-            box-shadow: 0 0 22px var(--gold-glow);
+            box-shadow: 0 0 20px var(--gold-glow);
         }
 
         .option-btn.correct {
             background: #065f46 !important;
             border-color: var(--accent-green) !important;
             color: #ffffff !important;
-            box-shadow: 0 0 25px var(--accent-green-glow);
+            box-shadow: 0 0 22px var(--accent-green-glow);
         }
 
         .option-btn.wrong {
             background: #991b1b !important;
             border-color: var(--accent-red) !important;
             color: #ffffff !important;
-            box-shadow: 0 0 25px var(--accent-red-glow);
+            box-shadow: 0 0 22px var(--accent-red-glow);
         }
 
         .option-btn.hidden-option {
-            opacity: 0;
+            visibility: hidden;
             pointer-events: none;
         }
 
         .assistance-result {
-            margin-top: 10px;
-            padding: 12px 16px;
-            background: #080d19;
-            border-radius: 14px;
+            margin-top: 8px;
+            padding: 10px 14px;
+            background: #080e1c;
+            border-radius: 12px;
             border: 1.5px solid var(--blue-accent);
-            font-size: 0.95rem;
-            max-height: 140px;
+            font-size: clamp(0.85rem, 1.7vh, 0.95rem);
+            max-height: 120px;
             overflow-y: auto;
             flex-shrink: 0;
         }
@@ -502,8 +503,8 @@
             display: flex;
             justify-content: space-around;
             align-items: flex-end;
-            height: 75px;
-            margin-top: 8px;
+            height: 65px;
+            margin-top: 6px;
             border-bottom: 2px solid rgba(255, 255, 255, 0.15);
             padding-bottom: 4px;
         }
@@ -512,41 +513,47 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            width: 42px;
+            width: 38px;
         }
 
         .chart-bar {
-            width: 24px;
+            width: 22px;
             background: linear-gradient(0deg, #1e3a8a, #3b82f6);
-            border-radius: 6px 6px 0 0;
+            border-radius: 5px 5px 0 0;
             height: 0%;
             transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .chart-bar.correct-bar {
             background: linear-gradient(0deg, #065f46, #10b981);
-            box-shadow: 0 0 12px var(--accent-green-glow);
+            box-shadow: 0 0 10px var(--accent-green-glow);
         }
 
-        /* سلم الجوائز */
+        /* ========================================================
+           سلم الجوائز (معتم 100% بدون أي شفافية أو فلاتر تشويش)
+           ======================================================== */
         .side-panel {
-            background: var(--panel-solid-bg) !important;
-            border: 1.5px solid rgba(245, 158, 11, 0.35);
-            border-radius: 22px;
-            padding: 14px 12px;
+            background-color: var(--drawer-solid-bg) !important;
+            opacity: 1 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: 2px solid rgba(245, 158, 11, 0.45);
+            border-radius: 20px;
+            padding: 12px 10px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
             height: 100%;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.95);
         }
 
         .ladder-header {
             text-align: center;
             padding-bottom: 8px;
             margin-bottom: 6px;
-            border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
         }
 
         .ladder-title {
@@ -561,21 +568,23 @@
             flex-direction: column;
             justify-content: space-between;
             height: 100%;
-            gap: 2px;
+            gap: 3px;
+            overflow-y: auto;
         }
 
         .prize-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 5px 12px;
+            padding: clamp(4px, 0.8vh, 6px) 12px;
             border-radius: 8px;
-            font-size: 0.88rem;
+            font-size: clamp(0.82rem, 1.6vh, 0.92rem);
             font-weight: 700;
-            color: #94a3b8;
-            background: #0d1527;
-            border: 1px solid rgba(255, 255, 255, 0.04);
-            transition: all 0.25s ease;
+            color: #cbd5e1;
+            background-color: var(--drawer-item-bg) !important;
+            opacity: 1 !important;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.2s ease;
         }
 
         .prize-item .step-num {
@@ -586,36 +595,33 @@
         .prize-item.milestone {
             color: #ffffff;
             font-weight: 900;
-            background: #172445;
-            border: 1px solid rgba(59, 130, 246, 0.5);
+            background-color: var(--drawer-milestone-bg) !important;
+            border: 1.5px solid rgba(59, 130, 246, 0.8);
         }
 
         .prize-item.milestone .step-amount {
             color: #ffffff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 6px rgba(255, 255, 255, 0.6);
         }
 
         .prize-item.active {
             background: var(--gold-gradient) !important;
             color: #030712 !important;
             font-weight: 900;
-            border: 1.5px solid var(--gold-light);
-            box-shadow: 0 0 18px var(--gold-glow);
-            transform: scale(1.03);
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 16px var(--gold-glow);
+            transform: scale(1.02);
         }
 
-        .prize-item.active .step-num {
-            color: #030712;
-        }
+        .prize-item.active .step-num { color: #030712; }
 
         /* غطاء التعتيم الخاص بالهواتف */
         .drawer-backdrop {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.75);
-            backdrop-filter: blur(4px);
-            z-index: 100;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 999;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
@@ -630,55 +636,56 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+            flex-shrink: 0;
         }
 
         .side-panel-close-btn {
             background: #1e293b;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1.5px solid rgba(255, 255, 255, 0.3);
             color: #ffffff;
-            font-size: 1.1rem;
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
+            font-size: 1.2rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        /* النوافذ المنبثقة */
+        /* النوافذ المنبثقة الشاملة */
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(2, 6, 23, 0.88);
+            background: rgba(2, 6, 23, 0.92);
             backdrop-filter: blur(8px);
-            z-index: 200;
+            z-index: 1200;
             display: none;
             justify-content: center;
             align-items: center;
-            padding: 15px;
+            padding: 14px;
         }
 
         .modal-overlay.active { display: flex; }
 
         .modal-card {
-            background: #090e1d;
+            background: #091021;
             border: 1.5px solid var(--gold-primary);
-            border-radius: 24px;
-            padding: 24px;
+            border-radius: 22px;
+            padding: 22px;
             width: 100%;
-            max-width: 480px;
-            max-height: 90dvh;
+            max-width: 460px;
+            max-height: 88dvh;
             overflow-y: auto;
             text-align: center;
-            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px var(--gold-glow);
-            animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.9), 0 0 30px var(--gold-glow);
+            animation: modalPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes modalPop {
-            from { transform: scale(0.9); opacity: 0; }
+            from { transform: scale(0.92); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
         }
 
@@ -687,39 +694,39 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 72px;
-            height: 72px;
+            width: 68px;
+            height: 68px;
             border-radius: 50%;
             background: linear-gradient(135deg, #1e293b, #0f172a);
             border: 2px solid var(--gold-light);
-            box-shadow: 0 0 20px var(--gold-glow);
-            margin: 0 auto 14px auto;
-            font-size: 2.2rem;
+            box-shadow: 0 0 18px var(--gold-glow);
+            margin: 0 auto 12px auto;
+            font-size: 2rem;
         }
 
         .dev-title {
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-weight: 900;
             color: #ffffff;
             margin-bottom: 4px;
         }
 
         .dev-role {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: var(--gold-light);
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         .dev-card-info {
-            background: rgba(255, 255, 255, 0.03);
+            background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 16px;
-            margin-bottom: 20px;
+            border-radius: 14px;
+            padding: 14px;
+            margin-bottom: 18px;
             text-align: right;
-            font-size: 0.95rem;
-            line-height: 1.7;
+            font-size: 0.92rem;
+            line-height: 1.6;
             color: #cbd5e1;
         }
 
@@ -731,19 +738,18 @@
             background: #25d366;
             color: #032b13;
             font-weight: 800;
-            font-size: 1.05rem;
-            padding: 13px 20px;
+            font-size: 1rem;
+            padding: 12px 18px;
             border-radius: 12px;
             text-decoration: none;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 4px 16px rgba(37, 211, 102, 0.4);
             margin-bottom: 12px;
         }
 
         .btn-whatsapp:hover {
             transform: translateY(-2px);
             background: #20ba59;
-            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
         }
 
         #celebration-canvas {
@@ -757,44 +763,88 @@
         .shake { animation: shakeAnim 0.4s ease; }
         @keyframes shakeAnim {
             0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
+            20%, 60% { transform: translateX(-8px); }
+            40%, 80% { transform: translateX(8px); }
         }
 
-        /* تجاوب الشاشات الصغيرة */
-        @media (max-width: 1023px) {
-            .game-grid { grid-template-columns: 1fr; }
-            .btn-ladder-mobile { display: inline-flex; }
+        /* ========================================================
+           📱 التجاوب الاحترافي الكامل للهواتف والشاشات الصغيرة
+           ======================================================== */
+        @media (max-width: 1024px) {
+            .game-grid { 
+                grid-template-columns: 1fr;
+            }
+            .btn-ladder-mobile { 
+                display: inline-flex; 
+            }
 
+            /* درج سلم الجوائز للهاتف (معتم 100% وبدون أي شفافية) */
             .side-panel {
                 position: fixed;
                 top: 0;
-                right: -330px;
-                width: 300px;
+                right: -100%;
+                width: min(340px, 86vw);
                 height: 100dvh;
-                z-index: 110;
+                z-index: 1000 !important; /* فوق كل شيء */
                 transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-                box-shadow: -15px 0 45px rgba(0, 0, 0, 0.95);
-                border-radius: 20px 0 0 20px;
-                border-left: 2px solid var(--gold-primary);
-                background: #060b17 !important;
+                box-shadow: -15px 0 45px rgba(0, 0, 0, 0.98);
+                border-radius: 18px 0 0 18px;
+                border: none;
+                border-left: 3px solid var(--gold-primary);
+                background-color: var(--drawer-solid-bg) !important;
+                opacity: 1 !important;
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+                padding: env(safe-area-inset-top, 14px) 14px env(safe-area-inset-bottom, 14px) 14px;
             }
 
-            .side-panel.drawer-open { right: 0; }
-            .side-panel-header-mobile { display: flex; }
-            .ladder-header { display: none; }
+            .side-panel.drawer-open { 
+                right: 0; 
+            }
+            .side-panel-header-mobile { 
+                display: flex; 
+            }
+            .ladder-header { 
+                display: none; 
+            }
+            .prize-item {
+                padding: 8px 12px;
+                font-size: 0.95rem;
+                margin-bottom: 2px;
+            }
         }
 
-        @media (max-width: 480px) {
-            .app-container { padding: 6px; }
-            .main-board { padding: 12px; border-radius: 18px; }
-            .hud-bar { padding-bottom: 8px; }
-            .btn-lifeline { width: 36px; height: 36px; }
-            .timer-wrapper { width: 38px; height: 38px; }
-            .question-box { padding: 12px; margin: 8px 0; border-radius: 14px; }
-            .options-grid { grid-template-columns: 1fr; gap: 8px; }
-            .option-btn { padding: 10px 14px; font-size: 0.95rem; border-radius: 12px; }
-            .side-panel { width: 85vw; }
+        @media (max-width: 600px) {
+            .options-grid {
+                grid-template-columns: 1fr;
+                gap: 7px;
+            }
+            .option-btn {
+                padding: 10px 14px;
+                min-height: 46px;
+                font-size: 0.95rem;
+            }
+            .question-box {
+                font-size: 1.05rem;
+                padding: 12px;
+                margin: 8px 0;
+            }
+            .main-board {
+                padding: 10px;
+                border-radius: 16px;
+            }
+            .btn-lifeline {
+                width: 36px;
+                height: 36px;
+                font-size: 0.78rem;
+            }
+            .timer-wrapper {
+                width: 36px;
+                height: 36px;
+            }
+            .timer-text {
+                font-size: 0.95rem;
+            }
         }
     </style>
 </head>
@@ -806,11 +856,13 @@
     </div>
 
     <canvas id="celebration-canvas"></canvas>
+    
+    <!-- غطاء التعتيم للخلفية -->
     <div class="drawer-backdrop" id="drawer-backdrop" onclick="ui.togglePrizeDrawer(false)"></div>
 
     <div class="app-container">
 
-        <!-- 1. القائمة الرئيسية (تفتح مباشرة بدون شاشة سبلاش) -->
+        <!-- 1. القائمة الرئيسية -->
         <div class="screen active" id="menu-screen">
             <div class="sudan-flag-box">
                 <div class="sudan-flag">
@@ -852,7 +904,7 @@
             </div>
         </div>
 
-        <!-- 2. شاشة الاستعداد للبدء (7 ثوانٍ تشويق) -->
+        <!-- 2. شاشة الاستعداد للبدء (7 ثوانٍ) -->
         <div class="screen" id="countdown-screen">
             <div class="countdown-circle">
                 <svg class="countdown-svg" viewBox="0 0 150 150">
@@ -860,8 +912,8 @@
                 </svg>
                 <div class="countdown-number" id="countdown-num">7</div>
             </div>
-            <h2 style="color: var(--gold-light); font-weight: 800; font-size: 1.5rem;">استعد لرحلة المليون...</h2>
-            <p style="margin-top: 10px; color: #94a3b8; font-size: 0.95rem;">تحدي الثقافة والمعرفة السودانية العريقة</p>
+            <h2 style="color: var(--gold-light); font-weight: 800; font-size: 1.4rem;">استعد لرحلة المليون...</h2>
+            <p style="margin-top: 8px; color: #94a3b8; font-size: 0.95rem;">تحدي الثقافة والمعرفة السودانية العريقة</p>
         </div>
 
         <!-- 3. ساحة اللعبة الرئيسية -->
@@ -876,12 +928,14 @@
                             <button class="btn-lifeline" id="ll-friend" onclick="gameEngine.usePhoneFriend()" title="اتصال بصديق">📞</button>
                             <button class="btn-lifeline" id="ll-audience" onclick="gameEngine.useAudience()" title="رأي الجمهور">👥</button>
                             <button class="btn-lifeline" id="ll-swap" onclick="gameEngine.useSwap()" title="تبديل السؤال">🔄</button>
+                            
+                            <!-- زر السلم للهاتف -->
                             <button class="btn-ladder-mobile" onclick="ui.togglePrizeDrawer(true)" title="عرض المبالغ">
-                                <span>🏆 سلم الجوائز</span>
+                                <span>🏆 السلم</span>
                             </button>
                         </div>
 
-                        <!-- عداد الثواني -->
+                        <!-- عداد الثواني الدائري -->
                         <div class="timer-wrapper">
                             <svg class="timer-svg" viewBox="0 0 36 36">
                                 <path class="timer-track" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
@@ -909,15 +963,15 @@
                         <button class="option-btn" data-prefix="د:" onclick="gameEngine.selectOption(3)"></button>
                     </div>
 
-                    <!-- لوحة المساعدات -->
+                    <!-- لوحة المساعدات التفاعلية -->
                     <div class="assistance-result" id="assistance-output" style="display: none;"></div>
                 </div>
 
-                <!-- سلم الجوائز -->
+                <!-- درج سلم الجوائز (معتم 100% بدون أي شفافية) -->
                 <div class="side-panel" id="side-prize-panel">
                     <div class="side-panel-header-mobile">
                         <span style="font-weight: 900; color: var(--gold-light); font-size: 1.05rem;">🏆 سلم الجوائز النقدية</span>
-                        <button class="side-panel-close-btn" onclick="ui.togglePrizeDrawer(false)">✕</button>
+                        <button class="side-panel-close-btn" onclick="ui.togglePrizeDrawer(false)" aria-label="إغلاق">✕</button>
                     </div>
                     <div class="ladder-header">
                         <div class="ladder-title">سلم الجوائز (جنيه سوداني)</div>
@@ -941,15 +995,14 @@
                 تم تطوير وهندسة هذه النسخة الشاملة بأحدث تقنيات الويب المتقدمة لتقديم تجربة حماسية تجسد التراث والهوية السودانية الأصيلة بدقة تامة وتدرج معرفي واقعي.
             </div>
 
-            <!-- زر واتساب المباشر -->
             <a href="https://wa.me/971524583193" target="_blank" class="btn-whatsapp">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
                 </svg>
                 <span>تواصل عبر واتساب: 971524583193+</span>
             </a>
 
-            <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 18px;">
+            <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 16px;">
                 جميع الحقوق محفوظة © أبو صدام التقني 2026
             </div>
 
@@ -957,39 +1010,40 @@
         </div>
     </div>
 
-    <!-- النوافذ المنبثقة الأخرى -->
+    <!-- نافذة سجل الإنجازات -->
     <div class="modal-overlay" id="stats-modal">
         <div class="modal-card">
             <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;">سجل الإنجازات والبطولات</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
-                    <div style="color: #94a3b8;">الجولات الملعوبة</div>
-                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--gold-light);" id="stat-played">0</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8; font-size: 0.85rem;">الجولات الملعوبة</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--gold-light);" id="stat-played">0</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
-                    <div style="color: #94a3b8;">مرات نيل المليون</div>
-                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--accent-green);" id="stat-won">0</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8; font-size: 0.85rem;">مرات نيل المليون</div>
+                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent-green);" id="stat-won">0</div>
                 </div>
-                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; grid-column: span 2; border: 1px solid rgba(255,255,255,0.08);">
-                    <div style="color: #94a3b8;">أعلى مبلغ تم ربحه</div>
-                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--gold-light);" id="stat-high">0 ج</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; grid-column: span 2; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8; font-size: 0.85rem;">أعلى مبلغ تم ربحه</div>
+                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--gold-light);" id="stat-high">0 ج</div>
                 </div>
             </div>
             <button class="btn-custom" onclick="ui.closeModal('stats-modal')">إغلاق</button>
         </div>
     </div>
 
+    <!-- نافذة الإعدادات -->
     <div class="modal-overlay" id="settings-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 20px; font-weight: 800;">خيارات النظام</h2>
-            <div style="text-align: right; margin-bottom: 25px;">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+            <h2 style="color: var(--gold-light); margin-bottom: 18px; font-weight: 800;">خيارات النظام</h2>
+            <div style="text-align: right; margin-bottom: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
                     <label>المؤثرات الصوتية والترقب:</label>
                     <input type="checkbox" id="setting-sound-toggle" checked onchange="soundMaster.toggleSoundFromSetting(this.checked)" style="width: 22px; height: 22px; accent-color: var(--gold-primary);">
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <label>حجم خط الأسئلة:</label>
-                    <select onchange="document.documentElement.style.setProperty('--font-scale', this.value)" style="background: #1e293b; color: white; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--gold-primary);">
+                    <select onchange="document.documentElement.style.setProperty('--font-scale', this.value)" style="background: #1e293b; color: white; padding: 6px 10px; border-radius: 9px; border: 1px solid var(--gold-primary);">
                         <option value="0.9">صغير</option>
                         <option value="1" selected>متوسط</option>
                         <option value="1.15">كبير</option>
@@ -997,29 +1051,29 @@
                 </div>
             </div>
             <button class="btn-custom" onclick="gameEngine.resetMemory()" style="border-color: var(--accent-red); color: #fca5a5; margin-bottom: 10px;">تصفير بنك الأسئلة والذاكرة</button>
-            <br>
             <button class="btn-custom" onclick="ui.closeModal('settings-modal')">حفظ وإغلاق</button>
         </div>
     </div>
 
+    <!-- نافذة انتهاء اللعبة -->
     <div class="modal-overlay" id="game-over-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;" id="game-over-title">انتهت الرحلة</h2>
-            <p id="game-over-msg" style="font-size: 1.15rem; line-height: 1.6; margin-bottom: 25px;"></p>
+            <h2 style="color: var(--gold-light); margin-bottom: 14px; font-weight: 800;" id="game-over-title">انتهت الرحلة</h2>
+            <p id="game-over-msg" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 20px;"></p>
             <button class="btn-custom" onclick="ui.closeModal('game-over-modal'); ui.switchScreen('menu-screen');">العودة للرئيسية</button>
         </div>
     </div>
 
+    <!-- نافذة عن المسابقة -->
     <div class="modal-overlay" id="about-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;">عن المسابقة</h2>
+            <h2 style="color: var(--gold-light); margin-bottom: 14px; font-weight: 800;">عن المسابقة</h2>
             <p style="text-align: right; line-height: 1.8; font-size: 0.95rem; color: #cbd5e1;">
-                مسابقة ثقافية وتاريخية شاملة تضم أكثر من 300 سؤال مبرمجة بتدرج علمي دقيق للمستويات من السهل إلى الخبير، وتخلد تراث كوش ومروي وسنار والمهدية والأدب والفن والموسيقى السودانية العريقة.
+                مسابقة ثقافية وتاريخية شاملة تضم مئات الأسئلة المبرمجة بتدرج علمي دقيق للمستويات من السهل إلى الخبير، وتخلد تراث كوش ومروي وسنار والمهدية والأدب والفن والموسيقى السودانية العريقة.
             </p>
-            <div style="margin-top: 20px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
-                كل الحقوق لـ أبو صدام التقني 2026
+            <div style="margin-top: 18px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px; margin-bottom: 14px;">
+                كل الحقوق محفوظة لـ أبو صدام التقني 2026
             </div>
-            <br>
             <button class="btn-custom" onclick="ui.closeModal('about-modal')">إغلاق</button>
         </div>
     </div>
@@ -1547,7 +1601,6 @@
                 ui.renderLadder();
                 ui.updateStatsDisplay();
                 this.checkSavedSession();
-                // فتح القائمة الرئيسية فوراً
                 ui.switchScreen('menu-screen');
             }
 
@@ -1793,7 +1846,7 @@
                 out.style.display = 'block';
                 out.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:1.5rem; animation:spin 1s infinite linear;">📞</span>
+                        <span style="font-size:1.4rem;">📞</span>
                         <span>جاري الاتصال بصديقك في السودان...</span>
                     </div>
                 `;
@@ -1812,7 +1865,7 @@
                         <strong>📞 الصديق السوداني على الخط:</strong><br>
                         ${chosenPhrase}
                     `;
-                }, 2000);
+                }, 1800);
             }
 
             useAudience() {
@@ -1989,7 +2042,10 @@
             updateLadderHighlight(index) {
                 document.querySelectorAll('.prize-item').forEach(it => it.classList.remove('active'));
                 const cur = document.getElementById(`ladder-step-${index}`);
-                if (cur) cur.classList.add('active');
+                if (cur) {
+                    cur.classList.add('active');
+                    cur.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }
             }
 
             renderQuestionData(preparedData) {
@@ -2145,3 +2201,4 @@
     </script>
 </body>
 </html>
+```
