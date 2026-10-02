@@ -1,23 +1,35 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>من سيربح المليون - النسخة السودانية الشاملة 🇸🇩</title>
+    <!-- خط تجوال العصري -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --bg-primary: #020617;
-            --bg-solid-card: #0b1329;
-            --panel-solid-bg: #070d19;
+            --bg-base: #030712;
+            --bg-card: rgba(15, 23, 42, 0.75);
+            --bg-card-solid: #0b1329;
+            --panel-solid-bg: #070d1a;
+            
             --gold-primary: #f59e0b;
-            --gold-light: #fbbf24;
-            --gold-dark: #b45309;
-            --gold-glow: rgba(245, 158, 11, 0.4);
-            --blue-glow: rgba(59, 130, 246, 0.35);
-            --blue-deep: #1e3a8a;
+            --gold-light: #fcd34d;
+            --gold-gradient: linear-gradient(135deg, #fbbf24 0%, #d97706 100%);
+            --gold-glow: rgba(245, 158, 11, 0.35);
+            
+            --blue-glow: rgba(59, 130, 246, 0.3);
+            --blue-accent: #3b82f6;
+            
             --accent-green: #10b981;
+            --accent-green-glow: rgba(16, 185, 129, 0.4);
             --accent-red: #ef4444;
+            --accent-red-glow: rgba(239, 68, 68, 0.4);
+            
+            --border-glass: rgba(255, 255, 255, 0.1);
             --font-scale: 1;
         }
 
@@ -28,12 +40,12 @@
             user-select: none;
             -webkit-user-select: none;
             -webkit-tap-highlight-color: transparent;
+            font-family: 'Tajawal', system-ui, -apple-system, sans-serif;
         }
 
         body {
-            background-color: var(--bg-primary);
+            background-color: var(--bg-base);
             color: #f8fafc;
-            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             height: 100dvh;
             width: 100vw;
             display: flex;
@@ -43,7 +55,7 @@
             font-size: calc(15px * var(--font-scale));
         }
 
-        /* خلفية سينمائية هادئة */
+        /* خلفية تفاعلية سينمائية */
         .ambient-bg {
             position: fixed;
             inset: 0;
@@ -54,20 +66,20 @@
 
         .ambient-blob {
             position: absolute;
-            width: 55vw;
-            height: 55vw;
+            width: 60vw;
+            height: 60vw;
             border-radius: 50%;
-            filter: blur(140px);
-            opacity: 0.15;
-            animation: pulseMove 22s infinite alternate ease-in-out;
+            filter: blur(130px);
+            opacity: 0.18;
+            animation: pulseMove 20s infinite alternate ease-in-out;
         }
 
-        .blob-1 { background: radial-gradient(circle, #2563eb, transparent); top: -20%; right: -20%; }
-        .blob-2 { background: radial-gradient(circle, #d97706, transparent); bottom: -20%; left: -20%; animation-delay: -6s; }
+        .blob-1 { background: radial-gradient(circle, #3b82f6, transparent); top: -25%; right: -20%; }
+        .blob-2 { background: radial-gradient(circle, #d97706, transparent); bottom: -25%; left: -20%; animation-delay: -7s; }
 
         @keyframes pulseMove {
             0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.18) translate(-10%, 10%); }
+            100% { transform: scale(1.15) translate(-8%, 8%); }
         }
 
         .app-container {
@@ -93,24 +105,24 @@
             align-items: center;
             text-align: center;
             z-index: 10;
-            padding: 15px;
-            animation: screenFade 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            padding: 18px;
+            animation: screenFade 0.35s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .screen.active { display: flex; }
 
         @keyframes screenFade {
-            from { opacity: 0; transform: scale(0.96); }
+            from { opacity: 0; transform: scale(0.97); }
             to { opacity: 1; transform: scale(1); }
         }
 
         /* علم السودان */
         .sudan-flag-box {
-            width: clamp(110px, 20vw, 160px);
-            height: clamp(55px, 10vw, 80px);
-            margin-bottom: 20px;
+            width: clamp(100px, 18vw, 150px);
+            height: clamp(50px, 9vw, 75px);
+            margin-bottom: 18px;
             perspective: 500px;
-            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.8));
+            filter: drop-shadow(0 12px 25px rgba(0, 0, 0, 0.7));
         }
 
         .sudan-flag {
@@ -121,8 +133,9 @@
             position: relative;
             transform-style: preserve-3d;
             animation: flagWave 3.5s infinite ease-in-out;
-            border-radius: 4px;
+            border-radius: 6px;
             overflow: hidden;
+            box-shadow: 0 0 1px 1px rgba(255, 255, 255, 0.1);
         }
 
         .stripe-red { background: #d22630; }
@@ -136,60 +149,107 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: clamp(27.5px, 5vw, 40px) clamp(38px, 7vw, 56px) clamp(27.5px, 5vw, 40px) 0;
+            border-width: clamp(25px, 4.5vw, 37.5px) clamp(35px, 6.3vw, 52px) clamp(25px, 4.5vw, 37.5px) 0;
             border-color: transparent #007229 transparent transparent;
         }
 
         @keyframes flagWave {
             0%, 100% { transform: rotateY(0deg) skewY(0deg); }
-            50% { transform: rotateY(15deg) skewY(2deg); }
+            50% { transform: rotateY(14deg) skewY(2deg); }
         }
 
         .main-title {
-            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-size: clamp(2.1rem, 5.5vw, 3.4rem);
             font-weight: 900;
-            background: linear-gradient(135deg, #ffffff 15%, var(--gold-light) 100%);
+            background: linear-gradient(135deg, #ffffff 20%, var(--gold-light) 90%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 6px;
             text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+            letter-spacing: -0.5px;
         }
 
         .main-subtitle {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            font-size: clamp(0.95rem, 2.2vw, 1.25rem);
             color: #94a3b8;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
             font-weight: 600;
         }
 
+        .menu-grid-buttons {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 380px;
+        }
+
         .btn-custom {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            border: 2px solid var(--gold-primary);
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1.5px solid rgba(245, 158, 11, 0.45);
             color: #ffffff;
-            font-size: clamp(0.95rem, 2vw, 1.15rem);
-            font-weight: 700;
-            padding: clamp(12px, 2.2vh, 16px) clamp(25px, 4vw, 40px);
-            border-radius: 50px;
+            font-size: clamp(0.95rem, 2vw, 1.12rem);
+            font-weight: 800;
+            padding: clamp(12px, 2vh, 15px) 24px;
+            border-radius: 14px;
             cursor: pointer;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 0 15px var(--gold-glow);
-            margin: 6px;
-            min-width: clamp(170px, 35vw, 240px);
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.1);
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
         }
 
         .btn-custom:hover {
-            transform: translateY(-2px) scale(1.03);
-            background: linear-gradient(135deg, var(--gold-light), var(--gold-primary));
+            transform: translateY(-2px) scale(1.01);
+            background: var(--gold-gradient);
+            border-color: var(--gold-light);
             color: #030712;
-            box-shadow: 0 0 25px var(--gold-light);
+            box-shadow: 0 10px 25px var(--gold-glow);
+        }
+
+        .btn-custom.btn-play {
+            background: var(--gold-gradient);
+            color: #030712;
+            border-color: var(--gold-light);
+            box-shadow: 0 8px 25px var(--gold-glow);
+            font-size: 1.2rem;
+            margin-bottom: 4px;
+        }
+
+        .btn-custom.btn-play:hover {
+            filter: brightness(1.1);
+            transform: translateY(-2px) scale(1.02);
         }
 
         .btn-custom.resume-btn {
             border-color: var(--accent-green);
-            box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.15);
+            color: #6ee7b7;
+            box-shadow: 0 0 20px var(--accent-green-glow);
         }
 
-        /* عداد الاستعداد */
+        .btn-custom.resume-btn:hover {
+            background: var(--accent-green);
+            color: #022c22;
+        }
+
+        .copyright-tag {
+            margin-top: 25px;
+            font-size: 0.82rem;
+            color: #64748b;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* شاشة الاستعداد للبدء */
         .countdown-circle {
             position: relative;
             width: clamp(110px, 22vh, 150px);
@@ -205,7 +265,7 @@
 
         .countdown-bar {
             fill: none;
-            stroke-width: 7;
+            stroke-width: 6;
             stroke: var(--gold-primary);
             stroke-linecap: round;
             stroke-dasharray: 440;
@@ -231,8 +291,8 @@
         /* شبكة اللعبة */
         .game-grid {
             display: grid;
-            grid-template-columns: 1fr 300px;
-            gap: 15px;
+            grid-template-columns: 1fr 310px;
+            gap: 16px;
             width: 100%;
             height: 100%;
             max-height: calc(100dvh - 24px);
@@ -244,9 +304,9 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            background: var(--bg-solid-card);
-            border: 2px solid rgba(255, 255, 255, 0.12);
-            border-radius: 20px;
+            background: var(--bg-card-solid);
+            border: 1.5px solid var(--border-glass);
+            border-radius: 22px;
             padding: 16px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
             height: 100%;
@@ -257,7 +317,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             padding-bottom: 12px;
             gap: 8px;
             flex-shrink: 0;
@@ -270,12 +330,12 @@
         }
 
         .btn-lifeline {
-            background: #1e293b;
-            border: 1.5px solid #3b82f6;
-            color: #60a5fa;
+            background: rgba(30, 41, 59, 0.8);
+            border: 1.5px solid rgba(59, 130, 246, 0.5);
+            color: #93c5fd;
             width: clamp(38px, 8.5vw, 44px);
             height: clamp(38px, 8.5vw, 44px);
-            border-radius: 50%;
+            border-radius: 12px;
             font-size: clamp(0.75rem, 2vw, 0.85rem);
             font-weight: 800;
             cursor: pointer;
@@ -283,14 +343,14 @@
             align-items: center;
             justify-content: center;
             transition: all 0.2s ease;
-            box-shadow: 0 0 12px var(--blue-glow);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         .btn-lifeline:hover:not(.used) {
-            transform: scale(1.1);
+            transform: translateY(-2px) scale(1.06);
             border-color: var(--gold-light);
             color: var(--gold-light);
-            box-shadow: 0 0 18px var(--gold-glow);
+            box-shadow: 0 0 16px var(--gold-glow);
         }
 
         .btn-lifeline.used {
@@ -303,11 +363,11 @@
 
         .btn-ladder-mobile {
             display: none;
-            background: linear-gradient(135deg, #b45309, #d97706);
-            border: 1.5px solid var(--gold-light);
-            color: #ffffff;
+            background: var(--gold-gradient);
+            border: 1px solid var(--gold-light);
+            color: #030712;
             padding: 0 14px;
-            border-radius: 50px;
+            border-radius: 12px;
             height: clamp(38px, 8.5vw, 44px);
             font-size: 0.85rem;
             font-weight: 800;
@@ -325,7 +385,7 @@
         }
 
         .timer-svg { transform: rotate(-90deg); width: 100%; height: 100%; }
-        .timer-track { fill: none; stroke: rgba(255, 255, 255, 0.12); stroke-width: 4; }
+        .timer-track { fill: none; stroke: rgba(255, 255, 255, 0.1); stroke-width: 4; }
         .timer-bar {
             fill: none;
             stroke-width: 4;
@@ -345,16 +405,16 @@
         }
 
         .question-box {
-            background: linear-gradient(180deg, #131c33, #0d1527);
-            border: 2px solid #3b82f6;
-            border-radius: 16px;
+            background: linear-gradient(180deg, #111a30, #0a1020);
+            border: 1.5px solid rgba(59, 130, 246, 0.4);
+            border-radius: 18px;
             padding: clamp(14px, 3vh, 22px);
             text-align: center;
             font-size: clamp(1.05rem, 2.6vh, 1.35rem);
             font-weight: 800;
             line-height: 1.6;
             margin: clamp(10px, 2vh, 16px) 0;
-            box-shadow: 0 0 25px var(--blue-glow);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255,255,255,0.06);
             flex-grow: 1;
             display: flex;
             align-items: center;
@@ -370,19 +430,20 @@
         }
 
         .option-btn {
-            background: linear-gradient(135deg, #17233f, #0f182c);
-            border: 1.5px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: clamp(12px, 2.2vh, 16px) 14px;
+            background: linear-gradient(135deg, #15223e, #0e172a);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 14px;
+            padding: clamp(12px, 2.2vh, 16px) 16px;
             text-align: right;
             color: #ffffff;
-            font-size: clamp(0.9rem, 2.2vh, 1.1rem);
+            font-size: clamp(0.92rem, 2.2vh, 1.1rem);
             font-weight: 700;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             display: flex;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
         }
 
         .option-btn::before {
@@ -395,28 +456,29 @@
 
         .option-btn:hover:not(.disabled) {
             border-color: var(--gold-primary);
-            box-shadow: 0 0 15px var(--gold-glow);
-            background: #1e2e54;
+            box-shadow: 0 0 18px var(--gold-glow);
+            background: #1c2c50;
+            transform: translateY(-2px);
         }
 
         .option-btn.selected {
             background: #b45309 !important;
             border-color: var(--gold-light) !important;
-            box-shadow: 0 0 20px var(--gold-glow);
+            box-shadow: 0 0 22px var(--gold-glow);
         }
 
         .option-btn.correct {
             background: #065f46 !important;
             border-color: var(--accent-green) !important;
             color: #ffffff !important;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 25px var(--accent-green-glow);
         }
 
         .option-btn.wrong {
             background: #991b1b !important;
             border-color: var(--accent-red) !important;
             color: #ffffff !important;
-            box-shadow: 0 0 20px rgba(239, 68, 68, 0.6);
+            box-shadow: 0 0 25px var(--accent-red-glow);
         }
 
         .option-btn.hidden-option {
@@ -427,9 +489,9 @@
         .assistance-result {
             margin-top: 10px;
             padding: 12px 16px;
-            background: #090e1c;
-            border-radius: 12px;
-            border: 1.5px solid #3b82f6;
+            background: #080d19;
+            border-radius: 14px;
+            border: 1.5px solid var(--blue-accent);
             font-size: 0.95rem;
             max-height: 140px;
             overflow-y: auto;
@@ -442,7 +504,7 @@
             align-items: flex-end;
             height: 75px;
             margin-top: 8px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 2px solid rgba(255, 255, 255, 0.15);
             padding-bottom: 4px;
         }
 
@@ -454,46 +516,44 @@
         }
 
         .chart-bar {
-            width: 22px;
+            width: 24px;
             background: linear-gradient(0deg, #1e3a8a, #3b82f6);
-            border-radius: 4px 4px 0 0;
+            border-radius: 6px 6px 0 0;
             height: 0%;
             transition: height 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         .chart-bar.correct-bar {
             background: linear-gradient(0deg, #065f46, #10b981);
-            box-shadow: 0 0 12px rgba(16, 185, 129, 0.6);
+            box-shadow: 0 0 12px var(--accent-green-glow);
         }
 
-        /* =========================================================
-           🏆 تصميم سلم الجوائز: صلب فاخر وغير شفاف إطلاقاً
-           ========================================================= */
+        /* سلم الجوائز */
         .side-panel {
-            background: var(--panel-solid-bg) !important; /* لون صلب غير شفاف */
-            border: 2px solid var(--gold-dark);
-            border-radius: 20px;
+            background: var(--panel-solid-bg) !important;
+            border: 1.5px solid rgba(245, 158, 11, 0.35);
+            border-radius: 22px;
             padding: 14px 12px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             overflow: hidden;
             height: 100%;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8);
         }
 
         .ladder-header {
             text-align: center;
             padding-bottom: 8px;
             margin-bottom: 6px;
-            border-bottom: 2px solid #1e293b;
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.08);
         }
 
         .ladder-title {
-            font-weight: 900;
+            font-weight: 800;
             color: var(--gold-light);
             font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            letter-spacing: 0.3px;
         }
 
         .prize-ladder-list {
@@ -509,11 +569,11 @@
             justify-content: space-between;
             align-items: center;
             padding: 5px 12px;
-            border-radius: 6px;
-            font-size: 0.85rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
             font-weight: 700;
             color: #94a3b8;
-            background: #0c1424; /* لون صلب لكل خانة */
+            background: #0d1527;
             border: 1px solid rgba(255, 255, 255, 0.04);
             transition: all 0.25s ease;
         }
@@ -523,31 +583,29 @@
             font-weight: 800;
         }
 
-        /* المحطات الآمنة (1000 و 32000 والمليون) بلون صلب مميز */
         .prize-item.milestone {
             color: #ffffff;
             font-weight: 900;
-            background: #162444;
-            border: 1px solid #3b82f6;
+            background: #172445;
+            border: 1px solid rgba(59, 130, 246, 0.5);
         }
 
         .prize-item.milestone .step-amount {
             color: #ffffff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
 
-        /* السؤال الحالي متوهج وبارز */
         .prize-item.active {
-            background: linear-gradient(90deg, #b45309, #d97706) !important;
-            color: #ffffff !important;
+            background: var(--gold-gradient) !important;
+            color: #030712 !important;
             font-weight: 900;
             border: 1.5px solid var(--gold-light);
-            box-shadow: 0 0 16px rgba(245, 158, 11, 0.6);
+            box-shadow: 0 0 18px var(--gold-glow);
             transform: scale(1.03);
         }
 
         .prize-item.active .step-num {
-            color: #ffffff;
+            color: #030712;
         }
 
         /* غطاء التعتيم الخاص بالهواتف */
@@ -556,6 +614,7 @@
             position: fixed;
             inset: 0;
             background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(4px);
             z-index: 100;
             opacity: 0;
             transition: opacity 0.3s ease;
@@ -572,17 +631,17 @@
             align-items: center;
             margin-bottom: 10px;
             padding-bottom: 8px;
-            border-bottom: 2px solid #1e293b;
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
         }
 
         .side-panel-close-btn {
             background: #1e293b;
-            border: 1px solid #475569;
+            border: 1px solid rgba(255, 255, 255, 0.15);
             color: #ffffff;
-            font-size: 1.2rem;
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -593,7 +652,8 @@
         .modal-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.88);
+            background: rgba(2, 6, 23, 0.88);
+            backdrop-filter: blur(8px);
             z-index: 200;
             display: none;
             justify-content: center;
@@ -604,22 +664,86 @@
         .modal-overlay.active { display: flex; }
 
         .modal-card {
-            background: #090e1c;
-            border: 2px solid var(--gold-primary);
-            border-radius: 20px;
+            background: #090e1d;
+            border: 1.5px solid var(--gold-primary);
+            border-radius: 24px;
             padding: 24px;
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             max-height: 90dvh;
             overflow-y: auto;
             text-align: center;
-            box-shadow: 0 0 35px var(--gold-glow);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 35px var(--gold-glow);
             animation: modalPop 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
         @keyframes modalPop {
-            from { transform: scale(0.85); opacity: 0; }
+            from { transform: scale(0.9); opacity: 0; }
             to { transform: scale(1); opacity: 1; }
+        }
+
+        /* بطاقة المطور */
+        .developer-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            border: 2px solid var(--gold-light);
+            box-shadow: 0 0 20px var(--gold-glow);
+            margin: 0 auto 14px auto;
+            font-size: 2.2rem;
+        }
+
+        .dev-title {
+            font-size: 1.45rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin-bottom: 4px;
+        }
+
+        .dev-role {
+            font-size: 0.95rem;
+            color: var(--gold-light);
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+
+        .dev-card-info {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            text-align: right;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            color: #cbd5e1;
+        }
+
+        .btn-whatsapp {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #25d366;
+            color: #032b13;
+            font-weight: 800;
+            font-size: 1.05rem;
+            padding: 13px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 18px rgba(37, 211, 102, 0.4);
+            margin-bottom: 12px;
+        }
+
+        .btn-whatsapp:hover {
+            transform: translateY(-2px);
+            background: #20ba59;
+            box-shadow: 0 6px 24px rgba(37, 211, 102, 0.6);
         }
 
         #celebration-canvas {
@@ -637,17 +761,11 @@
             40%, 80% { transform: translateX(10px); }
         }
 
-        /* تجاوب الهواتف والشاشات الصغيرة */
+        /* تجاوب الشاشات الصغيرة */
         @media (max-width: 1023px) {
-            .game-grid {
-                grid-template-columns: 1fr;
-            }
+            .game-grid { grid-template-columns: 1fr; }
+            .btn-ladder-mobile { display: inline-flex; }
 
-            .btn-ladder-mobile {
-                display: inline-flex;
-            }
-
-            /* السلم كلوحة Drawer صلبة تنزلق باحترافية */
             .side-panel {
                 position: fixed;
                 top: 0;
@@ -659,31 +777,23 @@
                 box-shadow: -15px 0 45px rgba(0, 0, 0, 0.95);
                 border-radius: 20px 0 0 20px;
                 border-left: 2px solid var(--gold-primary);
-                background: #060b17 !important; /* لون صلب بنسبة 100% في الموبايل */
+                background: #060b17 !important;
             }
 
-            .side-panel.drawer-open {
-                right: 0;
-            }
-
-            .side-panel-header-mobile {
-                display: flex;
-            }
-
-            .ladder-header {
-                display: none;
-            }
+            .side-panel.drawer-open { right: 0; }
+            .side-panel-header-mobile { display: flex; }
+            .ladder-header { display: none; }
         }
 
         @media (max-width: 480px) {
             .app-container { padding: 6px; }
-            .main-board { padding: 10px; border-radius: 16px; }
+            .main-board { padding: 12px; border-radius: 18px; }
             .hud-bar { padding-bottom: 8px; }
             .btn-lifeline { width: 36px; height: 36px; }
             .timer-wrapper { width: 38px; height: 38px; }
-            .question-box { padding: 12px; margin: 8px 0; border-radius: 12px; }
+            .question-box { padding: 12px; margin: 8px 0; border-radius: 14px; }
             .options-grid { grid-template-columns: 1fr; gap: 8px; }
-            .option-btn { padding: 10px 14px; font-size: 0.95rem; }
+            .option-btn { padding: 10px 14px; font-size: 0.95rem; border-radius: 12px; }
             .side-panel { width: 85vw; }
         }
     </style>
@@ -700,8 +810,8 @@
 
     <div class="app-container">
 
-        <!-- 1. شاشة البداية -->
-        <div class="screen active" id="splash-screen">
+        <!-- 1. القائمة الرئيسية (تفتح مباشرة بدون شاشة سبلاش) -->
+        <div class="screen active" id="menu-screen">
             <div class="sudan-flag-box">
                 <div class="sudan-flag">
                     <div class="stripe-red"></div>
@@ -710,36 +820,39 @@
                     <div class="flag-triangle"></div>
                 </div>
             </div>
+            
             <h1 class="main-title">من سيربح المليون</h1>
-            <h2 class="main-subtitle">النسخة السودانية الشاملة 🇸🇩</h2>
-            <div style="width: 220px; height: 5px; background: #1e293b; border-radius: 4px; overflow: hidden; margin-top: 20px;">
-                <div style="height: 100%; width: 100%; background: linear-gradient(90deg, #d97706, #fbbf24); animation: splashBar 3.5s linear forwards;"></div>
+            <h2 class="main-subtitle">الموسوعة الثقافية والتاريخية الكبرى للسودان 🇸🇩</h2>
+            
+            <div class="menu-grid-buttons" id="menu-buttons-box">
+                <button class="btn-custom btn-play" onclick="gameEngine.initiateCountdown(false)">
+                    <span>ابدأ رحلة التحدي</span>
+                    <span style="font-size: 1.25rem;">✨</span>
+                </button>
+                <button class="btn-custom" onclick="ui.openModal('stats-modal')">
+                    <span>سجل الإنجازات</span>
+                    <span>📊</span>
+                </button>
+                <button class="btn-custom" onclick="ui.openModal('developer-modal')">
+                    <span>نبذة عن المطور</span>
+                    <span>👨‍💻</span>
+                </button>
+                <button class="btn-custom" onclick="ui.openModal('settings-modal')">
+                    <span>الإعدادات والصوت</span>
+                    <span>⚙️</span>
+                </button>
+                <button class="btn-custom" onclick="ui.openModal('about-modal')">
+                    <span>عن المسابقة</span>
+                    <span>📜</span>
+                </button>
             </div>
-            <p style="margin-top: 15px; font-size: 0.85rem; color: #94a3b8;">جاري تحميل بنك الأسئلة والموسوعة السودانية الكبرى...</p>
-        </div>
-        <style>@keyframes splashBar { from { width: 0%; } to { width: 100%; } }</style>
 
-        <!-- 2. القائمة الرئيسية -->
-        <div class="screen" id="menu-screen">
-            <div class="sudan-flag-box" style="transform: scale(0.85); margin-bottom: 10px;">
-                <div class="sudan-flag">
-                    <div class="stripe-red"></div>
-                    <div class="stripe-white"></div>
-                    <div class="stripe-black"></div>
-                    <div class="flag-triangle"></div>
-                </div>
-            </div>
-            <h1 class="main-title">من سيربح المليون</h1>
-            <h2 class="main-subtitle">أكثر من 300 سؤال في شتى مجالات السودان</h2>
-            <div id="menu-buttons-box" style="display: flex; flex-direction: column; align-items: center; gap: 8px;">
-                <button class="btn-custom" onclick="gameEngine.initiateCountdown(false)">ابدأ رحلة التحدي</button>
-                <button class="btn-custom" onclick="ui.openModal('stats-modal')">سجل الإنجازات</button>
-                <button class="btn-custom" onclick="ui.openModal('settings-modal')">الإعدادات والصوت</button>
-                <button class="btn-custom" onclick="ui.openModal('about-modal')">عن المسابقة</button>
+            <div class="copyright-tag">
+                <span>🛡️ كل الحقوق محفوظة لـ: <strong>أبو صدام التقني 2026</strong></span>
             </div>
         </div>
 
-        <!-- 3. شاشة الاستعداد والموسيقى (7 ثوانٍ) -->
+        <!-- 2. شاشة الاستعداد للبدء (7 ثوانٍ تشويق) -->
         <div class="screen" id="countdown-screen">
             <div class="countdown-circle">
                 <svg class="countdown-svg" viewBox="0 0 150 150">
@@ -751,7 +864,7 @@
             <p style="margin-top: 10px; color: #94a3b8; font-size: 0.95rem;">تحدي الثقافة والمعرفة السودانية العريقة</p>
         </div>
 
-        <!-- 4. ساحة اللعبة الرئيسية -->
+        <!-- 3. ساحة اللعبة الرئيسية -->
         <div class="screen" id="game-screen">
             <div class="game-grid">
                 
@@ -788,7 +901,7 @@
                         جارٍ سحب السؤال...
                     </div>
 
-                    <!-- أزرار الإجابات الأربعة (يتم خلط مواقعها عشوائياً في كل مرة) -->
+                    <!-- أزرار الإجابات الأربعة -->
                     <div class="options-grid" id="options-grid">
                         <button class="option-btn" data-prefix="أ:" onclick="gameEngine.selectOption(0)"></button>
                         <button class="option-btn" data-prefix="ب:" onclick="gameEngine.selectOption(1)"></button>
@@ -800,7 +913,7 @@
                     <div class="assistance-result" id="assistance-output" style="display: none;"></div>
                 </div>
 
-                <!-- سلم الجوائز: صلب وغير شفاف إطلاقاً -->
+                <!-- سلم الجوائز -->
                 <div class="side-panel" id="side-prize-panel">
                     <div class="side-panel-header-mobile">
                         <span style="font-weight: 900; color: var(--gold-light); font-size: 1.05rem;">🏆 سلم الجوائز النقدية</span>
@@ -817,22 +930,49 @@
 
     </div>
 
-    <!-- النوافذ المنبثقة -->
+    <!-- نافذة نبذة عن المطور -->
+    <div class="modal-overlay" id="developer-modal">
+        <div class="modal-card">
+            <div class="developer-badge">👨‍💻</div>
+            <h2 class="dev-title">المهندس حسين نقد</h2>
+            <div class="dev-role">مطور ومبرمج البرمجيات والأنظمة الذكية</div>
+            
+            <div class="dev-card-info">
+                تم تطوير وهندسة هذه النسخة الشاملة بأحدث تقنيات الويب المتقدمة لتقديم تجربة حماسية تجسد التراث والهوية السودانية الأصيلة بدقة تامة وتدرج معرفي واقعي.
+            </div>
+
+            <!-- زر واتساب المباشر -->
+            <a href="https://wa.me/971524583193" target="_blank" class="btn-whatsapp">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                </svg>
+                <span>تواصل عبر واتساب: 971524583193+</span>
+            </a>
+
+            <div style="font-size: 0.85rem; color: #94a3b8; margin-bottom: 18px;">
+                جميع الحقوق محفوظة © أبو صدام التقني 2026
+            </div>
+
+            <button class="btn-custom" onclick="ui.closeModal('developer-modal')">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- النوافذ المنبثقة الأخرى -->
     <div class="modal-overlay" id="stats-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 15px;">سجل الإنجازات والبطولات</h2>
+            <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;">سجل الإنجازات والبطولات</h2>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                <div style="background: #111a33; padding: 12px; border-radius: 10px; border: 1px solid #1e293b;">
-                    <div>الجولات الملعوبة</div>
-                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--gold-light);" id="stat-played">0</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8;">الجولات الملعوبة</div>
+                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--gold-light);" id="stat-played">0</div>
                 </div>
-                <div style="background: #111a33; padding: 12px; border-radius: 10px; border: 1px solid #1e293b;">
-                    <div>مرات نيل المليون</div>
-                    <div style="font-size: 1.5rem; font-weight: 900; color: var(--accent-green);" id="stat-won">0</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8;">مرات نيل المليون</div>
+                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--accent-green);" id="stat-won">0</div>
                 </div>
-                <div style="background: #111a33; padding: 12px; border-radius: 10px; grid-column: span 2; border: 1px solid #1e293b;">
-                    <div>أعلى مبلغ تم ربحه</div>
-                    <div style="font-size: 1.6rem; font-weight: 900; color: var(--gold-light);" id="stat-high">0 ج</div>
+                <div style="background: rgba(255,255,255,0.03); padding: 14px; border-radius: 12px; grid-column: span 2; border: 1px solid rgba(255,255,255,0.08);">
+                    <div style="color: #94a3b8;">أعلى مبلغ تم ربحه</div>
+                    <div style="font-size: 1.7rem; font-weight: 900; color: var(--gold-light);" id="stat-high">0 ج</div>
                 </div>
             </div>
             <button class="btn-custom" onclick="ui.closeModal('stats-modal')">إغلاق</button>
@@ -841,22 +981,22 @@
 
     <div class="modal-overlay" id="settings-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 20px;">خيارات النظام</h2>
+            <h2 style="color: var(--gold-light); margin-bottom: 20px; font-weight: 800;">خيارات النظام</h2>
             <div style="text-align: right; margin-bottom: 25px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
                     <label>المؤثرات الصوتية والترقب:</label>
-                    <input type="checkbox" id="setting-sound-toggle" checked onchange="soundMaster.toggleSoundFromSetting(this.checked)" style="width: 20px; height: 20px;">
+                    <input type="checkbox" id="setting-sound-toggle" checked onchange="soundMaster.toggleSoundFromSetting(this.checked)" style="width: 22px; height: 22px; accent-color: var(--gold-primary);">
                 </div>
                 <div style="display: flex; justify-content: space-between; align-items: center;">
                     <label>حجم خط الأسئلة:</label>
-                    <select onchange="document.documentElement.style.setProperty('--font-scale', this.value)" style="background: #1e293b; color: white; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--gold-primary);">
+                    <select onchange="document.documentElement.style.setProperty('--font-scale', this.value)" style="background: #1e293b; color: white; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--gold-primary);">
                         <option value="0.9">صغير</option>
                         <option value="1" selected>متوسط</option>
                         <option value="1.15">كبير</option>
                     </select>
                 </div>
             </div>
-            <button class="btn-custom" onclick="gameEngine.resetMemory()" style="border-color: var(--accent-red); margin-bottom: 10px;">تصفير بنك الأسئلة والذاكرة</button>
+            <button class="btn-custom" onclick="gameEngine.resetMemory()" style="border-color: var(--accent-red); color: #fca5a5; margin-bottom: 10px;">تصفير بنك الأسئلة والذاكرة</button>
             <br>
             <button class="btn-custom" onclick="ui.closeModal('settings-modal')">حفظ وإغلاق</button>
         </div>
@@ -864,7 +1004,7 @@
 
     <div class="modal-overlay" id="game-over-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 15px;" id="game-over-title">انتهت الرحلة</h2>
+            <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;" id="game-over-title">انتهت الرحلة</h2>
             <p id="game-over-msg" style="font-size: 1.15rem; line-height: 1.6; margin-bottom: 25px;"></p>
             <button class="btn-custom" onclick="ui.closeModal('game-over-modal'); ui.switchScreen('menu-screen');">العودة للرئيسية</button>
         </div>
@@ -872,10 +1012,13 @@
 
     <div class="modal-overlay" id="about-modal">
         <div class="modal-card">
-            <h2 style="color: var(--gold-light); margin-bottom: 15px;">عن النسخة السودانية</h2>
-            <p style="text-align: right; line-height: 1.7; font-size: 0.95rem; color: #cbd5e1;">
-                مسابقة ثقافية وتاريخية شاملة تضم أكثر من 300 سؤال مبرمجة بتدرج واقعي للمستويات من السهل إلى الخبير، وتخلد تراث كوش ومروي وسنار والمهدية والأدب والفن السوداني.
+            <h2 style="color: var(--gold-light); margin-bottom: 15px; font-weight: 800;">عن المسابقة</h2>
+            <p style="text-align: right; line-height: 1.8; font-size: 0.95rem; color: #cbd5e1;">
+                مسابقة ثقافية وتاريخية شاملة تضم أكثر من 300 سؤال مبرمجة بتدرج علمي دقيق للمستويات من السهل إلى الخبير، وتخلد تراث كوش ومروي وسنار والمهدية والأدب والفن والموسيقى السودانية العريقة.
             </p>
+            <div style="margin-top: 20px; font-size: 0.85rem; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 12px;">
+                كل الحقوق لـ أبو صدام التقني 2026
+            </div>
             <br>
             <button class="btn-custom" onclick="ui.closeModal('about-modal')">إغلاق</button>
         </div>
@@ -1062,10 +1205,9 @@
         const soundMaster = new ProfessionalSoundEngine();
 
         /* =========================================================================
-           📚 الموسوعة والبنك الضخم للأسئلة (>300 سؤال متدرج الصعوبة بدقة)
+           📚 بنك الأسئلة المتكامل (>300 سؤال متدرج الصعوبة)
            ========================================================================= */
         const QUESTION_MASTER_BASE = {
-            // المرحلة 1: (الأسئلة 1 - 3: من 100 إلى 300 جنيه) - سهلة وشائعة
             1: [
                 { q: "ما هي العاصمة الرسمية لجمهورية السودان؟", correct: "الخرطوم", wrong: ["أم درمان", "بحري", "بورتسودان"] },
                 { q: "ما هما النهران اللذان يلتقيان عند مقرن الخرطوم؟", correct: "النيل الأبيض والأزرق", wrong: ["عطبرة والدندر", "السوباط والنيل الأزرق", "الرهد والنيل الأبيض"] },
@@ -1132,8 +1274,6 @@
                 { q: "ما هي البحيرة البركانية الشهيرة الموجودة في قمة جبل مرة؟", correct: "بحيرة دريبا", wrong: ["بحيرة سد مروي", "بحيرة النوبة", "بحيرة كنانة"] },
                 { q: "ما هو الاسم التقليدي لقبعة الرأس المطرزة التي يرتديها الرجال في السودان؟", correct: "الطاقية", wrong: ["العقال", "الفاسي", "الكوفية"] }
             ],
-
-            // المرحلة 2: (الأسئلة 4 - 6: من 500 إلى 1,000 جنيه) - أول محطة أمان
             2: [
                 { q: "من هو قائد الثورة المهدية الذي دخل الخرطوم عام 1885م؟", correct: "محمد أحمد المهدي", wrong: ["عثمان دقنة", "علي دينار", "إسماعيل الأزهري"] },
                 { q: "في أي عام افتتح خزان سنار رسمياً ليروي مشروع الجزيرة؟", correct: "1925م", wrong: ["1910م", "1935م", "1956م"] },
@@ -1198,8 +1338,6 @@
                 { q: "ما هي المعشوقة الرمزية للوطن التي تغنى بها خليل فرح في قصيدته الشهيرة؟", correct: "عازة (عازة في هواك)", wrong: ["مهيرة", "تاجوج", "فاطمة"] },
                 { q: "ما هو الاسم التراثي لموسم حصاد التمور في شمال السودان؟", correct: "موسم الشتول والجداد", wrong: ["الدرت", "اللقاط", "الصيفية"] }
             ],
-
-            // المرحلة 3: (الأسئلة 7 - 9: من 2,000 إلى 8,000 جنيه) - متوسطة ودقيقة
             3: [
                 { q: "ما هي عاصمة مملكة كوش الأولى التي اشتهرت بصناعة الفخار الأسود المصقول؟", correct: "كرمة", wrong: ["نبتة", "مروي", "سوبا"] },
                 { q: "من هو القائد السوداني الشجاع الذي قاد فرسان الشرق في معارك التيب وتاماي ضد الإنجليز؟", correct: "الأمير عثمان دقنة", wrong: ["حمدان أبو عنجة", "عبد الله التعايشي", "الزاكي طمل"] },
@@ -1264,8 +1402,6 @@
                 { q: "ما هي المدينة التي أنشئت فيها محطة توليد الكهرباء الحرارية الكبرى المعروفة بمحطة قري؟", correct: "شمال بحري (قري)", wrong: ["شندي", "الجيلي", "سوبا"] },
                 { q: "ما هي الجزيرة الواقعة شمال دنقلا وتضم آثاراً ومعابد من العصر الكوشي والفرعوني والمسيحي؟", correct: "جزيرة صاي", wrong: ["جزيرة مساوي", "جزيرة بدين", "جزيرة توتي"] }
             ],
-
-            // المرحلة 4: (الأسئلة 10 - 12: من 16,000 إلى 32,000 جنيه) - ثاني محطة أمان
             4: [
                 { q: "ما هي الاتفاقية التاريخية التي وقعت في عام 652م بين والي مصر عبد الله بن أبي السرح وملك النوبة قليدورث؟", correct: "اتفاقية البَقْط", wrong: ["معاهدة المقرة", "اتفاقية دنقلا الأولى", "صلح سوبا"] },
                 { q: "من هو السلطان العظيم الذي قاد مقاومة سلطنة دارفور ضد الاستعمار البريطاني حتى استشهاده في معركة برنجية عام 1916؟", correct: "السلطان علي دينار", wrong: ["السلطان تيراب", "السلطان إبراهيم قرض", "السلطان عبد الرحمن الرشيد"] },
@@ -1328,8 +1464,6 @@
                 { q: "ما هي المدينة النوبية العريقة التي غمرتها مياه بحيرة السد العالي عام 1964 وهُجر أهلها إلى حلفا الجديدة؟", correct: "وادي حلفا القديمة", wrong: ["دنقلا", "كرمة", "عبري"] },
                 { q: "ما هو الاسم الأثري للمعبد المروي الواقع في النقعة المكرس للإلهة المصرية إيزيس وحتحور؟", correct: "معبد آمون ومعبد أبادماك والكشك", wrong: ["معبد الكباش", "هرم تهارقا", "مقابر الكرو"] }
             ],
-
-            // المرحلة 5: (الأسئلة 13 - 15: من 64,000 إلى 1,000,000 جنيه) - أسئلة النخبة والخبراء
             5: [
                 { q: "ما هو الاسم الحقيقي لـ 'كاتب الشونة' صاحب المخطوطة التاريخية الأشهر في توثيق أواخر سلطنة الفونج؟", correct: "أحمد بن الحاج أبو علي (أحمد الكاتب)", wrong: ["محمد ود ضيف الله", "إبراهيم بن عبد القادر", "عثمان بن عبد الله الجعلي"] },
                 { q: "ما هو الارتفاع الهندسي التقديري الدقيق لأعلى هرم كوشي باقٍ حتى الآن في أهرامات البجراوية الملكية؟", correct: "حوالي 30 متراً (هرم الملك تهارقا بنوري 50 متراً)", wrong: ["15 متراً", "70 متراً", "95 متراً"] },
@@ -1389,23 +1523,22 @@
             "2,000", "4,000", "8,000", "16,000", "32,000",
             "64,000", "125,000", "250,000", "500,000", "1,000,000"
         ];
-        const MILESTONE_LEVELS = [4, 9, 14]; // محطات الأمان: 1,000 ج و 32,000 ج والمليون
+        const MILESTONE_LEVELS = [4, 9, 14];
 
         /* =========================================================================
-           🧠 محرك اللعبة، خلط الخيارات (أ، ب، ج، د)، ومنع التكرار
+           🧠 محرك إدارة اللعبة
            ========================================================================= */
         class SudaneseMillionaireGame {
             constructor() {
                 this.isPlaying = false;
                 this.currentStep = 0;
                 this.gameQuestions = [];
-                this.activeQuestionData = null; // يحمل السؤال مع خياراته المخلوطة والمؤشر الصحيح
+                this.activeQuestionData = null;
                 this.timerInterval = null;
                 this.secondsLeft = 30;
                 
                 this.lifelines = { fifty: false, friend: false, audience: false, swap: false };
                 this.askedQuestionHistory = new Set();
-
                 this.stats = { played: 0, won: 0, highest: 0 };
             }
 
@@ -1414,10 +1547,8 @@
                 ui.renderLadder();
                 ui.updateStatsDisplay();
                 this.checkSavedSession();
-
-                setTimeout(() => {
-                    ui.switchScreen('menu-screen');
-                }, 3500);
+                // فتح القائمة الرئيسية فوراً
+                ui.switchScreen('menu-screen');
             }
 
             loadSavedStats() {
@@ -1532,7 +1663,6 @@
                 }
             }
 
-            // خلط خيارات الإجابة لتنويع موضع الإجابة الصحيحة عشوائياً بين (أ، ب، ج، د)
             prepareQuestionWithRandomizedOptions(rawQ) {
                 const options = [
                     { text: rawQ.correct, isCorrect: true },
@@ -1808,7 +1938,7 @@
         const gameEngine = new SudaneseMillionaireGame();
 
         /* =========================================================================
-           🎨 واجهة المستخدم وإدارة سلم الجوائز الصلب والـ Drawer
+           🎨 واجهة المستخدم والتحكم
            ========================================================================= */
         class UIController {
             switchScreen(id) {
@@ -1925,7 +2055,7 @@
                     btn = document.createElement('button');
                     btn.id = 'resume-btn-dynamic';
                     btn.className = 'btn-custom resume-btn';
-                    btn.innerHTML = `استئناف الجولة السابقة ↩ (السؤال ${session.currentStep + 1})`;
+                    btn.innerHTML = `<span>استئناف الجولة (السؤال ${session.currentStep + 1})</span> <span>↩</span>`;
                     btn.onclick = () => gameEngine.initiateCountdown(true, session);
                     box.insertBefore(btn, box.firstChild);
                 }
